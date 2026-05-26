@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Farmer Frenzy Game"
+run/main_scene="uid://b13l3w04de0xj"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 [rendering]
 
