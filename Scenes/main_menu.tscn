@@ -1,8 +1,14 @@
-[gd_scene load_steps=33 format=4 uid="uid://b13l3w04de0xj"]
+[gd_scene load_steps=68 format=4 uid="uid://b13l3w04de0xj"]
 
 [ext_resource type="Script" uid="uid://dccfn22jy3lhk" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://bt6222qb5t2hf" path="res://Fonts/Qilka-Bold copy.otf" id="2_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://c1cb0bf18tc84" path="res://Graphics/main-menu-pattern.png" id="2_n45e2"]
+[ext_resource type="Shader" uid="uid://dr8cebi4a0afw" path="res://Scenes/scroll_motion.gdshader" id="2_opfnp"]
 [ext_resource type="Texture2D" uid="uid://5wjvxa3bgfht" path="res://Graphics/basket-arc.png" id="3_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://biygqqouqnmgg" path="res://Graphics/farmer_frenzy_game_logo.png" id="6_opfnp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cp0ys"]
+shader = ExtResource("2_opfnp")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xlc"]
 bg_color = Color(0.756863, 0.584314, 0.384314, 1)
@@ -12,29 +18,51 @@ skew = Vector2(-0.3, 0)
 bg_color = Color(0.756863, 0.584314, 0.384314, 1)
 skew = Vector2(0.3, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6m47u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m3bi6"]
+bg_color = Color(0.954468, 0.521525, 0.46043, 1)
+skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6dk6o"]
+bg_color = Color(0.87404, 0.324897, 0.265376, 1)
+skew = Vector2(0.3, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ehe0"]
 bg_color = Color(0.925891, 0.423506, 0.360211, 1)
 skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yhxw7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(0.3, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_opfnp"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n45e2"]
 bg_color = Color(0.859772, 0.696408, 0.511271, 1)
 skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trj04"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opfnp"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(0.3, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_16hvj"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp0ys"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(0.3, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vr1f0"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhxw7"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1dhk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_trj04"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
@@ -462,6 +490,16 @@ cache/0/20/0/glyphs/134217804/size = Vector2(7, 18)
 cache/0/20/0/glyphs/134217804/uv_rect = Rect2(42, 55, 7, 18)
 cache/0/20/0/glyphs/134217804/texture_idx = 0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5n0dv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tt8ml"]
+bg_color = Color(0.920991, 0.513316, 0.634633, 1)
+skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmarx"]
+bg_color = Color(0.859371, 0.36079, 0.52825, 1)
+skew = Vector2(0.3, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dnnj"]
 bg_color = Color(0.890196, 0.423529, 0.572549, 1)
 skew = Vector2(0.3, 0)
@@ -852,21 +890,39 @@ cache/0/20/0/glyphs/134217804/size = Vector2(7, 18)
 cache/0/20/0/glyphs/134217804/uv_rect = Rect2(42, 55, 7, 18)
 cache/0/20/0/glyphs/134217804/texture_idx = 0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84iac"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5n0dv"]
+bg_color = Color(0.406253, 0.693651, 0.883361, 1)
+skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ne6ao"]
+bg_color = Color(0.277887, 0.57799, 0.767841, 1)
+skew = Vector2(0.3, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wyh8j"]
 bg_color = Color(0.331584, 0.634808, 0.829983, 1)
 skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5egv6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ujyyl"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(0.3, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtepg"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkpwh"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(0.3, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8dnnj"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nkqq"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m3bi6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehtkc"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
@@ -1258,6 +1314,16 @@ cache/0/20/0/glyphs/134217804/size = Vector2(7, 18)
 cache/0/20/0/glyphs/134217804/uv_rect = Rect2(42, 55, 7, 18)
 cache/0/20/0/glyphs/134217804/texture_idx = 0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ne6ao"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkdq0"]
+bg_color = Color(0.617196, 0.601539, 0.93208, 1)
+skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xcoo4"]
+bg_color = Color(0.499922, 0.460583, 0.882257, 1)
+skew = Vector2(0.3, 0)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jr6u5"]
 bg_color = Color(0.570164, 0.546325, 0.916797, 1)
 skew = Vector2(0.3, 0)
@@ -1266,28 +1332,75 @@ skew = Vector2(0.3, 0)
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(0.3, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wyh8j"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84iac"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(0.3, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cp0ys"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16hvj"]
 bg_color = Color(0.859772, 0.696408, 0.511271, 1)
 skew = Vector2(-0.3, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujyyl"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr1f0"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(-0.3, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mkpwh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t1dhk"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(-0.3, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4nkqq"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5egv6"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 skew = Vector2(-0.3, 0)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehtkc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6dk6o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jr6u5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtepg"]
+bg_color = Color(0.858824, 0.698039, 0.509804, 1)
+
 [node name="main_menu" type="Node2D"]
 script = ExtResource("1_28flt")
+
+[node name="bg_pattern2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1165.0
+offset_bottom = 662.0
+
+[node name="ColorRect" type="ColorRect" parent="bg_pattern2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.793472, 0.847116, 0.7186, 1)
+
+[node name="pattern" type="TextureRect" parent="bg_pattern2"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_cp0ys")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -12.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_n45e2")
 
 [node name="Panel2" type="Panel" parent="."]
 anchors_preset = 8
@@ -1328,6 +1441,9 @@ offset_right = 741.0
 offset_bottom = 352.3
 theme_override_fonts/font = ExtResource("2_ce3w2")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6m47u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m3bi6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6dk6o")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1ehe0")
 text = "FARMER FIGHT"
 
@@ -1336,60 +1452,84 @@ offset_left = 749.0
 offset_top = 302.0
 offset_right = 864.0
 offset_bottom = 352.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yhxw7")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ce3w2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ce3w2")
+disabled = true
 
 [node name="Button5" type="Button" parent="Node2D"]
 offset_left = 337.0
 offset_top = 302.0
 offset_right = 429.0
 offset_bottom = 352.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_opfnp")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_n45e2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_n45e2")
+disabled = true
 
 [node name="Button6" type="Button" parent="Node2D"]
 offset_left = 703.0
 offset_top = 360.6
 offset_right = 848.0
 offset_bottom = 410.6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_trj04")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_opfnp")
 theme_override_styles/normal = SubResource("StyleBoxFlat_opfnp")
+disabled = true
 
 [node name="Button7" type="Button" parent="Node2D"]
 offset_left = 553.0
 offset_top = 361.0
 offset_right = 694.0
 offset_bottom = 411.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_16hvj")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_cp0ys")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cp0ys")
+disabled = true
 
 [node name="Button8" type="Button" parent="Node2D"]
 offset_left = 403.0
 offset_top = 361.0
 offset_right = 545.0
 offset_bottom = 411.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vr1f0")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_yhxw7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_yhxw7")
+disabled = true
 
 [node name="Button9" type="Button" parent="Node2D"]
 offset_left = 352.0
 offset_top = 360.6
 offset_right = 395.0
 offset_bottom = 410.6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t1dhk")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_trj04")
 theme_override_styles/normal = SubResource("StyleBoxFlat_trj04")
+disabled = true
 
 [node name="fruitpedia_button" type="Button" parent="Node2D"]
-offset_left = 624.0
+offset_left = 643.0
 offset_top = 419.0
 offset_right = 832.0
 offset_bottom = 469.0
 theme_override_fonts/font = SubResource("FontFile_vtepg")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5n0dv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tt8ml")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fmarx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8dnnj")
 text = "FRUITPEDIA"
 
 [node name="harvest_rush_button" type="Button" parent="Node2D"]
-offset_left = 372.0
-offset_top = 418.9
-offset_right = 615.0
-offset_bottom = 468.9
+offset_left = 400.0
+offset_top = 419.0
+offset_right = 636.0
+offset_bottom = 469.0
 theme_override_fonts/font = SubResource("FontFile_m3bi6")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_84iac")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5n0dv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ne6ao")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wyh8j")
 text = "HARVEST RUSH"
 
@@ -1398,28 +1538,40 @@ offset_left = 726.0
 offset_top = 477.2
 offset_right = 815.0
 offset_bottom = 527.2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5egv6")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ujyyl")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujyyl")
+disabled = true
 
 [node name="Button14" type="Button" parent="Node2D"]
 offset_left = 589.0
 offset_top = 477.0
 offset_right = 717.0
 offset_bottom = 527.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vtepg")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_mkpwh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mkpwh")
+disabled = true
 
 [node name="Button15" type="Button" parent="Node2D"]
 offset_left = 484.0
 offset_top = 477.2
 offset_right = 581.0
 offset_bottom = 527.2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8dnnj")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4nkqq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_4nkqq")
+disabled = true
 
 [node name="Button16" type="Button" parent="Node2D"]
 offset_left = 389.0
 offset_top = 477.0
 offset_right = 475.0
 offset_bottom = 527.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m3bi6")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ehtkc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ehtkc")
+disabled = true
 
 [node name="settings_button" type="Button" parent="Node2D"]
 offset_left = 490.0
@@ -1428,6 +1580,9 @@ offset_right = 683.0
 offset_bottom = 585.5
 theme_override_fonts/font = SubResource("FontFile_6dk6o")
 theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ne6ao")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hkdq0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_xcoo4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jr6u5")
 text = "SETTINGS"
 
@@ -1443,37 +1598,88 @@ offset_left = 691.0
 offset_top = 536.0
 offset_right = 796.0
 offset_bottom = 586.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wyh8j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_84iac")
 theme_override_styles/normal = SubResource("StyleBoxFlat_84iac")
+disabled = true
 
 [node name="Button10" type="Button" parent="Node2D"]
 offset_left = 320.0
 offset_top = 302.0
 offset_right = 412.0
 offset_bottom = 352.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cp0ys")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_16hvj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_16hvj")
+disabled = true
 
 [node name="Button11" type="Button" parent="Node2D"]
 offset_left = 337.0
 offset_top = 360.6
 offset_right = 380.0
 offset_bottom = 410.6
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ujyyl")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vr1f0")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vr1f0")
+disabled = true
 
 [node name="Button17" type="Button" parent="Node2D"]
 offset_left = 370.0
 offset_top = 477.0
 offset_right = 461.0
 offset_bottom = 527.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mkpwh")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_t1dhk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_t1dhk")
+disabled = true
 
 [node name="Button20" type="Button" parent="Node2D"]
 offset_left = 387.0
 offset_top = 536.0
 offset_right = 465.0
 offset_bottom = 586.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4nkqq")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_5egv6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5egv6")
+disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 position = Vector2(598, 161)
 scale = Vector2(1.14872, 1.14872)
 texture = ExtResource("3_1ehe0")
+
+[node name="Button12" type="Button" parent="Node2D"]
+offset_left = 354.0
+offset_top = 419.0
+offset_right = 374.0
+offset_bottom = 469.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ehtkc")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vr1f0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vr1f0")
+disabled = true
+
+[node name="Button21" type="Button" parent="Node2D"]
+offset_left = 372.0
+offset_top = 419.0
+offset_right = 394.0
+offset_bottom = 469.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6dk6o")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_trj04")
+theme_override_styles/normal = SubResource("StyleBoxFlat_trj04")
+disabled = true
+
+[node name="Button22" type="Button" parent="Node2D"]
+offset_left = 363.0
+offset_top = 419.0
+offset_right = 385.0
+offset_bottom = 469.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jr6u5")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vtepg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vtepg")
+disabled = true
+
+[node name="bg_pattern" type="Sprite2D" parent="."]
+
+[node name="main_logo" type="Sprite2D" parent="."]
+position = Vector2(596, 158)
+texture = ExtResource("6_opfnp")
