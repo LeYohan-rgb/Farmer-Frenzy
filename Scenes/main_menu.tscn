@@ -1,11 +1,16 @@
-[gd_scene load_steps=68 format=4 uid="uid://b13l3w04de0xj"]
+[gd_scene load_steps=78 format=4 uid="uid://b13l3w04de0xj"]
 
 [ext_resource type="Script" uid="uid://dccfn22jy3lhk" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://bt6222qb5t2hf" path="res://Fonts/Qilka-Bold copy.otf" id="2_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://c1cb0bf18tc84" path="res://Graphics/main-menu-pattern.png" id="2_n45e2"]
-[ext_resource type="Shader" uid="uid://dr8cebi4a0afw" path="res://Scenes/scroll_motion.gdshader" id="2_opfnp"]
+[ext_resource type="Shader" uid="uid://dr8cebi4a0afw" path="res://Scripts/scroll_motion.gdshader" id="2_opfnp"]
 [ext_resource type="Texture2D" uid="uid://5wjvxa3bgfht" path="res://Graphics/basket-arc.png" id="3_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://biygqqouqnmgg" path="res://Graphics/farmer_frenzy_game_logo.png" id="6_opfnp"]
+[ext_resource type="Script" uid="uid://dnc2bvkl6bxta" path="res://Scenes/farmer_frenzy.gd" id="7_cp0ys"]
+[ext_resource type="Texture2D" uid="uid://by2egxdudpu0r" path="res://Graphics/default-map.png" id="8_trj04"]
+[ext_resource type="Texture2D" uid="uid://dxrj3xa2vkpi3" path="res://Graphics/corn_icon.png" id="9_trj04"]
+[ext_resource type="Texture2D" uid="uid://cl78os1t2wyb8" path="res://Graphics/magical_bean.png" id="10_16hvj"]
+[ext_resource type="Texture2D" uid="uid://cfpoloh26e8f6" path="res://Graphics/shield icon.png" id="11_vr1f0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cp0ys"]
 shader = ExtResource("2_opfnp")
@@ -1371,16 +1376,53 @@ skew = Vector2(-0.3, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtepg"]
 bg_color = Color(0.858824, 0.698039, 0.509804, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jw7lb"]
+bg_color = Color(0.858824, 0.698039, 0.509804, 1)
+border_width_left = 25
+border_width_top = 25
+border_width_right = 25
+border_width_bottom = 25
+border_color = Color(0.756863, 0.584314, 0.384314, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vfk8"]
+bg_color = Color(0.59592, 0.445777, 0.268962, 1)
+corner_radius_bottom_right = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xund"]
+bg_color = Color(0.44605, 0.674375, 0.306163, 1)
+corner_radius_bottom_right = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msuys"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.858824, 0.698039, 0.509804, 1)
+corner_radius_bottom_right = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aylim"]
+bg_color = Color(0.596078, 0.447059, 0.270588, 1)
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.858824, 0.698039, 0.509804, 1)
+corner_radius_bottom_right = 20
+
 [node name="main_menu" type="Node2D"]
 script = ExtResource("1_28flt")
 
-[node name="bg_pattern2" type="Control" parent="."]
+[node name="main" type="Node2D" parent="."]
+visible = false
+
+[node name="bg_pattern2" type="Control" parent="main"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1165.0
 offset_bottom = 662.0
 
-[node name="ColorRect" type="ColorRect" parent="bg_pattern2"]
+[node name="ColorRect" type="ColorRect" parent="main/bg_pattern2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1389,7 +1431,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.793472, 0.847116, 0.7186, 1)
 
-[node name="pattern" type="TextureRect" parent="bg_pattern2"]
+[node name="pattern" type="TextureRect" parent="main/bg_pattern2"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_cp0ys")
 layout_mode = 1
@@ -1402,7 +1444,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_n45e2")
 
-[node name="Panel2" type="Panel" parent="."]
+[node name="basket_bg_1" type="Panel" parent="main"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1417,7 +1459,7 @@ grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 theme_override_styles/panel = SubResource("StyleBoxFlat_48xlc")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="basket_bg_2" type="Panel" parent="main"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1432,9 +1474,9 @@ grow_vertical = 2
 scale = Vector2(0.8, 0.8)
 theme_override_styles/panel = SubResource("StyleBoxFlat_28flt")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="basket_UI" type="Node2D" parent="main"]
 
-[node name="farmer_fight_button" type="Button" parent="Node2D"]
+[node name="farmer_fight_button" type="Button" parent="main/basket_UI"]
 offset_left = 437.0
 offset_top = 302.3
 offset_right = 741.0
@@ -1447,7 +1489,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_6dk6o")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1ehe0")
 text = "FARMER FIGHT"
 
-[node name="Button4" type="Button" parent="Node2D"]
+[node name="Button4" type="Button" parent="main/basket_UI"]
 offset_left = 749.0
 offset_top = 302.0
 offset_right = 864.0
@@ -1457,7 +1499,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_ce3w2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ce3w2")
 disabled = true
 
-[node name="Button5" type="Button" parent="Node2D"]
+[node name="Button5" type="Button" parent="main/basket_UI"]
 offset_left = 337.0
 offset_top = 302.0
 offset_right = 429.0
@@ -1467,7 +1509,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_n45e2")
 theme_override_styles/normal = SubResource("StyleBoxFlat_n45e2")
 disabled = true
 
-[node name="Button6" type="Button" parent="Node2D"]
+[node name="Button6" type="Button" parent="main/basket_UI"]
 offset_left = 703.0
 offset_top = 360.6
 offset_right = 848.0
@@ -1477,7 +1519,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_opfnp")
 theme_override_styles/normal = SubResource("StyleBoxFlat_opfnp")
 disabled = true
 
-[node name="Button7" type="Button" parent="Node2D"]
+[node name="Button7" type="Button" parent="main/basket_UI"]
 offset_left = 553.0
 offset_top = 361.0
 offset_right = 694.0
@@ -1487,7 +1529,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_cp0ys")
 theme_override_styles/normal = SubResource("StyleBoxFlat_cp0ys")
 disabled = true
 
-[node name="Button8" type="Button" parent="Node2D"]
+[node name="Button8" type="Button" parent="main/basket_UI"]
 offset_left = 403.0
 offset_top = 361.0
 offset_right = 545.0
@@ -1497,7 +1539,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_yhxw7")
 theme_override_styles/normal = SubResource("StyleBoxFlat_yhxw7")
 disabled = true
 
-[node name="Button9" type="Button" parent="Node2D"]
+[node name="Button9" type="Button" parent="main/basket_UI"]
 offset_left = 352.0
 offset_top = 360.6
 offset_right = 395.0
@@ -1507,7 +1549,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_trj04")
 theme_override_styles/normal = SubResource("StyleBoxFlat_trj04")
 disabled = true
 
-[node name="fruitpedia_button" type="Button" parent="Node2D"]
+[node name="fruitpedia_button" type="Button" parent="main/basket_UI"]
 offset_left = 643.0
 offset_top = 419.0
 offset_right = 832.0
@@ -1520,7 +1562,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_fmarx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_8dnnj")
 text = "FRUITPEDIA"
 
-[node name="harvest_rush_button" type="Button" parent="Node2D"]
+[node name="harvest_rush_button" type="Button" parent="main/basket_UI"]
 offset_left = 400.0
 offset_top = 419.0
 offset_right = 636.0
@@ -1533,7 +1575,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ne6ao")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wyh8j")
 text = "HARVEST RUSH"
 
-[node name="Button13" type="Button" parent="Node2D"]
+[node name="Button13" type="Button" parent="main/basket_UI"]
 offset_left = 726.0
 offset_top = 477.2
 offset_right = 815.0
@@ -1543,7 +1585,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_ujyyl")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ujyyl")
 disabled = true
 
-[node name="Button14" type="Button" parent="Node2D"]
+[node name="Button14" type="Button" parent="main/basket_UI"]
 offset_left = 589.0
 offset_top = 477.0
 offset_right = 717.0
@@ -1553,7 +1595,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_mkpwh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_mkpwh")
 disabled = true
 
-[node name="Button15" type="Button" parent="Node2D"]
+[node name="Button15" type="Button" parent="main/basket_UI"]
 offset_left = 484.0
 offset_top = 477.2
 offset_right = 581.0
@@ -1563,7 +1605,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_4nkqq")
 theme_override_styles/normal = SubResource("StyleBoxFlat_4nkqq")
 disabled = true
 
-[node name="Button16" type="Button" parent="Node2D"]
+[node name="Button16" type="Button" parent="main/basket_UI"]
 offset_left = 389.0
 offset_top = 477.0
 offset_right = 475.0
@@ -1573,7 +1615,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_ehtkc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ehtkc")
 disabled = true
 
-[node name="settings_button" type="Button" parent="Node2D"]
+[node name="settings_button" type="Button" parent="main/basket_UI"]
 offset_left = 490.0
 offset_top = 535.5
 offset_right = 683.0
@@ -1586,14 +1628,14 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_xcoo4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_jr6u5")
 text = "SETTINGS"
 
-[node name="Button18" type="Button" parent="Node2D"]
+[node name="Button18" type="Button" parent="main/basket_UI"]
 offset_left = 403.0
 offset_top = 536.0
 offset_right = 481.0
 offset_bottom = 586.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_6m47u")
 
-[node name="Button19" type="Button" parent="Node2D"]
+[node name="Button19" type="Button" parent="main/basket_UI"]
 offset_left = 691.0
 offset_top = 536.0
 offset_right = 796.0
@@ -1603,7 +1645,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_84iac")
 theme_override_styles/normal = SubResource("StyleBoxFlat_84iac")
 disabled = true
 
-[node name="Button10" type="Button" parent="Node2D"]
+[node name="Button10" type="Button" parent="main/basket_UI"]
 offset_left = 320.0
 offset_top = 302.0
 offset_right = 412.0
@@ -1613,7 +1655,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_16hvj")
 theme_override_styles/normal = SubResource("StyleBoxFlat_16hvj")
 disabled = true
 
-[node name="Button11" type="Button" parent="Node2D"]
+[node name="Button11" type="Button" parent="main/basket_UI"]
 offset_left = 337.0
 offset_top = 360.6
 offset_right = 380.0
@@ -1623,7 +1665,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_vr1f0")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vr1f0")
 disabled = true
 
-[node name="Button17" type="Button" parent="Node2D"]
+[node name="Button17" type="Button" parent="main/basket_UI"]
 offset_left = 370.0
 offset_top = 477.0
 offset_right = 461.0
@@ -1633,7 +1675,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_t1dhk")
 theme_override_styles/normal = SubResource("StyleBoxFlat_t1dhk")
 disabled = true
 
-[node name="Button20" type="Button" parent="Node2D"]
+[node name="Button20" type="Button" parent="main/basket_UI"]
 offset_left = 387.0
 offset_top = 536.0
 offset_right = 465.0
@@ -1643,12 +1685,12 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_5egv6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_5egv6")
 disabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+[node name="Sprite2D" type="Sprite2D" parent="main/basket_UI"]
 position = Vector2(598, 161)
 scale = Vector2(1.14872, 1.14872)
 texture = ExtResource("3_1ehe0")
 
-[node name="Button12" type="Button" parent="Node2D"]
+[node name="Button12" type="Button" parent="main/basket_UI"]
 offset_left = 354.0
 offset_top = 419.0
 offset_right = 374.0
@@ -1658,7 +1700,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_vr1f0")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vr1f0")
 disabled = true
 
-[node name="Button21" type="Button" parent="Node2D"]
+[node name="Button21" type="Button" parent="main/basket_UI"]
 offset_left = 372.0
 offset_top = 419.0
 offset_right = 394.0
@@ -1668,7 +1710,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_trj04")
 theme_override_styles/normal = SubResource("StyleBoxFlat_trj04")
 disabled = true
 
-[node name="Button22" type="Button" parent="Node2D"]
+[node name="Button22" type="Button" parent="main/basket_UI"]
 offset_left = 363.0
 offset_top = 419.0
 offset_right = 385.0
@@ -1678,8 +1720,70 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_vtepg")
 theme_override_styles/normal = SubResource("StyleBoxFlat_vtepg")
 disabled = true
 
-[node name="bg_pattern" type="Sprite2D" parent="."]
+[node name="bg_pattern" type="Sprite2D" parent="main"]
 
-[node name="main_logo" type="Sprite2D" parent="."]
+[node name="main_logo" type="Sprite2D" parent="main"]
 position = Vector2(596, 158)
 texture = ExtResource("6_opfnp")
+
+[node name="farmer_frenzy" type="Node2D" parent="."]
+script = ExtResource("7_cp0ys")
+
+[node name="beginning_UI" type="Node2D" parent="farmer_frenzy"]
+
+[node name="map" type="Sprite2D" parent="farmer_frenzy/beginning_UI"]
+modulate = Color(0.633757, 0.633757, 0.633757, 1)
+position = Vector2(576, 324)
+texture = ExtResource("8_trj04")
+
+[node name="Control" type="Control" parent="farmer_frenzy/beginning_UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1154.0
+offset_bottom = 653.0
+
+[node name="back_menu" type="Panel" parent="farmer_frenzy/beginning_UI"]
+offset_left = 227.0
+offset_top = 129.0
+offset_right = 866.0
+offset_bottom = 545.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jw7lb")
+
+[node name="first_player" type="Node2D" parent="farmer_frenzy/beginning_UI"]
+
+[node name="health_bar" type="ProgressBar" parent="farmer_frenzy/beginning_UI/first_player"]
+offset_right = 206.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_6vfk8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1xund")
+max_value = 50.0
+value = 30.0
+show_percentage = false
+
+[node name="border_cover" type="Panel" parent="farmer_frenzy/beginning_UI/first_player/health_bar"]
+offset_right = 217.0
+offset_bottom = 36.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_msuys")
+
+[node name="seeds_indicator" type="Panel" parent="farmer_frenzy/beginning_UI/first_player"]
+offset_top = 35.0
+offset_right = 187.0
+offset_bottom = 73.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_aylim")
+
+[node name="corn_icon" type="Sprite2D" parent="farmer_frenzy/beginning_UI/first_player/seeds_indicator"]
+position = Vector2(15.875, 16.875)
+scale = Vector2(0.0629883, 0.0629883)
+texture = ExtResource("9_trj04")
+
+[node name="bean_icon" type="Sprite2D" parent="farmer_frenzy/beginning_UI/first_player/seeds_indicator"]
+position = Vector2(75, 17)
+scale = Vector2(0.0678711, 0.0678711)
+texture = ExtResource("10_16hvj")
+
+[node name="Sprite2D" type="Sprite2D" parent="farmer_frenzy/beginning_UI/first_player"]
+position = Vector2(155, 51)
+scale = Vector2(0.0605469, 0.0605469)
+texture = ExtResource("11_vr1f0")
+
+[connection signal="pressed" from="main/basket_UI/farmer_fight_button" to="." method="_on_farmer_fight_button_pressed"]
