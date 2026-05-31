@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b5ranaqon1no4"
-path="res://.godot/imported/pineapple.png-d9dbf07e7496375f16adf1b4bcaf7b27.ctex"
+path="res://.godot/imported/Pineapple.png-e4afb724fbf4e6e3736aeb80c1b888bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/pineapple.png"
-dest_files=["res://.godot/imported/pineapple.png-d9dbf07e7496375f16adf1b4bcaf7b27.ctex"]
+source_file="res://Graphics/Pineapple.png"
+dest_files=["res://.godot/imported/Pineapple.png-e4afb724fbf4e6e3736aeb80c1b888bd.ctex"]
 
 [params]
 

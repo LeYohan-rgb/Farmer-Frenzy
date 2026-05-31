@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://unyyjwff0wto"
-path="res://.godot/imported/coconut.png-ea8c41b66aeceaeda47280ec87210b3a.ctex"
+path="res://.godot/imported/Coconut.png-424dadb2f40a9fb432bd5509e39869d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/coconut.png"
-dest_files=["res://.godot/imported/coconut.png-ea8c41b66aeceaeda47280ec87210b3a.ctex"]
+source_file="res://Graphics/Coconut.png"
+dest_files=["res://.godot/imported/Coconut.png-424dadb2f40a9fb432bd5509e39869d4.ctex"]
 
 [params]
 

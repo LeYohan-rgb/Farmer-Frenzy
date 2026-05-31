@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vwjmevot3xb2"
-path="res://.godot/imported/papaya.png-7c87b9fbddbb4a9cc7ee2f9dbbd21e31.ctex"
+path="res://.godot/imported/Papaya.png-e705496e640fc1bbed887249f10561cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/papaya.png"
-dest_files=["res://.godot/imported/papaya.png-7c87b9fbddbb4a9cc7ee2f9dbbd21e31.ctex"]
+source_file="res://Graphics/Papaya.png"
+dest_files=["res://.godot/imported/Papaya.png-e705496e640fc1bbed887249f10561cd.ctex"]
 
 [params]
 
