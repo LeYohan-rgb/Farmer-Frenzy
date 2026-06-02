@@ -20,15 +20,19 @@ signal go_to_main_menu
 @onready var plr_2_slot_3_texture = $beginning_UI/second_player/fruit_slots/fruit_3
 @onready var plr_2_slot_3_lbl = $beginning_UI/second_player/fruit_slots/fruit_3_label
 @onready var paused_UI = $beginning_UI/paused_UI
+@onready var farmers = $farmers
+@onready var map = $beginning_UI/map
 
 func begin_game():
 	fruit_menu.display_fruit("Mango")
+	map.modulate = Color("a2a2a2")
 
 func _ready():
 	fruit_collection_menu.connect("fruit_pressed", change_fruit_menu_display)
 	fruit_menu.connect("slot_selected", change_player_slots)
 	fruit_menu.connect("clear_slot", clear_player_slot)
 	fruit_menu.connect("requested_go_to_main_menu", paused_mode_menu)
+	fruit_menu.connect("start_game", begin_farmer_fight)
 	paused_UI.connect("approve_return_to_main_menu", quit_menu)
 	paused_UI.connect("denied_return_to_main_menu", not_go_to_quit_menu)
 	
@@ -103,3 +107,12 @@ func quit_menu():
 func not_go_to_quit_menu():
 	paused_UI.hide()
 	get_tree().paused = false
+
+func begin_farmer_fight():
+	map.modulate = Color("ffffff")
+	fruit_menu.hide()
+	fruit_collection_menu.hide()
+	Global.is_in_farmer_fight = true
+	farmers.show()
+	farmers.set_up_farmers()
+	

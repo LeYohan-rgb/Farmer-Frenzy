@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://qkrg6mwx2ewg"]
+
+[ext_resource type="Texture2D" uid="uid://bs1nv4gudolyg" path="res://Graphics/emiliano.png" id="1_3v7vi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w36qw"]
+size = Vector2(63, 256)
+
+[node name="border" type="StaticBody2D"]
+collision_layer = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(90, 168)
+scale = Vector2(0.125, 0.5)
+texture = ExtResource("1_3v7vi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(89.5, 169)
+shape = SubResource("RectangleShape2D_w36qw")

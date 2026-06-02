@@ -1,8 +1,18 @@
 extends Node
 
+#GAME SETTINGS
+var farmer_fight_velocity = 275
+var kernel_speed = 1500
+
+#GAME_MODES
+var is_in_farmer_fight = false
 
 var player_name_1 = "Emiliano"
 var player_name_2 = "Jerónimo"
+
+#FARMER_FIGHT_VARIABLES
+var player_1_kernels : int = 10
+var player_2_kernels : int = 10
 
 var player_1_fruits = ["","",""]
 var player_2_fruits = ["","",""]
