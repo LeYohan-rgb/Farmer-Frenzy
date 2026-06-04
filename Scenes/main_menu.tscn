@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=4 uid="uid://b13l3w04de0xj"]
+[gd_scene load_steps=162 format=4 uid="uid://b13l3w04de0xj"]
 
 [ext_resource type="Script" uid="uid://dccfn22jy3lhk" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://bt6222qb5t2hf" path="res://Fonts/Qilka-Bold copy.otf" id="2_ce3w2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://biygqqouqnmgg" path="res://Graphics/farmer_frenzy_game_logo.png" id="6_opfnp"]
 [ext_resource type="Script" uid="uid://dnc2bvkl6bxta" path="res://Scripts/farmer_frenzy.gd" id="7_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://by2egxdudpu0r" path="res://Graphics/default-map.png" id="8_trj04"]
+[ext_resource type="Script" uid="uid://sr6ldlu1kkj6" path="res://Scenes/fighting_UI.gd" id="8_xcoo4"]
 [ext_resource type="Texture2D" uid="uid://dxrj3xa2vkpi3" path="res://Graphics/corn_icon.png" id="9_trj04"]
 [ext_resource type="Texture2D" uid="uid://cl78os1t2wyb8" path="res://Graphics/magical_bean.png" id="10_16hvj"]
 [ext_resource type="Texture2D" uid="uid://cfpoloh26e8f6" path="res://Graphics/shield icon.png" id="11_vr1f0"]
@@ -29,6 +30,7 @@
 [ext_resource type="Script" uid="uid://bvmvtccij2laq" path="res://Scripts/paused_ui.gd" id="26_ne6ao"]
 [ext_resource type="Script" uid="uid://bqkbpauiqhoq6" path="res://Scripts/farmers.gd" id="28_fmarx"]
 [ext_resource type="PackedScene" uid="uid://b60soyr5c6qld" path="res://Scenes/character_body_2d.tscn" id="28_tt8ml"]
+[ext_resource type="Script" uid="uid://b001ti5v65gis" path="res://Scenes/pausing_fight_ui.gd" id="29_jw7lb"]
 [ext_resource type="PackedScene" uid="uid://qkrg6mwx2ewg" path="res://Scenes/border.tscn" id="30_hkdq0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cp0ys"]
@@ -1400,7 +1402,7 @@ bg_color = Color(0.59592, 0.445777, 0.268962, 1)
 corner_radius_bottom_right = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xund"]
-bg_color = Color(0.44605, 0.674375, 0.306163, 1)
+bg_color = Color(0.447059, 0.67451, 0.305882, 1)
 corner_radius_bottom_right = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_msuys"]
@@ -4560,10 +4562,39 @@ cache/0/10/0/glyphs/268436032/texture_idx = 0
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tt8ml"]
 load_path = "res://.godot/imported/check_icon.png-5205e045b858f729a7a3de69d199c245.ctex"
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tni0p"]
+bg_color = Color(0.596078, 0.447059, 0.270588, 1)
+border_width_left = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.858824, 0.698039, 0.509804, 1)
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dp8uv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m8avj"]
+bg_color = Color(0.227451, 0.176471, 0.113725, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uu0lx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujm45"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aj2v6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vj5y7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3l6me"]
+
 [node name="main_menu" type="Node2D"]
 script = ExtResource("1_28flt")
 
 [node name="main" type="Node2D" parent="."]
+visible = false
 
 [node name="bg_pattern2" type="Control" parent="main"]
 layout_mode = 3
@@ -4876,10 +4907,10 @@ position = Vector2(596, 158)
 texture = ExtResource("6_opfnp")
 
 [node name="farmer_frenzy" type="Node2D" parent="."]
-visible = false
 script = ExtResource("7_cp0ys")
 
 [node name="beginning_UI" type="Node2D" parent="farmer_frenzy"]
+script = ExtResource("8_xcoo4")
 
 [node name="map" type="Sprite2D" parent="farmer_frenzy/beginning_UI"]
 position = Vector2(576, 324)
@@ -4956,13 +4987,14 @@ theme_override_font_sizes/font_size = 22
 text = "0"
 horizontal_alignment = 1
 
-[node name="shield_icon" type="Sprite2D" parent="farmer_frenzy/beginning_UI/first_player"]
-position = Vector2(155, 51)
+[node name="shield_icon" type="Sprite2D" parent="farmer_frenzy/beginning_UI/first_player/seeds_indicator"]
+position = Vector2(155, 16)
 scale = Vector2(0.0605469, 0.0605469)
 texture = ExtResource("11_vr1f0")
 
 [node name="fruit_slots" type="Node2D" parent="farmer_frenzy/beginning_UI/first_player"]
 z_index = 1
+position = Vector2(-6, 0)
 
 [node name="fruits_bg" type="Panel" parent="farmer_frenzy/beginning_UI/first_player/fruit_slots"]
 offset_left = 233.0
@@ -4970,6 +5002,7 @@ offset_top = -1.0
 offset_right = 456.0
 offset_bottom = 72.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_y82t1")
+metadata/_edit_use_anchors_ = true
 
 [node name="fruit_1" type="Sprite2D" parent="farmer_frenzy/beginning_UI/first_player/fruit_slots"]
 position = Vector2(279, 27)
@@ -4993,6 +5026,7 @@ theme_override_fonts/font = ExtResource("13_5egv6")
 theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="fruit_2_label" type="Label" parent="farmer_frenzy/beginning_UI/first_player/fruit_slots"]
 offset_left = 325.0
@@ -5004,6 +5038,7 @@ theme_override_fonts/font = ExtResource("13_5egv6")
 theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="fruit_3_label" type="Label" parent="farmer_frenzy/beginning_UI/first_player/fruit_slots"]
 offset_left = 394.0
@@ -5015,6 +5050,7 @@ theme_override_fonts/font = ExtResource("13_5egv6")
 theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="fruit_collection" type="Node2D" parent="farmer_frenzy/beginning_UI"]
 script = ExtResource("14_84iac")
@@ -5337,25 +5373,30 @@ text = "X"
 [node name="second_player" type="Node2D" parent="farmer_frenzy/beginning_UI"]
 
 [node name="health_bar" type="ProgressBar" parent="farmer_frenzy/beginning_UI/second_player"]
-offset_left = 937.0
-offset_right = 1151.0
-offset_bottom = 27.0
+offset_left = 938.0
+offset_top = -2.0
+offset_right = 1152.0
+offset_bottom = 25.0
 theme_override_styles/background = SubResource("StyleBoxFlat_43km2")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3533h")
 max_value = 50.0
 value = 50.0
+fill_mode = 1
 show_percentage = false
 
 [node name="border_cover" type="Panel" parent="farmer_frenzy/beginning_UI/second_player/health_bar"]
 layout_mode = 0
-offset_right = 216.0
-offset_bottom = 36.0
+offset_left = -10.0
+offset_top = 1.0
+offset_right = 214.0
+offset_bottom = 37.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_dp8uv")
 
 [node name="red_border_cover" type="Panel" parent="farmer_frenzy/beginning_UI/second_player/health_bar"]
 layout_mode = 0
+offset_left = -11.0
 offset_top = 1.0
-offset_right = 217.0
+offset_right = 215.0
 offset_bottom = 37.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_uu0lx")
 
@@ -5401,8 +5442,8 @@ theme_override_font_sizes/font_size = 22
 text = "0"
 horizontal_alignment = 1
 
-[node name="shield_icon" type="Sprite2D" parent="farmer_frenzy/beginning_UI/second_player"]
-position = Vector2(994, 51)
+[node name="shield_icon" type="Sprite2D" parent="farmer_frenzy/beginning_UI/second_player/seeds_indicator"]
+position = Vector2(30, 16)
 scale = Vector2(0.0605469, 0.0605469)
 texture = ExtResource("11_vr1f0")
 
@@ -5516,6 +5557,111 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_3533h")
 icon = SubResource("CompressedTexture2D_tt8ml")
 flat = true
 
+[node name="winning_UI" type="Node2D" parent="farmer_frenzy/beginning_UI"]
+visible = false
+z_index = 1
+
+[node name="Panel" type="Panel" parent="farmer_frenzy/beginning_UI/winning_UI"]
+offset_left = 404.0
+offset_top = 280.0
+offset_right = 747.0
+offset_bottom = 378.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pavwk")
+
+[node name="Label" type="Label" parent="farmer_frenzy/beginning_UI/winning_UI/Panel"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 19.0
+offset_right = 291.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0.945729, 0.863668, 0.770998, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+theme_override_font_sizes/font_size = 25
+text = "EMILIANO WON 
+THE FIGHT!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="pausing_fight_UI" type="Node2D" parent="farmer_frenzy/beginning_UI"]
+visible = false
+z_index = 1
+script = ExtResource("29_jw7lb")
+
+[node name="Panel" type="Panel" parent="farmer_frenzy/beginning_UI/pausing_fight_UI"]
+offset_left = 528.0
+offset_top = -1.0
+offset_right = 625.0
+offset_bottom = 54.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tni0p")
+
+[node name="timer_lbl" type="Label" parent="farmer_frenzy/beginning_UI/pausing_fight_UI"]
+offset_left = 533.0
+offset_top = -1.0
+offset_right = 623.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+theme_override_font_sizes/font_size = 18
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pause_ btn" type="Button" parent="farmer_frenzy/beginning_UI/pausing_fight_UI"]
+process_mode = 3
+offset_left = 538.0
+offset_top = 21.0
+offset_right = 614.0
+offset_bottom = 52.0
+theme_override_colors/font_disabled_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_hover_color = Color(0.898945, 0.76234, 0.604945, 1)
+theme_override_colors/font_outline_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_focus_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_pressed_color = Color(0.172549, 0.133333, 0.0823529, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+theme_override_font_sizes/font_size = 17
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dp8uv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dp8uv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_dp8uv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dp8uv")
+text = "PAUSE"
+flat = true
+
+[node name="main_panel" type="Panel" parent="farmer_frenzy/beginning_UI/pausing_fight_UI"]
+visible = false
+offset_left = 433.0
+offset_top = 291.0
+offset_right = 713.0
+offset_bottom = 371.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_m8avj")
+
+[node name="return_to_main" type="Button" parent="farmer_frenzy/beginning_UI/pausing_fight_UI/main_panel"]
+process_mode = 3
+layout_mode = 0
+offset_left = 27.0
+offset_top = 22.0
+offset_right = 249.0
+offset_bottom = 53.0
+theme_override_colors/font_disabled_color = Color(0.898039, 0.760784, 0.603922, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.898039, 0.760784, 0.603922, 1)
+theme_override_colors/font_hover_color = Color(0.933319, 0.834437, 0.723156, 1)
+theme_override_colors/font_outline_color = Color(0.898039, 0.760784, 0.603922, 1)
+theme_override_colors/font_color = Color(0.898039, 0.760784, 0.603922, 1)
+theme_override_colors/font_focus_color = Color(0.898039, 0.760784, 0.603922, 1)
+theme_override_colors/font_pressed_color = Color(0.840733, 0.675077, 0.481787, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uu0lx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ujm45")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_aj2v6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vj5y7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3l6me")
+text = "RETURN TO MAIN MENU"
+flat = true
+
+[node name="Timer" type="Timer" parent="farmer_frenzy/beginning_UI/pausing_fight_UI"]
+
 [node name="farmers" type="Node2D" parent="farmer_frenzy"]
 visible = false
 script = ExtResource("28_fmarx")
@@ -5529,6 +5675,7 @@ position = Vector2(1040, 333)
 plr = 2
 
 [node name="collisions" type="Node2D" parent="farmer_frenzy"]
+visible = false
 
 [node name="border" parent="farmer_frenzy/collisions" instance=ExtResource("30_hkdq0")]
 position = Vector2(-194, 130)
@@ -5554,6 +5701,8 @@ position = Vector2(1273, 1106)
 rotation = -3.14159
 scale = Vector2(1, 4.56)
 
+[node name="visual_effects" type="Node2D" parent="farmer_frenzy"]
+
 [connection signal="pressed" from="main/basket_UI/farmer_fight_button" to="." method="_on_farmer_fight_button_pressed"]
 [connection signal="pressed" from="farmer_frenzy/beginning_UI/fruit_collection/mango_btn" to="farmer_frenzy/beginning_UI/fruit_collection" method="_on_mango_btn_pressed"]
 [connection signal="pressed" from="farmer_frenzy/beginning_UI/fruit_collection/pineapple_btn" to="farmer_frenzy/beginning_UI/fruit_collection" method="_on_pineapple_btn_pressed"]
@@ -5573,3 +5722,6 @@ scale = Vector2(1, 4.56)
 [connection signal="pressed" from="farmer_frenzy/beginning_UI/fruit_menu/go_back_btn" to="farmer_frenzy/beginning_UI/fruit_menu" method="_on_go_back_btn_pressed"]
 [connection signal="pressed" from="farmer_frenzy/beginning_UI/paused_UI/x_iconss" to="farmer_frenzy/beginning_UI/paused_UI" method="_on_x_iconss_pressed"]
 [connection signal="pressed" from="farmer_frenzy/beginning_UI/paused_UI/check_icons" to="farmer_frenzy/beginning_UI/paused_UI" method="_on_check_icons_pressed"]
+[connection signal="pressed" from="farmer_frenzy/beginning_UI/pausing_fight_UI/pause_ btn" to="farmer_frenzy/beginning_UI/pausing_fight_UI" method="_on_pause__btn_pressed"]
+[connection signal="pressed" from="farmer_frenzy/beginning_UI/pausing_fight_UI/main_panel/return_to_main" to="farmer_frenzy/beginning_UI/pausing_fight_UI" method="_on_return_to_main_pressed"]
+[connection signal="timeout" from="farmer_frenzy/beginning_UI/pausing_fight_UI/Timer" to="farmer_frenzy/beginning_UI/pausing_fight_UI" method="_on_timer_timeout"]

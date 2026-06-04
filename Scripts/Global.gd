@@ -1,8 +1,17 @@
 extends Node
 
+#GAME VARIABLES
+var player_1_wins : int = 0
+var player_2_wins : int = 0
+var game_time : int = 0
+
 #GAME SETTINGS
 var farmer_fight_velocity = 275
 var kernel_speed = 1500
+var player_1_health = 50
+var player_2_health = 50
+var player_1_dmg_boost : float = 1
+var player_2_dmg_boost : float = 1
 
 #GAME_MODES
 var is_in_farmer_fight = false

@@ -21,11 +21,11 @@ func shoot(plr : int, position_x, position_y):
 	
 	var offset = 45 if plr == 1 else -45
 	kernel.position.x = position_x + offset
-	get_tree().current_scene.add_child(kernel)
+	get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(kernel)
 	kernel.hit.connect(damage)
 	
 func damage(player_hitted : int):
 	if player_hitted == 1:
-		pass
+		Global.player_1_health -= 1 * Global.player_1_dmg_boost
 	else:
-		pass
+		Global.player_2_health -= 1 * Global.player_2_dmg_boost
