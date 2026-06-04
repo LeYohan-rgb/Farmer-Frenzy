@@ -31,6 +31,7 @@ signal go_to_main_menu
 @onready var pausing_midfight = $beginning_UI/pausing_fight_UI
 @onready var game_timer = $beginning_UI/pausing_fight_UI/Timer
 @onready var timer_lbl = $beginning_UI/pausing_fight_UI/timer_lbl
+@onready var countdown_lbl = $beginning_UI/countdown
 
 func begin_game():
 	
@@ -143,9 +144,19 @@ func begin_farmer_fight():
 	pausing_midfight.show()
 	farmers.set_up_farmers()
 	
+	countdown_lbl.show()
+	countdown_lbl.text = "3!"
+	await Global.wait(1)
+	countdown_lbl.text = "2!"
+	await Global.wait(1)
+	countdown_lbl.text = "1!"
+	await Global.wait(1)
+	countdown_lbl.text = "FIGHT!"
+	await Global.wait(1)
 	#YOU SHOULD ADD THE COUNTDOWN TIMER
 	Global.is_in_farmer_fight = true
 	game_timer.start()
+	countdown_lbl.hide()
 	
 func game_won(plr_won : int):
 	get_tree().paused = true

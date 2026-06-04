@@ -5662,6 +5662,21 @@ flat = true
 
 [node name="Timer" type="Timer" parent="farmer_frenzy/beginning_UI/pausing_fight_UI"]
 
+[node name="countdown" type="Label" parent="farmer_frenzy/beginning_UI"]
+visible = false
+offset_left = 460.0
+offset_top = 286.0
+offset_right = 706.0
+offset_bottom = 368.0
+theme_override_colors/font_color = Color(0.893734, 0.752875, 0.590213, 1)
+theme_override_colors/font_outline_color = Color(0.596078, 0.447059, 0.270588, 1)
+theme_override_constants/outline_size = 35
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 70
+text = "START!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="farmers" type="Node2D" parent="farmer_frenzy"]
 visible = false
 script = ExtResource("28_fmarx")
