@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://gkv5dloi5mxy"]
+
+[ext_resource type="Script" uid="uid://c0vkvkq3us24c" path="res://Scripts/mango_projectile.gd" id="1_8qmm6"]
+[ext_resource type="Texture2D" uid="uid://bjudqbfrr1wxm" path="res://Graphics/mango_projectile.png" id="2_w0oo3"]
+
+[node name="mango_projectile" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_8qmm6")
+damage = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_w0oo3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-24, 0, -24, 8, -18, 16, -9, 22, 6, 22, 17, 16, 25, 7, 32, -7, 31, -21, 27, -29, 16, -23, -5, -21, -19, -13)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

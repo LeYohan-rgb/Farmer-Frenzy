@@ -35,9 +35,9 @@ func shoot(plr : int, position_x, position_y):
 	
 func damage(player_hitted : int):
 	if player_hitted == 1:
-		Global.player_1_health -= 1 * Global.player_1_dmg_boost
+		Global.player_1_health -= Global.damage["kernel"] * Global.player_1_dmg_boost
 	else:
-		Global.player_2_health -= 1 * Global.player_2_dmg_boost
+		Global.player_2_health -= Global.damage["kernel"] * Global.player_2_dmg_boost
 		
 func recharge_kernel():
 	Global.kernel_amount[plr - 1] = 10

@@ -19,6 +19,10 @@ var shield = [10, 10] #first player, second player
 var kernel_amount = [10, 10]
 var is_shielding = [false, false] #1st, #2nd
 var bean_amount = [0, 0]
+var damage = {
+	"kernel" : 1,
+	"mango" : 2
+}
 
 #GAME_MODES
 var is_in_farmer_fight = false

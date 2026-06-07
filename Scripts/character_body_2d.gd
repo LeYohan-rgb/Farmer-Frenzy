@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var anim = $animation
 #SCRIPTS
 @onready var shoot_kernel = $shoot_kernel
-@onready var shield = $shield
+@onready var shield = $summon_shield
 @onready var fruits = $fruits
 
 var speed = Global.farmer_fight_velocity
@@ -61,5 +61,5 @@ func shield_active(plr_input : int):
 func perform_ability(fruit_name : String):
 	print("perform", fruit_name)
 	if fruit_name == "Mango":
-		fruits.perform(fruit_name)
+		fruits.perform(fruit_name, position.x, position.y)
 		

@@ -6,7 +6,7 @@
 [ext_resource type="Shader" uid="uid://dr8cebi4a0afw" path="res://Scripts/scroll_motion.gdshader" id="2_opfnp"]
 [ext_resource type="Texture2D" uid="uid://5wjvxa3bgfht" path="res://Graphics/basket-arc.png" id="3_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://biygqqouqnmgg" path="res://Graphics/farmer_frenzy_game_logo.png" id="6_opfnp"]
-[ext_resource type="Script" uid="uid://d0ggy77stmjws" path="res://Scenes/settings_menu.gd" id="7_1xund"]
+[ext_resource type="Script" uid="uid://d0ggy77stmjws" path="res://Scripts/settings_menu.gd" id="7_1xund"]
 [ext_resource type="Script" uid="uid://dnc2bvkl6bxta" path="res://Scripts/farmer_frenzy.gd" id="7_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://by2egxdudpu0r" path="res://Graphics/default-map.png" id="8_trj04"]
 [ext_resource type="Script" uid="uid://sr6ldlu1kkj6" path="res://Scripts/fighting_UI.gd" id="8_xcoo4"]
