@@ -33,6 +33,9 @@ signal go_to_main_menu
 @onready var timer_lbl = $beginning_UI/pausing_fight_UI/timer_lbl
 @onready var countdown_lbl = $beginning_UI/countdown
 
+@onready var farmer_1 = $farmers/farmer
+@onready var farmer_2 = $farmers/farmer2
+
 func begin_game():
 	
 	fruit_menu.display_fruit("Mango")
@@ -53,6 +56,7 @@ func _ready():
 	paused_UI.connect("approve_return_to_main_menu", quit_menu)
 	paused_UI.connect("denied_return_to_main_menu", not_go_to_quit_menu)
 	beginning_UI.connect("end_of_game", game_won)
+	beginning_UI.connect("fruit_ability", ability_pressed)
 	pausing_midfight.connect("game_paused", paused_midgame)
 	pausing_midfight.connect("leave_game", quit_menu)
 	
@@ -125,6 +129,12 @@ func quit_menu():
 	go_to_main_menu.emit()
 	Global.player_1_health = 50
 	Global.player_2_health = 50
+	Global.shield = [10, 10]
+	Global.bean_amount = [0, 0]
+	Global.kernel_amount = [10, 10]
+	Global.is_shielding = [false, false]
+	Global.player_1_dmg_boost = 1
+	Global.player_2_dmg_boost = 1
 	farmers.hide()
 	game_timer.stop()
 	Global.game_time = 0
@@ -163,10 +173,10 @@ func game_won(plr_won : int):
 	Global.is_in_farmer_fight = false
 	winning_UI.show()
 	if plr_won == 1:
-		winning_UI_lbl.text = Global.player_name_1 + " WON THE FIGHT!"
+		winning_UI_lbl.text = Global.player_name_1.to_upper() + " WON THE FIGHT!"
 		Global.player_1_wins += 1
 	else:
-		winning_UI_lbl.text = Global.player_name_2 + " WON THE FIGHT!"
+		winning_UI_lbl.text = Global.player_name_2.to_upper() + " WON THE FIGHT!"
 		Global.player_2_wins += 1
 	
 	await Global.wait(2)
@@ -178,3 +188,51 @@ func game_won(plr_won : int):
 	
 func paused_midgame(on_or_off : int):
 	pass
+	
+func ability_pressed(ability_num : int, player : int):
+	var fruit_selected
+
+	if player == 1:
+		fruit_selected = Global.player_1_fruits[ability_num - 1]
+		
+		if Global.bean_amount[0] < Global.fruit_bean_costs[fruit_selected]:
+			not_enough_beans(ability_num, player)
+		else:
+			Global.bean_amount[0] -= Global.fruit_bean_costs[fruit_selected]
+			farmer_1.perform_ability(fruit_selected)
+	else:
+		fruit_selected = Global.player_2_fruits[ability_num - 1]
+		
+		if Global.bean_amount[1] < Global.fruit_bean_costs[fruit_selected]:
+			print("not enough")
+		else:
+			Global.bean_amount[1] -= Global.fruit_bean_costs[fruit_selected]
+			farmer_2.perform_ability(fruit_selected)
+
+func not_enough_beans(ability_num : int, player : int):
+	if player == 1:
+		if ability_num == 1:
+			plr_1_slot_1_lbl.set("theme_override_colors/font_color", Color("ba2d1d"))
+			await Global.wait(1)
+			plr_1_slot_1_lbl.set("theme_override_colors/font_color", Color("3a2d1d"))
+		if ability_num == 2:
+			plr_1_slot_2_lbl.set("theme_override_colors/font_color", Color("ba2d1d"))
+			await Global.wait(1)
+			plr_1_slot_2_lbl.set("theme_override_colors/font_color", Color("3a2d1d"))
+		if ability_num == 3:
+			plr_1_slot_3_lbl.set("theme_override_colors/font_color", Color("ba2d1d"))
+			await Global.wait(1)
+			plr_1_slot_3_lbl.set("theme_override_colors/font_color", Color("3a2d1d"))
+	else:
+		if ability_num == 1:
+			plr_2_slot_1_lbl.set("theme_override_colors/font_color", Color("ba2d1d"))
+			await Global.wait(1)
+			plr_2_slot_1_lbl.set("theme_override_colors/font_color", Color("3a2d1d"))
+		if ability_num == 2:
+			plr_2_slot_2_lbl.set("theme_override_colors/font_color", Color("ba2d1d"))
+			await Global.wait(1)
+			plr_2_slot_2_lbl.set("theme_override_colors/font_color", Color("3a2d1d"))
+		if ability_num == 3:
+			plr_2_slot_3_lbl.set("theme_override_colors/font_color", Color("ba2d1d"))
+			await Global.wait(1)
+			plr_2_slot_3_lbl.set("theme_override_colors/font_color", Color("3a2d1d"))

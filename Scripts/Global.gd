@@ -5,13 +5,20 @@ var player_1_wins : int = 0
 var player_2_wins : int = 0
 var game_time : int = 0
 
-#GAME SETTINGS
+#GAME PARAMETERS
 var farmer_fight_velocity = 275
 var kernel_speed = 1500
 var player_1_health = 50
 var player_2_health = 50
+var recharge_time : float = 3.0
+
+#GAME VARIABLES
 var player_1_dmg_boost : float = 1
 var player_2_dmg_boost : float = 1
+var shield = [10, 10] #first player, second player
+var kernel_amount = [10, 10]
+var is_shielding = [false, false] #1st, #2nd
+var bean_amount = [0, 0]
 
 #GAME_MODES
 var is_in_farmer_fight = false

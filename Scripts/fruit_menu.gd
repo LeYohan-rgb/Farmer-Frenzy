@@ -13,6 +13,8 @@ var fruit_var = "Mango"
 @onready var fruit_desc = $description
 @onready var play_btn = $play_btn
 @onready var warning_label = $warning_pre_play
+@onready var player_1_name = $Plr_1_desc
+@onready var player_2_name = $plr_2_desc
 
 #SLOTS
 @onready var slot_1_1 = $slot_1_1
@@ -24,6 +26,8 @@ var fruit_var = "Mango"
 
 
 func display_fruit(fruit : String):
+	player_1_name.text = Global.player_name_1.to_upper() + "'S FRUITS"
+	player_2_name.text = Global.player_name_2.to_upper() + "'S FRUITS"
 	fruit_var = fruit
 	fruit_lbl.text = fruit.to_upper()
 	fruit_img.texture = load("res://Graphics/" + fruit + ".png")

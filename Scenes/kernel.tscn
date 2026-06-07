@@ -8,7 +8,9 @@ size = Vector2(21, 20)
 
 [node name="kernel" type="Area2D"]
 light_mask = 2
+collision_layer = 2
 script = ExtResource("1_nkyvm")
+damage = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

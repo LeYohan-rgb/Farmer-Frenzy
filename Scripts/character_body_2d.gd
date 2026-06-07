@@ -2,18 +2,31 @@ extends CharacterBody2D
 
 @export var plr : int
 @onready var anim = $animation
-
 #SCRIPTS
 @onready var shoot_kernel = $shoot_kernel
+@onready var shield = $shield
+@onready var fruits = $fruits
 
 var speed = Global.farmer_fight_velocity
 var direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	#SETTING UP PLR TO EACH SCRIPT
+	shield.plr = plr
+	shoot_kernel.plr = plr
+	fruits.plr = plr
+	
+	
 	shoot_kernel.connect("wants_to_shoot", shoot_active)
+	shield.connect("wants_to_shield", shield_active)
 
 func _physics_process(delta: float) -> void:
 	if !Global.is_in_farmer_fight:
+		return
+		
+	if Global.is_shielding[plr - 1]:
+		velocity = Vector2.ZERO
+		move_and_slide()
 		return
 		
 	var input_vector = Vector2.ZERO
@@ -38,3 +51,15 @@ func shoot_active(plr_input : int):
 		shoot_kernel.shoot(plr, position.x, position.y)
 	else:
 		pass
+		
+func shield_active(plr_input : int):
+	if plr_input == plr:
+		shield.protect(plr, position.x, position.y)
+	else:
+		pass
+
+func perform_ability(fruit_name : String):
+	print("perform", fruit_name)
+	if fruit_name == "Mango":
+		fruits.perform(fruit_name)
+		

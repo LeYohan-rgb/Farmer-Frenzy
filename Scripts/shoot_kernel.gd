@@ -1,10 +1,18 @@
 extends Node2D
 
 signal wants_to_shoot(plr : int)
+@export var plr : int
 @export var KERNEL : PackedScene
+var recharge_bounce : bool = false
 
 func _physics_process(delta: float) -> void:
 	if !Global.is_in_farmer_fight:
+		return
+	
+	if Global.kernel_amount[plr - 1] <= 0:
+		if !recharge_bounce:
+			get_tree().create_timer(Global.recharge_time).timeout.connect(recharge_kernel)
+			recharge_bounce = true
 		return
 		
 	if Input.is_action_just_pressed("kernel_1"):
@@ -14,6 +22,7 @@ func _physics_process(delta: float) -> void:
 		wants_to_shoot.emit(2)
 		
 func shoot(plr : int, position_x, position_y):
+	Global.kernel_amount[plr - 1] -= 1
 	var kernel = KERNEL.instantiate()
 	kernel.speed = Global.kernel_speed
 	kernel.plr = plr
@@ -29,3 +38,7 @@ func damage(player_hitted : int):
 		Global.player_1_health -= 1 * Global.player_1_dmg_boost
 	else:
 		Global.player_2_health -= 1 * Global.player_2_dmg_boost
+		
+func recharge_kernel():
+	Global.kernel_amount[plr - 1] = 10
+	recharge_bounce = false

@@ -2,6 +2,7 @@ extends Node2D
 
 signal game_paused(on_or_off : int)
 signal leave_game
+signal second_passed
 
 @onready var main_panel = $main_panel
 @onready var pause_btn_lbl = $"pause_ btn"
@@ -38,6 +39,7 @@ func _on_return_to_main_pressed() -> void:
 
 
 func _on_timer_timeout() -> void:
+	second_passed.emit()
 	Global.game_time += 1
 	var minutes = Global.game_time / 60
 	var seconds = Global.game_time % 60

@@ -1,10 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://b60soyr5c6qld"]
+[gd_scene load_steps=12 format=3 uid="uid://b60soyr5c6qld"]
 
 [ext_resource type="Script" uid="uid://cgavkxd1lhs46" path="res://Scripts/character_body_2d.gd" id="1_ghijl"]
 [ext_resource type="Texture2D" uid="uid://bs1nv4gudolyg" path="res://Graphics/emiliano.png" id="1_ij6vw"]
 [ext_resource type="Texture2D" uid="uid://cvsfpbbtf66tc" path="res://Graphics/jeronimo.png" id="2_ghijl"]
 [ext_resource type="Script" uid="uid://cag8dg2gj5u40" path="res://Scripts/shoot_kernel.gd" id="5_pbq55"]
 [ext_resource type="PackedScene" uid="uid://drk7iqud0nftr" path="res://Scenes/kernel.tscn" id="5_t38ji"]
+[ext_resource type="Script" uid="uid://ces1d0j7wmbis" path="res://Scripts/shield.gd" id="6_t38ji"]
+[ext_resource type="PackedScene" uid="uid://dh5cqb4jer4dm" path="res://Scenes/shield.tscn" id="7_pbj7x"]
+[ext_resource type="Script" uid="uid://dv1jbpgh77yfq" path="res://Scenes/fruits.gd" id="8_fxof2"]
+[ext_resource type="Script" uid="uid://d23yxmdst1f6s" path="res://Scenes/mango.gd" id="9_601d1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44cfe"]
 radius = 15.0
@@ -30,7 +34,7 @@ animations = [{
 }]
 
 [node name="farmer" type="CharacterBody2D"]
-collision_mask = 7
+collision_mask = 23
 script = ExtResource("1_ghijl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -44,3 +48,13 @@ animation = &"jeronimo"
 [node name="shoot_kernel" type="Node2D" parent="."]
 script = ExtResource("5_pbq55")
 KERNEL = ExtResource("5_t38ji")
+
+[node name="shield" type="Node2D" parent="."]
+script = ExtResource("6_t38ji")
+SHIELD = ExtResource("7_pbj7x")
+
+[node name="fruits" type="Node2D" parent="."]
+script = ExtResource("8_fxof2")
+
+[node name="mango" type="Node2D" parent="fruits"]
+script = ExtResource("9_601d1")
