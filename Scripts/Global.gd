@@ -13,6 +13,12 @@ var player_2_health = 50
 var recharge_time : float = 3.0
 
 #GAME VARIABLES
+var is_in_cooldown = {
+	1:
+		{1: false, 2: false, 3: false},
+	2:
+		{1: false, 2: false, 3: false}
+}
 var player_1_dmg_boost : float = 1
 var player_2_dmg_boost : float = 1
 var shield = [10, 10] #first player, second player
@@ -23,6 +29,7 @@ var damage = {
 	"kernel" : 1,
 	"mango" : 2
 }
+
 
 #GAME_MODES
 var is_in_farmer_fight = false
@@ -49,6 +56,17 @@ var fruit_prices = {
 	"Papaya": 0,
 	"Watermelon": 0,
 	"Pineapple": 0
+}
+
+var cooldown = {
+	"Mango" : 3.0,
+	"Avocado" : 1.0,
+	"Cocoa" : 1.0,
+	"Coconut" : 1.0,
+	"Guava" : 1.0,
+	"Papaya" : 1.0,
+	"Watermelon" : 1.0,
+	"Pineapple" : 1.0
 }
 
 var fruit_bean_costs = {

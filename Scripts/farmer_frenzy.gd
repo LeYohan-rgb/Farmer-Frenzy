@@ -17,6 +17,15 @@ signal go_to_main_menu
 @onready var plr_1_health = $beginning_UI/first_player/health_bar
 @onready var plr_2_health = $beginning_UI/second_player/health_bar
 
+#COOLDOWNS
+@onready var cooldown_1_1 = $beginning_UI/cooldown/cooldown_bar_1_1
+@onready var cooldown_2_1 = $beginning_UI/cooldown/cooldown_bar_2_1
+@onready var cooldown_3_1 = $beginning_UI/cooldown/cooldown_bar_3_1
+@onready var cooldown_1_2 = $beginning_UI/cooldown/cooldown_bar_1_2
+@onready var cooldown_2_2 = $beginning_UI/cooldown/cooldown_bar_2_2
+@onready var cooldown_3_2 = $beginning_UI/cooldown/cooldown_bar_3_2
+
+
 @onready var plr_2_slot_1_texture = $beginning_UI/second_player/fruit_slots/fruit_1
 @onready var plr_2_slot_1_lbl = $beginning_UI/second_player/fruit_slots/fruit_1_label
 @onready var plr_2_slot_2_texture = $beginning_UI/second_player/fruit_slots/fruit_2
@@ -46,6 +55,18 @@ func begin_game():
 	plr_2_health.value = Global.player_2_health
 	plr_1_health.get_theme_stylebox("fill").bg_color = Color("72ac4e")
 	plr_2_health.get_theme_stylebox("fill").bg_color = Color("72ac4e")
+	for i in range(1, 3):
+		for j in range(1, 4):
+			if i == 1:
+				get_timer(i, j).wait_time = Global.cooldown[Global.player_1_fruits[j - 1]]
+			else:
+				get_timer(i, j).wait_time = Global.cooldown[Global.player_2_fruits[j - 1]]
+	cooldown_1_1.max_value = Global.cooldown[Global.player_1_fruits[0]]
+	cooldown_2_1.max_value = Global.cooldown[Global.player_1_fruits[1]]
+	cooldown_3_1.max_value = Global.cooldown[Global.player_1_fruits[2]]
+	cooldown_1_2.max_value = Global.cooldown[Global.player_2_fruits[0]]
+	cooldown_2_2.max_value = Global.cooldown[Global.player_2_fruits[1]]
+	cooldown_3_2.max_value = Global.cooldown[Global.player_2_fruits[2]]
 	
 func _ready():
 	fruit_collection_menu.connect("fruit_pressed", change_fruit_menu_display)
@@ -132,6 +153,15 @@ func quit_menu():
 	Global.shield = [10, 10]
 	Global.bean_amount = [0, 0]
 	Global.kernel_amount = [10, 10]
+	cooldown_1_1.value = 0
+	cooldown_2_1.value = 0
+	cooldown_3_1.value = 0
+	cooldown_1_2.value = 0
+	cooldown_2_2.value = 0
+	cooldown_3_2.value = 0
+	for i in range(2):
+		for j in range(3):
+			Global.is_in_cooldown[i+1][j+1] = false
 	Global.is_shielding = [false, false]
 	Global.player_1_dmg_boost = 1
 	Global.player_2_dmg_boost = 1
@@ -195,17 +225,31 @@ func ability_pressed(ability_num : int, player : int):
 	if player == 1:
 		fruit_selected = Global.player_1_fruits[ability_num - 1]
 		
-		if Global.bean_amount[0] < Global.fruit_bean_costs[fruit_selected]:
+			
+		if Global.bean_amount[0] < Global.fruit_bean_costs[fruit_selected] and !Global.is_in_cooldown[player][ability_num]:
 			not_enough_beans(ability_num, player)
 		else:
+			#CHECK COOLDOWN
+			if !Global.is_in_cooldown[player][ability_num]:
+				get_timer(player, ability_num).start()
+				Global.is_in_cooldown[player][ability_num] = true
+			else:
+				return
 			Global.bean_amount[0] -= Global.fruit_bean_costs[fruit_selected]
 			farmer_1.perform_ability(fruit_selected)
 	else:
 		fruit_selected = Global.player_2_fruits[ability_num - 1]
 		
-		if Global.bean_amount[1] < Global.fruit_bean_costs[fruit_selected]:
-			print("not enough")
+		
+		if Global.bean_amount[1] < Global.fruit_bean_costs[fruit_selected] and !Global.is_in_cooldown[player][ability_num]:
+			not_enough_beans(ability_num, player)
 		else:
+			#CHECK COOLDOWN
+			if !Global.is_in_cooldown[player][ability_num]:
+				get_timer(player, ability_num).start()
+				Global.is_in_cooldown[player][ability_num] = true
+			else:
+				return
 			Global.bean_amount[1] -= Global.fruit_bean_costs[fruit_selected]
 			farmer_2.perform_ability(fruit_selected)
 
@@ -236,3 +280,6 @@ func not_enough_beans(ability_num : int, player : int):
 			plr_2_slot_3_lbl.set("theme_override_colors/font_color", Color("ba2d1d"))
 			await Global.wait(1)
 			plr_2_slot_3_lbl.set("theme_override_colors/font_color", Color("3a2d1d"))
+
+func get_timer(plr : int, num : int) -> Timer:
+	return $beginning_UI/cooldown.get_node("timer_%d_%d" % [num, plr])

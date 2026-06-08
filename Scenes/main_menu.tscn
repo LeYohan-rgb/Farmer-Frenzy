@@ -1,4 +1,4 @@
-[gd_scene load_steps=189 format=4 uid="uid://b13l3w04de0xj"]
+[gd_scene load_steps=200 format=4 uid="uid://b13l3w04de0xj"]
 
 [ext_resource type="Script" uid="uid://dccfn22jy3lhk" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://bt6222qb5t2hf" path="res://Fonts/Qilka-Bold copy.otf" id="2_ce3w2"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cayvohmx5fxxd" path="res://Graphics/Watermelon.png" id="16_4nkqq"]
 [ext_resource type="Texture2D" uid="uid://my6mfi847snt" path="res://Graphics/Guava.png" id="17_ehtkc"]
 [ext_resource type="Texture2D" uid="uid://tq4gdxrfjgb8" path="res://Graphics/Avocado.png" id="18_6dk6o"]
+[ext_resource type="StyleBox" uid="uid://bpom5dxeclnq6" path="res://Styles/cooldown_fruit.tres" id="18_msuys"]
 [ext_resource type="Texture2D" uid="uid://dkfoelrigpgyp" path="res://Graphics/Cocoa.png" id="19_jr6u5"]
 [ext_resource type="Texture2D" uid="uid://unyyjwff0wto" path="res://Graphics/Coconut.png" id="20_6m47u"]
 [ext_resource type="Texture2D" uid="uid://cvsfpbbtf66tc" path="res://Graphics/jeronimo.png" id="21_6dk6o"]
@@ -34,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://b60soyr5c6qld" path="res://Scenes/character_body_2d.tscn" id="28_tt8ml"]
 [ext_resource type="Script" uid="uid://b001ti5v65gis" path="res://Scripts/pausing_fight_ui.gd" id="29_jw7lb"]
 [ext_resource type="PackedScene" uid="uid://qkrg6mwx2ewg" path="res://Scenes/border.tscn" id="30_hkdq0"]
+[ext_resource type="Script" uid="uid://stdaoieebk62" path="res://Scripts/cooldown.gd" id="32_aylim"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cp0ys"]
 shader = ExtResource("2_opfnp")
@@ -4379,6 +4381,30 @@ border_width_bottom = 5
 border_color = Color(0.858824, 0.698039, 0.509804, 1)
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qc4h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahukf"]
+bg_color = Color(0.317647, 0.231373, 0.121569, 0.878431)
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2h8fa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fh77k"]
+bg_color = Color(0.317647, 0.231373, 0.121569, 0.529412)
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqu1d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hcedr"]
+bg_color = Color(0.317647, 0.231373, 0.121569, 0.529412)
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yuqo8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ifnak"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3eqs5"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pavwk"]
 bg_color = Color(0.227451, 0.176471, 0.113725, 1)
 corner_radius_top_left = 20
@@ -7180,6 +7206,88 @@ theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="cooldown" type="Node2D" parent="farmer_frenzy/beginning_UI"]
+position = Vector2(466, 0)
+script = ExtResource("32_aylim")
+
+[node name="cooldown_bar_1_2" type="ProgressBar" parent="farmer_frenzy/beginning_UI/cooldown"]
+z_index = 1
+offset_left = 233.0
+offset_right = 307.0
+offset_bottom = 72.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_6qc4h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ahukf")
+fill_mode = 3
+show_percentage = false
+
+[node name="cooldown_bar_2_2" type="ProgressBar" parent="farmer_frenzy/beginning_UI/cooldown"]
+z_index = 1
+offset_left = 307.0
+offset_right = 381.0
+offset_bottom = 72.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_2h8fa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fh77k")
+fill_mode = 3
+show_percentage = false
+
+[node name="cooldown_bar_3_2" type="ProgressBar" parent="farmer_frenzy/beginning_UI/cooldown"]
+z_index = 1
+offset_left = 381.0
+offset_right = 456.0
+offset_bottom = 72.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_bqu1d")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hcedr")
+fill_mode = 3
+show_percentage = false
+
+[node name="timer_1_1" type="Timer" parent="farmer_frenzy/beginning_UI/cooldown"]
+one_shot = true
+
+[node name="timer_2_1" type="Timer" parent="farmer_frenzy/beginning_UI/cooldown"]
+one_shot = true
+
+[node name="timer_3_1" type="Timer" parent="farmer_frenzy/beginning_UI/cooldown"]
+one_shot = true
+
+[node name="cooldown_bar_1_1" type="ProgressBar" parent="farmer_frenzy/beginning_UI/cooldown"]
+z_index = 1
+offset_left = -239.0
+offset_right = -165.0
+offset_bottom = 72.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_yuqo8")
+theme_override_styles/fill = ExtResource("18_msuys")
+fill_mode = 3
+show_percentage = false
+
+[node name="cooldown_bar_2_1" type="ProgressBar" parent="farmer_frenzy/beginning_UI/cooldown"]
+z_index = 1
+offset_left = -165.0
+offset_right = -91.0
+offset_bottom = 72.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_ifnak")
+theme_override_styles/fill = ExtResource("18_msuys")
+fill_mode = 3
+show_percentage = false
+
+[node name="cooldown_bar_3_1" type="ProgressBar" parent="farmer_frenzy/beginning_UI/cooldown"]
+z_index = 1
+offset_left = -91.0
+offset_right = -16.0
+offset_bottom = 72.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_3eqs5")
+theme_override_styles/fill = ExtResource("18_msuys")
+fill_mode = 3
+show_percentage = false
+
+[node name="timer_1_2" type="Timer" parent="farmer_frenzy/beginning_UI/cooldown"]
+one_shot = true
+
+[node name="timer_2_2" type="Timer" parent="farmer_frenzy/beginning_UI/cooldown"]
+one_shot = true
+
+[node name="timer_3_2" type="Timer" parent="farmer_frenzy/beginning_UI/cooldown"]
+one_shot = true
 
 [node name="paused_UI" type="Node2D" parent="farmer_frenzy/beginning_UI"]
 process_mode = 2
