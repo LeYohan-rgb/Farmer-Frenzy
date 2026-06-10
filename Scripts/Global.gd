@@ -15,7 +15,7 @@ var speed = {
 	"kernel" : 1500,
 	"mango" : 1000,
 	"watermelon" : 750,
-	"watermelon_seeds" : 1750
+	"watermelon_seeds" : 1750.0
 }
 
 #GAME VARIABLES

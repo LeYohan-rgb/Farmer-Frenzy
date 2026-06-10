@@ -7,9 +7,11 @@ var track_watermelon : Area2D
 
 func perform_watermelon(plr : int, x_coord : float = 0.0, y_coord : float = 0.0) -> void:
 	if Global.watermelon_is_alive:
-		var reference_angle : float = 20.0 - (11.0 * x_coord / 512.0)
-		print(x_coord)
-		print(reference_angle)
+		var reference_angle : float
+		if plr == 1:
+			reference_angle = 20.0 - (11.0 * x_coord / 512.0)
+		else:
+			reference_angle = 20.0 - (11.0 * (x_coord - 640) / 512.0)
 		shoot_seeds(plr, track_watermelon.position.x, track_watermelon.position.y, reference_angle / 3 )
 		shoot_seeds(plr, track_watermelon.position.x, track_watermelon.position.y, reference_angle * 2 / 3)
 		shoot_seeds(plr, track_watermelon.position.x, track_watermelon.position.y, reference_angle)
@@ -51,7 +53,7 @@ func shoot_seeds(player : int, position_x, position_y, angle : float = 0.0) -> v
 	seed_item.speed = Global.speed["watermelon_seeds"]
 	seed_item.plr = player
 	seed_item.position.y = position_y
-	seed_item.my_angle = angle
+	seed_item.set_angle(angle)
 	
 	var offset = 60 if player == 1 else -60
 	seed_item.position.x = position_x + offset

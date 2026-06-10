@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=4 uid="uid://b13l3w04de0xj"]
+[gd_scene load_steps=201 format=4 uid="uid://b13l3w04de0xj"]
 
 [ext_resource type="Script" uid="uid://dccfn22jy3lhk" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://bt6222qb5t2hf" path="res://Fonts/Qilka-Bold copy.otf" id="2_ce3w2"]
@@ -36,6 +36,7 @@
 [ext_resource type="Script" uid="uid://b001ti5v65gis" path="res://Scripts/pausing_fight_ui.gd" id="29_jw7lb"]
 [ext_resource type="PackedScene" uid="uid://qkrg6mwx2ewg" path="res://Scenes/border.tscn" id="30_hkdq0"]
 [ext_resource type="Script" uid="uid://stdaoieebk62" path="res://Scripts/cooldown.gd" id="32_aylim"]
+[ext_resource type="PackedScene" uid="uid://c3nnb5e1d1v2t" path="res://Scenes/border_river.tscn" id="37_y82t1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cp0ys"]
 shader = ExtResource("2_opfnp")
@@ -7474,16 +7475,11 @@ position = Vector2(1040, 333)
 plr = 2
 
 [node name="collisions" type="Node2D" parent="farmer_frenzy"]
-visible = false
 
 [node name="border" parent="farmer_frenzy/collisions" instance=ExtResource("30_hkdq0")]
 position = Vector2(-194, 130)
 rotation = -1.5708
 scale = Vector2(1, 4.56)
-
-[node name="border2" parent="farmer_frenzy/collisions" instance=ExtResource("30_hkdq0")]
-position = Vector2(393, -190)
-scale = Vector2(2.04, 3.16)
 
 [node name="border3" parent="farmer_frenzy/collisions" instance=ExtResource("30_hkdq0")]
 position = Vector2(-194, 769)
@@ -7499,6 +7495,9 @@ scale = Vector2(1, 4.56)
 position = Vector2(1273, 1106)
 rotation = -3.14159
 scale = Vector2(1, 4.56)
+
+[node name="border_river" parent="farmer_frenzy/collisions" instance=ExtResource("37_y82t1")]
+position = Vector2(576, 330)
 
 [connection signal="pressed" from="main/basket_UI/farmer_fight_button" to="." method="_on_farmer_fight_button_pressed"]
 [connection signal="pressed" from="main/basket_UI/settings_button" to="." method="_on_settings_button_pressed"]
