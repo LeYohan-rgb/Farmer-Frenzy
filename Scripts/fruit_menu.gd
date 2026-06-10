@@ -5,7 +5,7 @@ signal clear_slot(slot : int, plr : int)
 signal requested_go_to_main_menu
 signal start_game
 
-var fruit_var = "Mango"
+var fruit_var : String = "Mango"
 @onready var fruit_lbl = $fruit_lbl
 @onready var fruit_img = $fruit_display
 @onready var bean_price_lbl = $bean_price

@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var shoot_kernel = $shoot_kernel
 @onready var shield = $summon_shield
 @onready var fruits = $fruits
+@onready var mango = $fruits/mango
+@onready var watermelon = $fruits/watermelon
 
 var speed = Global.farmer_fight_velocity
 var direction: Vector2 = Vector2.ZERO
@@ -16,7 +18,8 @@ func _ready() -> void:
 	shoot_kernel.plr = plr
 	fruits.plr = plr
 	
-	
+	fruits.connect("shoot_melon_with_coords", give_out_coords)
+	mango.connect("shoot_with_coords", give_out_coords)
 	shoot_kernel.connect("wants_to_shoot", shoot_active)
 	shield.connect("wants_to_shield", shield_active)
 
@@ -59,7 +62,13 @@ func shield_active(plr_input : int):
 		pass
 
 func perform_ability(fruit_name : String):
-	print("perform", fruit_name)
 	if fruit_name == "Mango":
+		fruits.perform(fruit_name)
+	if fruit_name == "Watermelon":
 		fruits.perform(fruit_name, position.x, position.y)
 		
+func give_out_coords(fruit : String):
+	if fruit == "mango":
+		mango.shoot_mango_with_coords(position.x, position.y, plr)
+	if fruit == "watermelon":
+		watermelon.perform_watermelon(plr, position.x, position.y)

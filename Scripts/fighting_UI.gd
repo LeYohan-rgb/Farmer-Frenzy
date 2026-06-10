@@ -129,11 +129,11 @@ func spawn_bean(plr : int):
 	var bean_pos_x
 	var bean_pos_y
 	if plr == 1:
-		bean_pos_x = randi_range(100, 300)
-		bean_pos_y = randi_range(200, 400)
+		bean_pos_x = randi_range(8, 480)
+		bean_pos_y = randi_range(80, 624)
 	else:
-		bean_pos_x = randi_range(1000, 1200)
-		bean_pos_y = randi_range(200, 400)
+		bean_pos_x = randi_range(648, 1120)
+		bean_pos_y = randi_range(80, 624)
 		
 	bean_item.position = Vector2(bean_pos_x, bean_pos_y)
 	get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(bean_item)

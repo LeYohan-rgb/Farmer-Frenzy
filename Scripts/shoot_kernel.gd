@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 func shoot(plr : int, position_x, position_y):
 	Global.kernel_amount[plr - 1] -= 1
 	var kernel = KERNEL.instantiate()
-	kernel.speed = Global.kernel_speed
+	kernel.speed = Global.speed["kernel"]
 	kernel.plr = plr
 	kernel.position.y = position_y + 5
 	

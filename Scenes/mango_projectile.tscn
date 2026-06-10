@@ -6,7 +6,6 @@
 [node name="mango_projectile" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_8qmm6")
-damage = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.125, 0.125)

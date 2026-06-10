@@ -1,16 +1,22 @@
 extends Node
 
+var debug_mode : bool = true
 #GAME VARIABLES
 var player_1_wins : int = 0
 var player_2_wins : int = 0
 var game_time : int = 0
 
 #GAME PARAMETERS
-var farmer_fight_velocity = 275
-var kernel_speed = 1500
-var player_1_health = 50
-var player_2_health = 50
+var farmer_fight_velocity : int = 275
+var player_1_health : float = 50.0
+var player_2_health :float = 50.0
 var recharge_time : float = 3.0
+var speed = {
+	"kernel" : 1500,
+	"mango" : 1000,
+	"watermelon" : 750,
+	"watermelon_seeds" : 1750
+}
 
 #GAME VARIABLES
 var is_in_cooldown = {
@@ -21,33 +27,35 @@ var is_in_cooldown = {
 }
 var player_1_dmg_boost : float = 1
 var player_2_dmg_boost : float = 1
-var shield = [10, 10] #first player, second player
-var kernel_amount = [10, 10]
-var is_shielding = [false, false] #1st, #2nd
-var bean_amount = [0, 0]
-var damage = {
-	"kernel" : 1,
-	"mango" : 2
+var shield : Array = [10, 10] #first player, second player
+var kernel_amount : Array = [10, 10]
+var is_shielding : Array = [false, false] #1st, #2nd
+var bean_amount : Array = [0, 0]
+var damage : Dictionary = {
+	"kernel" : 1.0,
+	"mango" : 2.0,
+	"watermelon" : 3.0,
+	"watermelon_seed" : 2.0
 }
 
 
 #GAME_MODES
-var is_in_farmer_fight = false
+var is_in_farmer_fight : bool = false
 
-var player_name_1 = "Emiliano"
-var player_name_2 = "Jerónimo"
+var player_name_1 : String = "Emiliano"
+var player_name_2 : String = "Jerónimo"
 
 #FARMER_FIGHT_VARIABLES
 var player_1_kernels : int = 10
 var player_2_kernels : int = 10
 
-var player_1_fruits = ["","",""]
-var player_2_fruits = ["","",""]
+var player_1_fruits : Array = ["","",""]
+var player_2_fruits : Array = ["","",""]
 
 #BEGINNING MENU FARMER FIGHT
-var fruit_selected = ""
+var fruit_selected : String = ""
 
-var fruit_prices = {
+var fruit_prices : Dictionary = {
 	"Mango": 0,
 	"Avocado": 0,
 	"Cocoa": 0,
@@ -58,30 +66,30 @@ var fruit_prices = {
 	"Pineapple": 0
 }
 
-var cooldown = {
-	"Mango" : 3.0,
-	"Avocado" : 1.0,
-	"Cocoa" : 1.0,
-	"Coconut" : 1.0,
-	"Guava" : 1.0,
-	"Papaya" : 1.0,
-	"Watermelon" : 1.0,
-	"Pineapple" : 1.0
+var cooldown : Dictionary = {
+	"Mango" : 5,
+	"Avocado" : 1,
+	"Cocoa" : 1,
+	"Coconut" : 1,
+	"Guava" : 1,
+	"Papaya" : 1,
+	"Watermelon" : 5,
+	"Pineapple" : 1
 }
 
-var fruit_bean_costs = {
+var fruit_bean_costs : Dictionary = {
 	"Mango": 1,
 	"Avocado": 2,
 	"Cocoa": 3,
 	"Coconut": 4,
 	"Guava": 5,
 	"Papaya": 6,
-	"Watermelon": 7,
+	"Watermelon": 0,
 	"Pineapple": 8
 }
 
-var fruit_descriptions = {
-	"Mango": "Mango is a fruit that is native to South Asia, and they are cultivated worldwide.",
+var fruit_descriptions : Dictionary = {
+	"Mango": "Throws five big mangos succesively; they get stronger when thrown closer to the river.",
 	"Avocado": "Avocados are a fruit that grow on trees; they are native to Central America.",
 	"Cocoa": "Cocoa is a fruit that is native to Latin America, and are cultivated in Africa.",
 	"Coconut": "Coconut is a popular palm fruit of the genus Cocos. It is native to South-East Asia and Oceania.",
@@ -93,3 +101,37 @@ var fruit_descriptions = {
 
 func wait(sec : float):
 	await get_tree().create_timer(sec).timeout
+	
+	
+	
+#IN-GAME FRUIT VARIABLES
+var watermelon_is_alive : bool = false
+
+func num_to_ordinal(num : int) -> String:
+	if num == 1:
+		return "first"
+	if num == 2:
+		return "second"
+	if num == 3:
+		return "third"
+	else:
+		return ""
+		
+func fruit_to_slot(fruit : String, plr : int) -> int:
+	if plr == 1:
+		for i in range(3):
+			if Global.player_1_fruits[i] == fruit:
+				return i+1
+	else:
+		for i in range(3):
+			if Global.player_2_fruits[i] == fruit:
+				return i+1
+	return 0
+
+func is_fruit_in_party(fruit : String) -> bool:
+	for i in range(3):
+		if Global.player_1_fruits[i] == fruit:
+			return true
+		if Global.player_2_fruits[i] == fruit:
+			return true
+	return false

@@ -5,7 +5,7 @@ signal hit(player_hit : int)
 @export var speed : int
 @onready var spr = $Sprite2D
 @export var plr : int
-@export var damage : int
+@export var damage : float
 
 func _ready() -> void:
 	damage = Global.damage["kernel"]

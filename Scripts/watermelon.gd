@@ -1,17 +1,20 @@
 extends Area2D
 
 signal hit(player_hit : int, damage_dealt : float)
+signal dead
 
 @export var speed : int
-@onready var spr = $Sprite2D
+@onready var spr = $AnimatedSprite2D
 @export var plr : int 
 @export var damage : float
 
 func _ready() -> void:
+	damage = Global.damage["watermelon"]
 	if plr == 2:
 		spr.scale.x *= -1
 		
 func _physics_process(delta: float) -> void:
+	
 	if plr != 1 and plr != 2:
 		return
 	
@@ -19,6 +22,7 @@ func _physics_process(delta: float) -> void:
 		position.x += speed * delta
 		
 		if position.x > 1280:
+			dead.emit()
 			queue_free()
 			
 	else:
@@ -26,9 +30,10 @@ func _physics_process(delta: float) -> void:
 		
 		#IF OFF-LIMITS, DELETE
 		if position.x < -80:
+			dead.emit()
 			queue_free()
 			
 func _on_body_entered(body: CharacterBody2D) -> void:
-	print(damage)
 	hit.emit(body.plr, damage)
+	dead.emit()
 	queue_free()

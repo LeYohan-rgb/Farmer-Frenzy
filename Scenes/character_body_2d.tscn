@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b60soyr5c6qld"]
+[gd_scene load_steps=16 format=3 uid="uid://b60soyr5c6qld"]
 
 [ext_resource type="Script" uid="uid://cgavkxd1lhs46" path="res://Scripts/character_body_2d.gd" id="1_ghijl"]
 [ext_resource type="Texture2D" uid="uid://bs1nv4gudolyg" path="res://Graphics/emiliano.png" id="1_ij6vw"]
@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://dv1jbpgh77yfq" path="res://Scripts/fruits.gd" id="8_fxof2"]
 [ext_resource type="Script" uid="uid://d23yxmdst1f6s" path="res://Scripts/mango.gd" id="9_601d1"]
 [ext_resource type="PackedScene" uid="uid://gkv5dloi5mxy" path="res://Scenes/mango_projectile.tscn" id="10_6d06k"]
+[ext_resource type="Script" uid="uid://u6p4ja0tsi1q" path="res://Scripts/watermelon_ability.gd" id="11_p20bj"]
+[ext_resource type="PackedScene" uid="uid://dytk5payfhy3q" path="res://Scenes/watermelon_projectile.tscn" id="12_ancw4"]
+[ext_resource type="PackedScene" uid="uid://bf3gul4y7e6r6" path="res://Scenes/watermelon_seed.tscn" id="13_8ldn0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44cfe"]
 radius = 15.0
@@ -60,3 +63,8 @@ script = ExtResource("8_fxof2")
 [node name="mango" type="Node2D" parent="fruits"]
 script = ExtResource("9_601d1")
 MANGO = ExtResource("10_6d06k")
+
+[node name="watermelon" type="Node2D" parent="fruits"]
+script = ExtResource("11_p20bj")
+WATERMELON = ExtResource("12_ancw4")
+SEED = ExtResource("13_8ldn0")

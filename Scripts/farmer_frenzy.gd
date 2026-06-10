@@ -55,18 +55,6 @@ func begin_game():
 	plr_2_health.value = Global.player_2_health
 	plr_1_health.get_theme_stylebox("fill").bg_color = Color("72ac4e")
 	plr_2_health.get_theme_stylebox("fill").bg_color = Color("72ac4e")
-	for i in range(1, 3):
-		for j in range(1, 4):
-			if i == 1:
-				get_timer(i, j).wait_time = Global.cooldown[Global.player_1_fruits[j - 1]]
-			else:
-				get_timer(i, j).wait_time = Global.cooldown[Global.player_2_fruits[j - 1]]
-	cooldown_1_1.max_value = Global.cooldown[Global.player_1_fruits[0]]
-	cooldown_2_1.max_value = Global.cooldown[Global.player_1_fruits[1]]
-	cooldown_3_1.max_value = Global.cooldown[Global.player_1_fruits[2]]
-	cooldown_1_2.max_value = Global.cooldown[Global.player_2_fruits[0]]
-	cooldown_2_2.max_value = Global.cooldown[Global.player_2_fruits[1]]
-	cooldown_3_2.max_value = Global.cooldown[Global.player_2_fruits[2]]
 	
 func _ready():
 	fruit_collection_menu.connect("fruit_pressed", change_fruit_menu_display)
@@ -143,6 +131,8 @@ func quit_menu():
 		for j in range(3):
 			clear_player_slot(j+1, i+1)
 	paused_UI.hide()
+	for child in visual_effects.get_children():
+		child.queue_free()
 	pausing_midfight.hide()
 	fruit_menu.display_fruit("Mango")
 	Global.player_1_fruits = ["","",""]
@@ -159,9 +149,10 @@ func quit_menu():
 	cooldown_1_2.value = 0
 	cooldown_2_2.value = 0
 	cooldown_3_2.value = 0
-	for i in range(2):
-		for j in range(3):
-			Global.is_in_cooldown[i+1][j+1] = false
+	for i in range(1, 3):
+		for j in range(1, 4):
+				get_timer(i, j).stop()
+				Global.is_in_cooldown[i][j] = false
 	Global.is_shielding = [false, false]
 	Global.player_1_dmg_boost = 1
 	Global.player_2_dmg_boost = 1
@@ -184,17 +175,36 @@ func begin_farmer_fight():
 	pausing_midfight.show()
 	farmers.set_up_farmers()
 	
-	countdown_lbl.show()
-	countdown_lbl.text = "3!"
-	await Global.wait(1)
-	countdown_lbl.text = "2!"
-	await Global.wait(1)
-	countdown_lbl.text = "1!"
-	await Global.wait(1)
-	countdown_lbl.text = "FIGHT!"
-	await Global.wait(1)
+	if !Global.debug_mode:
+		countdown_lbl.show()
+		countdown_lbl.text = "3!"
+		await Global.wait(1)
+		countdown_lbl.text = "2!"
+		await Global.wait(1)
+		countdown_lbl.text = "1!"
+		await Global.wait(1)
+		countdown_lbl.text = "FIGHT!"
+		await Global.wait(1)
 	#YOU SHOULD ADD THE COUNTDOWN TIMER
 	Global.is_in_farmer_fight = true
+	for i in range(1, 3):
+		for j in range(1, 4):
+			if i == 1:
+				get_timer(i, j).wait_time = Global.cooldown[Global.player_1_fruits[j - 1]]
+			else:
+				get_timer(i, j).wait_time = Global.cooldown[Global.player_2_fruits[j - 1]]
+	cooldown_1_1.max_value = Global.cooldown[Global.player_1_fruits[0]]
+	cooldown_2_1.max_value = Global.cooldown[Global.player_1_fruits[1]]
+	cooldown_3_1.max_value = Global.cooldown[Global.player_1_fruits[2]]
+	cooldown_1_2.max_value = Global.cooldown[Global.player_2_fruits[0]]
+	cooldown_2_2.max_value = Global.cooldown[Global.player_2_fruits[1]]
+	cooldown_3_2.max_value = Global.cooldown[Global.player_2_fruits[2]]
+	cooldown_1_1.value = 0
+	cooldown_2_1.value = 0
+	cooldown_3_1.value = 0
+	cooldown_1_2.value = 0
+	cooldown_2_2.value = 0
+	cooldown_3_2.value = 0
 	game_timer.start()
 	countdown_lbl.hide()
 	
