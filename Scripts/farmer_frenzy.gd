@@ -157,6 +157,7 @@ func quit_menu():
 	Global.player_1_dmg_boost = 1
 	Global.player_2_dmg_boost = 1
 	farmers.hide()
+	farmers.quitting_game()
 	game_timer.stop()
 	Global.game_time = 0
 	timer_lbl.text = "00:00"

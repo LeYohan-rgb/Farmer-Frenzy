@@ -72,7 +72,7 @@ var cooldown : Dictionary = {
 	"Cocoa" : 1,
 	"Coconut" : 1,
 	"Guava" : 1,
-	"Papaya" : 1,
+	"Papaya" : 3,
 	"Watermelon" : 5,
 	"Pineapple" : 1
 }
@@ -83,7 +83,7 @@ var fruit_bean_costs : Dictionary = {
 	"Cocoa": 3,
 	"Coconut": 4,
 	"Guava": 5,
-	"Papaya": 6,
+	"Papaya": 0,
 	"Watermelon": 0,
 	"Pineapple": 8
 }
@@ -105,7 +105,9 @@ func wait(sec : float):
 	
 	
 #IN-GAME FRUIT VARIABLES
-var watermelon_is_alive : bool = false
+var watermelon_is_alive : Array = [false, false]
+#O : DORMANT, 1: CAN_START_CHARGE, 2: ISCHARGING, 3: DEPLETING
+var papaya_charging_state : Array = [0,0]
 
 func num_to_ordinal(num : int) -> String:
 	if num == 1:

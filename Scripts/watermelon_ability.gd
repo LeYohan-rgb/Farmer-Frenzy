@@ -6,7 +6,7 @@ var track_watermelon : Area2D
 
 
 func perform_watermelon(plr : int, x_coord : float = 0.0, y_coord : float = 0.0) -> void:
-	if Global.watermelon_is_alive:
+	if Global.watermelon_is_alive[plr - 1]:
 		var reference_angle : float
 		if plr == 1:
 			reference_angle = 20.0 - (11.0 * x_coord / 512.0)
@@ -37,7 +37,7 @@ func shoot_watermelon(player : int, position_x, position_y) -> void:
 	watermelon_item.hit.connect(damage)
 	watermelon_item.dead.connect(watermelon_died)
 	await get_tree().physics_frame
-	Global.watermelon_is_alive = true
+	Global.watermelon_is_alive[player - 1] = true
 
 func damage(player_hitted : int, damage_dealt : float) -> void:
 	if player_hitted == 1:
@@ -45,8 +45,8 @@ func damage(player_hitted : int, damage_dealt : float) -> void:
 	else:
 		Global.player_2_health -= damage_dealt * Global.player_2_dmg_boost
 		
-func watermelon_died() -> void:
-	Global.watermelon_is_alive = false
+func watermelon_died(my_plr : int) -> void:
+	Global.watermelon_is_alive[my_plr - 1] = false
 	
 func shoot_seeds(player : int, position_x, position_y, angle : float = 0.0) -> void:
 	var seed_item = SEED.instantiate()

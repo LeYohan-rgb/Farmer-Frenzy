@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var fruits = $fruits
 @onready var mango = $fruits/mango
 @onready var watermelon = $fruits/watermelon
+@onready var farmer_UI = $farmer_UI
 
 var speed = Global.farmer_fight_velocity
 var direction: Vector2 = Vector2.ZERO
@@ -17,7 +18,9 @@ func _ready() -> void:
 	shield.plr = plr
 	shoot_kernel.plr = plr
 	fruits.plr = plr
+	farmer_UI.plr = plr
 	
+	fruits.connect("papaya_timer_started", papaya_timer_start)
 	fruits.connect("shoot_melon_with_coords", give_out_coords)
 	mango.connect("shoot_with_coords", give_out_coords)
 	shoot_kernel.connect("wants_to_shoot", shoot_active)
@@ -66,9 +69,21 @@ func perform_ability(fruit_name : String):
 		fruits.perform(fruit_name)
 	if fruit_name == "Watermelon":
 		fruits.perform(fruit_name, position.x, position.y)
+	if fruit_name == "Papaya":
+		fruits.perform(fruit_name, position.x, position.y)
 		
 func give_out_coords(fruit : String):
 	if fruit == "mango":
 		mango.shoot_mango_with_coords(position.x, position.y, plr)
 	if fruit == "watermelon":
 		watermelon.perform_watermelon(plr, position.x, position.y)
+		
+func papaya_timer_start(on_or_off : int):
+	if on_or_off == 0:
+		farmer_UI.show()
+		farmer_UI.start_fulling_bar()
+	else:
+		farmer_UI.start_depleting_bar()
+
+func quit_game():
+	farmer_UI.hide()

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxd50b7lrh1qx"]
+
+[ext_resource type="Script" uid="uid://cplk76b3ueita" path="res://papaya_seed.gd" id="1_oxvqv"]
+[ext_resource type="Texture2D" uid="uid://bs0f0sdx0ndvg" path="res://Graphics/papaya_seed.png" id="2_41iu5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5l1ek"]
+radius = 100.623
+
+[node name="papaya_seed" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_oxvqv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_41iu5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5l1ek")
