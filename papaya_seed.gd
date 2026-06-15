@@ -12,6 +12,7 @@ func _ready() -> void:
 		spr.scale.x *= -1
 		
 func _physics_process(delta: float) -> void:
+	
 	if plr != 1 and plr != 2:
 		return
 	
@@ -29,5 +30,6 @@ func _physics_process(delta: float) -> void:
 			queue_free()
 			
 func _on_body_entered(body: CharacterBody2D) -> void:
+	print(damage)
 	hit.emit(body.plr, damage)
 	queue_free()

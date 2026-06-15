@@ -45,6 +45,8 @@ signal go_to_main_menu
 @onready var farmer_1 = $farmers/farmer
 @onready var farmer_2 = $farmers/farmer2
 
+@onready var fruit_UI = $beginning_UI/fruit_UI
+
 func begin_game():
 	
 	fruit_menu.display_fruit("Mango")
@@ -134,6 +136,7 @@ func quit_menu():
 	for child in visual_effects.get_children():
 		child.queue_free()
 	pausing_midfight.hide()
+	fruit_UI.hide()
 	fruit_menu.display_fruit("Mango")
 	Global.player_1_fruits = ["","",""]
 	Global.player_2_fruits = ["","",""]
@@ -141,7 +144,7 @@ func quit_menu():
 	Global.player_1_health = 50
 	Global.player_2_health = 50
 	Global.shield = [10, 10]
-	Global.papaya_seeds_count = [20,20]
+	Global.papaya_seeds_count = [40,40]
 	Global.papaya_charging_state = [0,0]
 	Global.bean_amount = [0, 0]
 	Global.kernel_amount = [10, 10]
@@ -175,6 +178,7 @@ func begin_farmer_fight():
 	fruit_menu.hide()
 	fruit_collection_menu.hide()
 	farmers.show()
+	fruit_UI.show()
 	pausing_midfight.show()
 	farmers.set_up_farmers()
 	
@@ -243,6 +247,10 @@ func ability_pressed(ability_num : int, player : int):
 			not_enough_beans(ability_num, player)
 		else:
 			#CHECK COOLDOWN
+			
+			if fruit_selected == "Papaya" and Global.papaya_charging_state[player - 1] != 0:
+				return
+				
 			if !Global.is_in_cooldown[player][ability_num]:
 				get_timer(player, ability_num).start()
 				Global.is_in_cooldown[player][ability_num] = true
@@ -257,6 +265,10 @@ func ability_pressed(ability_num : int, player : int):
 		if Global.bean_amount[1] < Global.fruit_bean_costs[fruit_selected] and !Global.is_in_cooldown[player][ability_num]:
 			not_enough_beans(ability_num, player)
 		else:
+			
+			if fruit_selected == "Papaya" and Global.papaya_charging_state[player - 1] != 0:
+				return
+				
 			#CHECK COOLDOWN
 			if !Global.is_in_cooldown[player][ability_num]:
 				get_timer(player, ability_num).start()

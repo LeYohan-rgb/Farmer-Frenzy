@@ -17,6 +17,7 @@ func _on_deplete_finished():
 		
 	if Global.papaya_seeds_count[plr - 1] <= 0:
 		Global.papaya_charging_state[plr - 1] = 0
+	print(Global.papaya_charging_state[plr -1])
 	self.hide()
 	
 func start_fulling_bar():
@@ -24,7 +25,8 @@ func start_fulling_bar():
 	
 func start_depleting_bar():
 	var filled_amount = progress_bar.max_value - my_timer.time_left
-	var num_of_papayas : int = clamp(int(round(filled_amount / 0.15)), 0,  Global.papaya_seeds_count[plr - 1])
+	var num_of_papayas : int = clamp(int(round(filled_amount / 0.075)), 0,  Global.papaya_seeds_count[plr - 1])
+	var true_deplete_timer : float = round(filled_amount / 0.075) * 0.075
 	shoot_papayas.emit(num_of_papayas)
 	my_timer.stop()
 	deplete_timer.start(filled_amount)
@@ -37,7 +39,6 @@ func _process(delta: float) -> void:
 		progress_bar.value = progress_bar.max_value - my_timer.time_left
 			
 	if Global.papaya_charging_state[plr -1] == 3:
-		prints(progress_bar.value, deplete_timer.time_left)
 		progress_bar.value = deplete_timer.time_left
 		
 	

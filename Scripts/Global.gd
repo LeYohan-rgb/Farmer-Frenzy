@@ -15,7 +15,8 @@ var speed = {
 	"kernel" : 1500,
 	"mango" : 1000,
 	"watermelon" : 750,
-	"watermelon_seeds" : 1750.0
+	"watermelon_seeds" : 1750.0,
+	"papaya" : 1500
 }
 
 #GAME VARIABLES
@@ -36,7 +37,7 @@ var damage : Dictionary = {
 	"mango" : 2.0,
 	"watermelon" : 3.0,
 	"watermelon_seed" : 2.0,
-	"papaya" : 0.5
+	"papaya" : 0.25
 }
 
 
@@ -73,7 +74,7 @@ var cooldown : Dictionary = {
 	"Cocoa" : 1,
 	"Coconut" : 1,
 	"Guava" : 1,
-	"Papaya" : 100,
+	"Papaya" : 15,
 	"Watermelon" : 5,
 	"Pineapple" : 1
 }
@@ -109,7 +110,7 @@ func wait(sec : float):
 var watermelon_is_alive : Array = [false, false]
 #O : DORMANT, 1: CAN_START_CHARGE, 2: ISCHARGING, 3: DEPLETING
 var papaya_charging_state : Array = [0,0]
-var papaya_seeds_count : Array = [20,20]
+var papaya_seeds_count : Array = [40,40]
 
 func num_to_ordinal(num : int) -> String:
 	if num == 1:
