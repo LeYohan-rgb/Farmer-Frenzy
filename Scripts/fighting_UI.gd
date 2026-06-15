@@ -14,6 +14,11 @@ signal fruit_ability(ability : int, player : int)
 @onready var kernel_lbl_1 = $first_player/seeds_indicator/corn_label
 @onready var kernel_lbl_2 = $second_player/seeds_indicator/corn_label
 
+@onready var papaya_spr_1 = $fruit_UI/papaya_spr_1
+@onready var papaya_spr_2 = $fruit_UI/papaya_spr_2
+@onready var papaya_lbl_1 = $fruit_UI/papaya_lbl_1
+@onready var papaya_lbl_2 = $fruit_UI/papaya_lbl_2
+
 @export var bean : PackedScene
 
 var bean_spawn_1 : int = -1
@@ -102,6 +107,24 @@ func _process(delta: float) -> void:
 		fruit_ability.emit(3, 1)
 	if Input.is_action_just_pressed("third_2"):
 		fruit_ability.emit(3, 2)
+		
+	
+	#PAPAYA
+	if Global.papaya_charging_state[0] != 0 and Global.papaya_seeds_count[0] > 0:
+		papaya_lbl_1.show()
+		papaya_spr_1.show()
+	else:
+		papaya_lbl_1.hide()
+		papaya_spr_1.hide()
+	if Global.papaya_charging_state[1] != 0 and Global.papaya_seeds_count[1] > 0:
+		papaya_lbl_2.show()
+		papaya_spr_2.show()
+	else:
+		papaya_lbl_2.hide()
+		papaya_spr_2.hide()
+		
+	papaya_lbl_1.text = str(Global.papaya_seeds_count[0])
+	papaya_lbl_2.text = str(Global.papaya_seeds_count[1])
 		
 func chance_of_spawn_bean():
 	if Global.game_time <= 42:

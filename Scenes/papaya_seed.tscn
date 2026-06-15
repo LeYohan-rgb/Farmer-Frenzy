@@ -4,14 +4,18 @@
 [ext_resource type="Texture2D" uid="uid://bs0f0sdx0ndvg" path="res://Graphics/papaya_seed.png" id="2_41iu5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5l1ek"]
-radius = 100.623
+radius = 12.0416
 
 [node name="papaya_seed" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_oxvqv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
 texture = ExtResource("2_41iu5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_5l1ek")
+debug_color = Color(1.54018e-06, 0.592623, 0.740601, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

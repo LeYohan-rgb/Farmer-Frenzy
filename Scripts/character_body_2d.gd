@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var fruits = $fruits
 @onready var mango = $fruits/mango
 @onready var watermelon = $fruits/watermelon
+@onready var papaya = $fruits/papaya
 @onready var farmer_UI = $farmer_UI
 
 var speed = Global.farmer_fight_velocity
@@ -20,6 +21,9 @@ func _ready() -> void:
 	fruits.plr = plr
 	farmer_UI.plr = plr
 	
+	
+	papaya.connect("shoot_papaya_with_coords", give_out_coords)
+	farmer_UI.connect("shoot_papayas", shoot_papayas)
 	fruits.connect("papaya_timer_started", papaya_timer_start)
 	fruits.connect("shoot_melon_with_coords", give_out_coords)
 	mango.connect("shoot_with_coords", give_out_coords)
@@ -77,6 +81,8 @@ func give_out_coords(fruit : String):
 		mango.shoot_mango_with_coords(position.x, position.y, plr)
 	if fruit == "watermelon":
 		watermelon.perform_watermelon(plr, position.x, position.y)
+	if fruit == "papaya":
+		papaya.shoot_papayas_with_coords(position.x, position.y, plr)
 		
 func papaya_timer_start(on_or_off : int):
 	if on_or_off == 0:
@@ -87,3 +93,6 @@ func papaya_timer_start(on_or_off : int):
 
 func quit_game():
 	farmer_UI.hide()
+
+func shoot_papayas(num_of_papayas : int):
+	papaya.perform_shooting_papaya(num_of_papayas, plr)

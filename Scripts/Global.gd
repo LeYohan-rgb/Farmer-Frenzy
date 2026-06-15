@@ -35,7 +35,8 @@ var damage : Dictionary = {
 	"kernel" : 1.0,
 	"mango" : 2.0,
 	"watermelon" : 3.0,
-	"watermelon_seed" : 2.0
+	"watermelon_seed" : 2.0,
+	"papaya" : 0.5
 }
 
 
@@ -72,7 +73,7 @@ var cooldown : Dictionary = {
 	"Cocoa" : 1,
 	"Coconut" : 1,
 	"Guava" : 1,
-	"Papaya" : 3,
+	"Papaya" : 100,
 	"Watermelon" : 5,
 	"Pineapple" : 1
 }
@@ -108,6 +109,7 @@ func wait(sec : float):
 var watermelon_is_alive : Array = [false, false]
 #O : DORMANT, 1: CAN_START_CHARGE, 2: ISCHARGING, 3: DEPLETING
 var papaya_charging_state : Array = [0,0]
+var papaya_seeds_count : Array = [20,20]
 
 func num_to_ordinal(num : int) -> String:
 	if num == 1:

@@ -19,19 +19,23 @@ func _process(delta: float) -> void:
 			Global.watermelon_is_alive[plr - 1] = false
 		
 	#START CHARGING
+	if plr == 1:
+		pass
+		
+	if Global.is_fruit_in_party("Papaya") and Global.papaya_charging_state[plr - 1] == 2:
+		if Input.is_action_just_pressed(Global.num_to_ordinal(Global.fruit_to_slot("Papaya", plr))+"_"+str(plr)):
+			papaya.timer_ended()
+			papaya_timer_started.emit(1)
+			Global.papaya_charging_state[plr - 1] = 3
+			
 	if Global.is_fruit_in_party("Papaya") and (Global.papaya_charging_state[plr - 1] != 0 and Global.papaya_charging_state[plr - 1] != 2 and Global.papaya_charging_state[plr - 1] != 3):
-		print("1")
+			
 		if Input.is_action_just_pressed(Global.num_to_ordinal(Global.fruit_to_slot("Papaya", plr))+"_"+str(plr)):
 			papaya.timer_started()
 			papaya_timer_started.emit(0)
-			print("2")
+			await get_tree().physics_frame
 			Global.papaya_charging_state[plr -1 ] = 2
 			
-	if Global.is_fruit_in_party("Papaya") and Global.papaya_charging_state[plr - 1] == 2:
-		if Input.is_action_just_released(Global.num_to_ordinal(Global.fruit_to_slot("Papaya", plr))+"_"+str(plr)):
-			papaya.timer_ended()
-			Global.papaya_charging_state[plr - 1] = 3
-			print("33")
 			
 		
 			

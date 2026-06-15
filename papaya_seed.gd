@@ -29,6 +29,5 @@ func _physics_process(delta: float) -> void:
 			queue_free()
 			
 func _on_body_entered(body: CharacterBody2D) -> void:
-	print(damage)
 	hit.emit(body.plr, damage)
 	queue_free()

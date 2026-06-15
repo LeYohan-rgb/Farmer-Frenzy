@@ -7462,6 +7462,44 @@ text = "START!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="fruit_UI" type="Node2D" parent="farmer_frenzy/beginning_UI"]
+
+[node name="papaya_spr_1" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_UI"]
+visible = false
+position = Vector2(14.875, 88.875)
+scale = Vector2(0.348765, 0.348765)
+texture = ExtResource("12_t1dhk")
+
+[node name="papaya_lbl_1" type="Label" parent="farmer_frenzy/beginning_UI/fruit_UI"]
+visible = false
+offset_left = 25.0
+offset_top = 76.0
+offset_right = 65.0
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+theme_override_font_sizes/font_size = 22
+text = "20"
+horizontal_alignment = 1
+
+[node name="papaya_spr_2" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_UI"]
+visible = false
+position = Vector2(1102.13, 88.875)
+scale = Vector2(0.348765, 0.348765)
+texture = ExtResource("12_t1dhk")
+
+[node name="papaya_lbl_2" type="Label" parent="farmer_frenzy/beginning_UI/fruit_UI"]
+visible = false
+offset_left = 1112.25
+offset_top = 76.0
+offset_right = 1152.25
+offset_bottom = 104.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+theme_override_font_sizes/font_size = 22
+text = "20"
+horizontal_alignment = 1
+
 [node name="visual_effects" type="Node2D" parent="farmer_frenzy"]
 
 [node name="farmers" type="Node2D" parent="farmer_frenzy"]

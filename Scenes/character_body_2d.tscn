@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b60soyr5c6qld"]
+[gd_scene load_steps=21 format=3 uid="uid://b60soyr5c6qld"]
 
 [ext_resource type="Script" uid="uid://cgavkxd1lhs46" path="res://Scripts/character_body_2d.gd" id="1_ghijl"]
 [ext_resource type="Texture2D" uid="uid://bs1nv4gudolyg" path="res://Graphics/emiliano.png" id="1_ij6vw"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dytk5payfhy3q" path="res://Scenes/watermelon_projectile.tscn" id="12_ancw4"]
 [ext_resource type="PackedScene" uid="uid://bf3gul4y7e6r6" path="res://Scenes/watermelon_seed.tscn" id="13_8ldn0"]
 [ext_resource type="Script" uid="uid://s72lhwjseikn" path="res://Scripts/papaya.gd" id="14_o8di4"]
+[ext_resource type="PackedScene" uid="uid://bxd50b7lrh1qx" path="res://Scenes/papaya_seed.tscn" id="15_l447x"]
 [ext_resource type="Texture2D" uid="uid://cu2e40ufhwumo" path="res://Graphics/papaya_depleted_bar.png" id="15_q07ms"]
 [ext_resource type="Script" uid="uid://1b4uyi1flsb7" path="res://Scenes/farmer_ui.gd" id="15_x0qg5"]
 [ext_resource type="Texture2D" uid="uid://brqp5lq7a4frc" path="res://Graphics/papaya_full_bar.png" id="16_x0qg5"]
@@ -75,6 +76,7 @@ SEED = ExtResource("13_8ldn0")
 
 [node name="papaya" type="Node2D" parent="fruits"]
 script = ExtResource("14_o8di4")
+PAPAYA = ExtResource("15_l447x")
 
 [node name="Timer" type="Timer" parent="fruits/papaya"]
 wait_time = 3.0
@@ -99,4 +101,7 @@ texture_progress = ExtResource("16_x0qg5")
 
 [node name="Timer" type="Timer" parent="farmer_UI"]
 wait_time = 3.0
+one_shot = true
+
+[node name="deplete_timer" type="Timer" parent="farmer_UI"]
 one_shot = true

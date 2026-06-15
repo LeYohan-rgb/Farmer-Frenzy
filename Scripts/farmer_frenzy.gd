@@ -141,6 +141,8 @@ func quit_menu():
 	Global.player_1_health = 50
 	Global.player_2_health = 50
 	Global.shield = [10, 10]
+	Global.papaya_seeds_count = [20,20]
+	Global.papaya_charging_state = [0,0]
 	Global.bean_amount = [0, 0]
 	Global.kernel_amount = [10, 10]
 	cooldown_1_1.value = 0
