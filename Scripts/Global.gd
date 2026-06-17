@@ -19,6 +19,18 @@ var speed = {
 	"papaya" : 1500
 }
 
+#BUYING MECHANIC
+var plr_currency : int = 0
+var bought_fruits : Dictionary = {
+	"Mango": true,
+	"Avocado": false,
+	"Cocoa": false,
+	"Coconut": false,
+	"Guava": false,
+	"Papaya": true,
+	"Watermelon": true,
+	"Pineapple": false
+}
 #GAME VARIABLES
 var is_in_cooldown = {
 	1:
@@ -59,13 +71,13 @@ var fruit_selected : String = ""
 
 var fruit_prices : Dictionary = {
 	"Mango": 0,
-	"Avocado": 0,
-	"Cocoa": 0,
-	"Coconut": 0,
-	"Guava": 0,
+	"Avocado": 100,
+	"Cocoa": 100,
+	"Coconut": 100,
+	"Guava": 100,
 	"Papaya": 0,
 	"Watermelon": 0,
-	"Pineapple": 0
+	"Pineapple": 100
 }
 
 var cooldown : Dictionary = {
@@ -91,6 +103,17 @@ var fruit_bean_costs : Dictionary = {
 }
 
 var fruit_descriptions : Dictionary = {
+	"Mango": "Throws five big mangos succesively; they get stronger when thrown closer to the river.",
+	"Avocado": "Avocados are a fruit that grow on trees; they are native to Central America.",
+	"Cocoa": "Cocoa is a fruit that is native to Latin America, and are cultivated in Africa.",
+	"Coconut": "Coconut is a popular palm fruit of the genus Cocos. It is native to South-East Asia and Oceania.",
+	"Guava": "They are native to South, Central America and the Carribean, and now cultivated around the world.",
+	"Papaya": "Papayas are a fruit in the genus Carica. They originate from Latin America and are cultivated around the world.",
+	"Watermelon": "Watermelons are a melon fruit that is cultivated around the world; they are native to Africa.",
+	"Pineapple": "Pineapples are a tropical fruit of the genus Ananas."
+}
+
+var long_description : Dictionary = {
 	"Mango": "Throws five big mangos succesively; they get stronger when thrown closer to the river.",
 	"Avocado": "Avocados are a fruit that grow on trees; they are native to Central America.",
 	"Cocoa": "Cocoa is a fruit that is native to Latin America, and are cultivated in Africa.",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=201 format=4 uid="uid://b13l3w04de0xj"]
+[gd_scene load_steps=207 format=4 uid="uid://b13l3w04de0xj"]
 
 [ext_resource type="Script" uid="uid://dccfn22jy3lhk" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://bt6222qb5t2hf" path="res://Fonts/Qilka-Bold copy.otf" id="2_ce3w2"]
@@ -33,10 +33,12 @@
 [ext_resource type="Script" uid="uid://bvmvtccij2laq" path="res://Scripts/paused_ui.gd" id="26_ne6ao"]
 [ext_resource type="Script" uid="uid://bqkbpauiqhoq6" path="res://Scripts/farmers.gd" id="28_fmarx"]
 [ext_resource type="PackedScene" uid="uid://b60soyr5c6qld" path="res://Scenes/character_body_2d.tscn" id="28_tt8ml"]
+[ext_resource type="Texture2D" uid="uid://cguxhhlrcp1dq" path="res://Graphics/clock_icon.png" id="29_bmhhk"]
 [ext_resource type="Script" uid="uid://b001ti5v65gis" path="res://Scripts/pausing_fight_ui.gd" id="29_jw7lb"]
 [ext_resource type="PackedScene" uid="uid://qkrg6mwx2ewg" path="res://Scenes/border.tscn" id="30_hkdq0"]
 [ext_resource type="Script" uid="uid://stdaoieebk62" path="res://Scripts/cooldown.gd" id="32_aylim"]
 [ext_resource type="PackedScene" uid="uid://c3nnb5e1d1v2t" path="res://Scenes/border_river.tscn" id="37_y82t1"]
+[ext_resource type="Script" uid="uid://dncfxykwl1fdl" path="res://Scenes/fruitpedia.gd" id="39_pddej"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cp0ys"]
 shader = ExtResource("2_opfnp")
@@ -6157,11 +6159,38 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3l6me"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ahukf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yuqo8"]
+bg_color = Color(0.596078, 0.447059, 0.270588, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ifnak"]
+bg_color = Color(0.756863, 0.584314, 0.384314, 1)
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+border_color = Color(0.756863, 0.584314, 0.384314, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3eqs5"]
+bg_color = Color(0.929056, 0.824543, 0.708808, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
 [node name="main_menu" type="Node2D"]
 script = ExtResource("1_28flt")
 
 [node name="main" type="Node2D" parent="."]
-visible = false
 
 [node name="bg_pattern2" type="Control" parent="main"]
 layout_mode = 3
@@ -6607,6 +6636,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="farmer_frenzy" type="Node2D" parent="."]
+visible = false
 script = ExtResource("7_cp0ys")
 
 [node name="beginning_UI" type="Node2D" parent="farmer_frenzy"]
@@ -6847,7 +6877,7 @@ texture = ExtResource("18_6dk6o")
 position = Vector2(362, 482)
 texture = ExtResource("19_jr6u5")
 
-[node name="Sprite2D" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_collection"]
+[node name="coconut" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_collection"]
 position = Vector2(456, 484)
 texture = ExtResource("20_6m47u")
 
@@ -6869,14 +6899,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_ko05x")
 text = "PLAY"
 
 [node name="fruit_display" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_menu"]
-position = Vector2(635, 214)
+position = Vector2(631, 214)
 scale = Vector2(1.02006, 1.05093)
 texture = ExtResource("14_vtepg")
 
 [node name="fruit_lbl" type="Label" parent="farmer_frenzy/beginning_UI/fruit_menu"]
-offset_left = 692.0
+offset_left = 681.0
 offset_top = 178.0
-offset_right = 835.0
+offset_right = 824.0
 offset_bottom = 218.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
 theme_override_fonts/font = ExtResource("2_ce3w2")
@@ -7011,14 +7041,14 @@ text = "ADD:"
 autowrap_mode = 2
 
 [node name="bean_icon" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_menu"]
-position = Vector2(775.75, 234)
-scale = Vector2(0.0615235, 0.0615235)
+position = Vector2(747, 234)
+scale = Vector2(0.0524903, 0.0524903)
 texture = ExtResource("10_16hvj")
 
 [node name="bean_price" type="Label" parent="farmer_frenzy/beginning_UI/fruit_menu"]
-offset_left = 782.75
+offset_left = 749.0
 offset_top = 222.0
-offset_right = 822.75
+offset_right = 789.0
 offset_bottom = 248.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
 theme_override_fonts/font = ExtResource("13_5egv6")
@@ -7027,14 +7057,14 @@ text = "15"
 horizontal_alignment = 1
 
 [node name="money_icon" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_menu"]
-position = Vector2(714, 234)
-scale = Vector2(0.0541993, 0.0541993)
+position = Vector2(691, 234)
+scale = Vector2(0.046875, 0.046875)
 texture = ExtResource("23_jr6u5")
 
 [node name="money_price" type="Label" parent="farmer_frenzy/beginning_UI/fruit_menu"]
-offset_left = 722.0
+offset_left = 697.0
 offset_top = 222.0
-offset_right = 762.0
+offset_right = 737.0
 offset_bottom = 248.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
 theme_override_fonts/font = ExtResource("13_5egv6")
@@ -7071,6 +7101,22 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_fmarx")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_hkdq0")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xcoo4")
 text = "X"
+
+[node name="clock_icon" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_menu"]
+position = Vector2(792, 234)
+scale = Vector2(0.0447997, 0.0447997)
+texture = ExtResource("29_bmhhk")
+
+[node name="clock_price" type="Label" parent="farmer_frenzy/beginning_UI/fruit_menu"]
+offset_left = 796.0
+offset_top = 222.0
+offset_right = 836.0
+offset_bottom = 248.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+theme_override_font_sizes/font_size = 20
+text = "15"
+horizontal_alignment = 1
 
 [node name="second_player" type="Node2D" parent="farmer_frenzy/beginning_UI"]
 
@@ -7463,6 +7509,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="fruit_UI" type="Node2D" parent="farmer_frenzy/beginning_UI"]
+z_index = 1
 
 [node name="papaya_spr_1" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_UI"]
 visible = false
@@ -7543,7 +7590,267 @@ scale = Vector2(1, 4.56)
 [node name="border_river" parent="farmer_frenzy/collisions" instance=ExtResource("37_y82t1")]
 position = Vector2(576, 330)
 
+[node name="fruitpedia" type="Node2D" parent="."]
+position = Vector2(0, 21)
+script = ExtResource("39_pddej")
+
+[node name="Panel" type="Panel" parent="fruitpedia"]
+offset_left = 104.0
+offset_top = 107.0
+offset_right = 1057.0
+offset_bottom = 575.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gvnub")
+
+[node name="description" type="Label" parent="fruitpedia"]
+offset_left = 673.0
+offset_top = 159.0
+offset_right = 990.0
+offset_bottom = 528.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+text = "Throw five consecutive mangos at the opponent"
+autowrap_mode = 2
+
+[node name="fruit_profile_photo" type="Sprite2D" parent="fruitpedia"]
+position = Vector2(538, 274)
+scale = Vector2(1.74691, 1.74691)
+texture = ExtResource("20_6m47u")
+
+[node name="fruit_label" type="Label" parent="fruitpedia"]
+offset_left = 448.0
+offset_top = 157.0
+offset_right = 661.0
+offset_bottom = 199.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 30
+text = "WATERMELON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="buy_btn" type="Button" parent="fruitpedia"]
+offset_left = 456.0
+offset_top = 485.0
+offset_right = 618.0
+offset_bottom = 516.0
+theme_override_colors/font_disabled_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_hover_color = Color(0.898039, 0.760784, 0.603922, 1)
+theme_override_colors/font_outline_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_focus_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_pressed_color = Color(0.172549, 0.133333, 0.0823529, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ahukf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yuqo8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yuqo8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_yuqo8")
+text = "BUY"
+
+[node name="clock_icon" type="Sprite2D" parent="fruitpedia"]
+position = Vector2(498.875, 369.125)
+scale = Vector2(0.0659179, 0.0659179)
+texture = ExtResource("29_bmhhk")
+
+[node name="bean_icon" type="Sprite2D" parent="fruitpedia"]
+position = Vector2(495.75, 407)
+scale = Vector2(0.0771485, 0.0771485)
+texture = ExtResource("10_16hvj")
+
+[node name="money_icon" type="Sprite2D" parent="fruitpedia"]
+position = Vector2(493.75, 451)
+scale = Vector2(0.0771484, 0.0771484)
+texture = ExtResource("23_jr6u5")
+
+[node name="go_back_btn" type="Button" parent="fruitpedia"]
+offset_left = 996.0
+offset_top = 131.0
+offset_right = 1021.0
+offset_bottom = 158.0
+theme_override_colors/font_disabled_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_hover_color = Color(0.350503, 0.278273, 0.189507, 1)
+theme_override_colors/font_outline_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_focus_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_colors/font_pressed_color = Color(0.173876, 0.132423, 0.0813834, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tt8ml")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_fmarx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hkdq0")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xcoo4")
+text = "X"
+
+[node name="Panel2" type="Panel" parent="fruitpedia"]
+offset_left = 406.0
+offset_top = 118.0
+offset_right = 429.0
+offset_bottom = 566.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ifnak")
+
+[node name="fruit_btns" type="Node2D" parent="fruitpedia"]
+
+[node name="mango_btn" type="Button" parent="fruitpedia/fruit_btns"]
+offset_left = 172.0
+offset_top = 141.0
+offset_right = 253.0
+offset_bottom = 222.0
+
+[node name="pineapple_btn" type="Button" parent="fruitpedia/fruit_btns"]
+offset_left = 172.0
+offset_top = 233.0
+offset_right = 253.0
+offset_bottom = 314.0
+
+[node name="guava_btn" type="Button" parent="fruitpedia/fruit_btns"]
+offset_left = 172.0
+offset_top = 325.0
+offset_right = 253.0
+offset_bottom = 406.0
+
+[node name="cocoa_btn" type="Button" parent="fruitpedia/fruit_btns"]
+offset_left = 172.0
+offset_top = 417.0
+offset_right = 253.0
+offset_bottom = 498.0
+
+[node name="papaya_btn" type="Button" parent="fruitpedia/fruit_btns"]
+offset_left = 266.0
+offset_top = 141.0
+offset_right = 347.0
+offset_bottom = 222.0
+
+[node name="watermelon_btn" type="Button" parent="fruitpedia/fruit_btns"]
+offset_left = 266.0
+offset_top = 233.0
+offset_right = 347.0
+offset_bottom = 314.0
+
+[node name="avocado_btn" type="Button" parent="fruitpedia/fruit_btns"]
+offset_left = 266.0
+offset_top = 325.0
+offset_right = 347.0
+offset_bottom = 406.0
+
+[node name="coconut_btn" type="Button" parent="fruitpedia/fruit_btns"]
+offset_left = 266.0
+offset_top = 417.0
+offset_right = 347.0
+offset_bottom = 498.0
+
+[node name="mango" type="Sprite2D" parent="fruitpedia/fruit_btns"]
+position = Vector2(210.5, 183.5)
+texture = ExtResource("14_vtepg")
+
+[node name="papaya" type="Sprite2D" parent="fruitpedia/fruit_btns"]
+position = Vector2(303.5, 183.5)
+texture = ExtResource("12_t1dhk")
+
+[node name="pineapple" type="Sprite2D" parent="fruitpedia/fruit_btns"]
+position = Vector2(212.5, 273.5)
+texture = ExtResource("15_8dnnj")
+
+[node name="watermelon" type="Sprite2D" parent="fruitpedia/fruit_btns"]
+position = Vector2(305.5, 273)
+texture = ExtResource("16_4nkqq")
+
+[node name="guava" type="Sprite2D" parent="fruitpedia/fruit_btns"]
+position = Vector2(210.5, 367.5)
+texture = ExtResource("17_ehtkc")
+
+[node name="avocado" type="Sprite2D" parent="fruitpedia/fruit_btns"]
+position = Vector2(305.5, 365.5)
+texture = ExtResource("18_6dk6o")
+
+[node name="cocoa" type="Sprite2D" parent="fruitpedia/fruit_btns"]
+position = Vector2(208.5, 457.5)
+texture = ExtResource("19_jr6u5")
+
+[node name="coconut" type="Sprite2D" parent="fruitpedia/fruit_btns"]
+position = Vector2(302.5, 459.5)
+texture = ExtResource("20_6m47u")
+
+[node name="my_currency_icon" type="Sprite2D" parent="fruitpedia"]
+position = Vector2(140, 538)
+scale = Vector2(0.0483398, 0.0483398)
+texture = ExtResource("23_jr6u5")
+
+[node name="my_currency_lbl" type="Label" parent="fruitpedia"]
+offset_left = 152.0
+offset_top = 526.0
+offset_right = 211.0
+offset_bottom = 552.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+theme_override_font_sizes/font_size = 20
+text = "0"
+vertical_alignment = 1
+
+[node name="clock_lbl" type="Label" parent="fruitpedia"]
+offset_left = 523.75
+offset_top = 355.0
+offset_right = 582.75
+offset_bottom = 383.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+theme_override_font_sizes/font_size = 22
+text = "10"
+vertical_alignment = 1
+
+[node name="bean_lbl" type="Label" parent="fruitpedia"]
+offset_left = 523.75
+offset_top = 395.0
+offset_right = 582.75
+offset_bottom = 423.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+theme_override_font_sizes/font_size = 22
+text = "10"
+vertical_alignment = 1
+
+[node name="money_lbl" type="Label" parent="fruitpedia"]
+offset_left = 523.75
+offset_top = 434.0
+offset_right = 582.75
+offset_bottom = 462.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+theme_override_font_sizes/font_size = 22
+text = "10"
+vertical_alignment = 1
+
+[node name="bought_btn" type="Panel" parent="fruitpedia"]
+visible = false
+offset_left = 456.0
+offset_top = 485.0
+offset_right = 618.0
+offset_bottom = 516.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_3eqs5")
+
+[node name="Label" type="Label" parent="fruitpedia/bought_btn"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 4.0
+offset_right = 123.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 20
+text = "BOUGHT"
+
+[node name="warning_buying" type="Label" parent="fruitpedia"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 454.0
+offset_top = 523.0
+offset_right = 627.0
+offset_bottom = 546.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+text = "Not enough pesos!"
+
 [connection signal="pressed" from="main/basket_UI/farmer_fight_button" to="." method="_on_farmer_fight_button_pressed"]
+[connection signal="pressed" from="main/basket_UI/fruitpedia_button" to="." method="_on_fruitpedia_button_pressed"]
 [connection signal="pressed" from="main/basket_UI/settings_button" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="main/settings_menu/go_back_btn" to="main/settings_menu" method="_on_go_back_btn_pressed"]
 [connection signal="text_changed" from="main/settings_menu/farmer_name_1" to="main/settings_menu" method="_on_farmer_name_1_text_changed"]
@@ -7569,3 +7876,13 @@ position = Vector2(576, 330)
 [connection signal="pressed" from="farmer_frenzy/beginning_UI/pausing_fight_UI/pause_ btn" to="farmer_frenzy/beginning_UI/pausing_fight_UI" method="_on_pause__btn_pressed"]
 [connection signal="pressed" from="farmer_frenzy/beginning_UI/pausing_fight_UI/main_panel/return_to_main" to="farmer_frenzy/beginning_UI/pausing_fight_UI" method="_on_return_to_main_pressed"]
 [connection signal="timeout" from="farmer_frenzy/beginning_UI/pausing_fight_UI/Timer" to="farmer_frenzy/beginning_UI/pausing_fight_UI" method="_on_timer_timeout"]
+[connection signal="pressed" from="fruitpedia/buy_btn" to="fruitpedia" method="_on_buy_btn_pressed"]
+[connection signal="pressed" from="fruitpedia/go_back_btn" to="fruitpedia" method="_on_go_back_btn_pressed"]
+[connection signal="pressed" from="fruitpedia/fruit_btns/mango_btn" to="fruitpedia" method="_on_mango_btn_pressed"]
+[connection signal="pressed" from="fruitpedia/fruit_btns/pineapple_btn" to="fruitpedia" method="_on_pineapple_btn_pressed"]
+[connection signal="pressed" from="fruitpedia/fruit_btns/guava_btn" to="fruitpedia" method="_on_guava_btn_pressed"]
+[connection signal="pressed" from="fruitpedia/fruit_btns/cocoa_btn" to="fruitpedia" method="_on_cocoa_btn_pressed"]
+[connection signal="pressed" from="fruitpedia/fruit_btns/papaya_btn" to="fruitpedia" method="_on_papaya_btn_pressed"]
+[connection signal="pressed" from="fruitpedia/fruit_btns/watermelon_btn" to="fruitpedia" method="_on_watermelon_btn_pressed"]
+[connection signal="pressed" from="fruitpedia/fruit_btns/avocado_btn" to="fruitpedia" method="_on_avocado_btn_pressed"]
+[connection signal="pressed" from="fruitpedia/fruit_btns/coconut_btn" to="fruitpedia" method="_on_coconut_btn_pressed"]

@@ -105,3 +105,5 @@ one_shot = true
 
 [node name="deplete_timer" type="Timer" parent="farmer_UI"]
 one_shot = true
+
+[connection signal="shooting_mango_terminated" from="fruits/papaya" to="farmer_UI" method="_on_papaya_shooting_mango_terminated"]

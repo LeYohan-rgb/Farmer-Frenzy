@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var farmer_frenzy_mode = $farmer_frenzy
 @onready var main_menu_layout = $main
+@onready var fruitpedia_menu = $fruitpedia
 @onready var settings_menu = $main/settings_menu
 
 func _ready():
@@ -25,3 +26,8 @@ func hide_settings():
 
 func _on_settings_button_pressed() -> void:
 	settings_menu.show()
+
+
+func _on_fruitpedia_button_pressed() -> void:
+	fruitpedia_menu.show()
+	fruitpedia_menu.show_a_fruit("Mango")

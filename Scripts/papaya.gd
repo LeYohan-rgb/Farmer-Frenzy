@@ -1,6 +1,7 @@
 extends Node2D
 
 signal shoot_papaya_with_coords(fruit : String)
+signal shooting_mango_terminated
 @export var PAPAYA : PackedScene
 @onready var timer = $Timer
 
@@ -25,7 +26,7 @@ func perform_shooting_papaya(num_of_papayas : int, plr : int):
 		shoot_papaya_with_coords.emit("papaya")
 		Global.papaya_seeds_count[plr - 1] -= 1
 		await Global.wait(0.075)
-		
+	shooting_mango_terminated.emit()
 		
 func shoot_papaya(player : int, position_x, position_y):
 	var desired_scale : float

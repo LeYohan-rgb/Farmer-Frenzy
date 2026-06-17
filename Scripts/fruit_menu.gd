@@ -10,6 +10,7 @@ var fruit_var : String = "Mango"
 @onready var fruit_img = $fruit_display
 @onready var bean_price_lbl = $bean_price
 @onready var money_price_lbl = $money_price
+@onready var clock_price_lbl = $clock_price
 @onready var fruit_desc = $description
 @onready var play_btn = $play_btn
 @onready var warning_label = $warning_pre_play
@@ -33,6 +34,7 @@ func display_fruit(fruit : String):
 	fruit_img.texture = load("res://Graphics/" + fruit + ".png")
 	bean_price_lbl.text = str(Global.fruit_bean_costs[fruit])
 	money_price_lbl.text = str(Global.fruit_prices[fruit])
+	clock_price_lbl.text = str(Global.cooldown[fruit])
 	fruit_desc.text = Global.fruit_descriptions[fruit]
 	
 func change_slot_color(slot, plr):
