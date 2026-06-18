@@ -9,6 +9,9 @@ func _physics_process(delta: float) -> void:
 	if !Global.is_in_farmer_fight:
 		return
 		
+	if !Global.can_shield[plr - 1]:
+		return
+		
 	if Global.is_shielding[plr - 1] and Global.shield[plr - 1] <= 0:
 		remove_shield()
 		

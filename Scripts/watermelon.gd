@@ -7,6 +7,7 @@ signal dead(player : int)
 @onready var spr = $AnimatedSprite2D
 @export var plr : int 
 @export var damage : float
+@export var SPLASH : PackedScene
 
 func _ready() -> void:
 	damage = Global.damage["watermelon"]
@@ -22,7 +23,7 @@ func _physics_process(delta: float) -> void:
 		position.x += speed * delta
 		
 		if position.x > 1280:
-			dead.emit()
+			dead.emit(plr)
 			queue_free()
 			
 	else:
@@ -30,10 +31,19 @@ func _physics_process(delta: float) -> void:
 		
 		#IF OFF-LIMITS, DELETE
 		if position.x < -80:
-			dead.emit()
+			dead.emit(plr)
 			queue_free()
 			
 func _on_body_entered(body: CharacterBody2D) -> void:
 	hit.emit(body.plr, damage)
 	dead.emit(plr)
 	queue_free()
+
+	#SPLASH
+	var x_offset = randf_range(-10,10)
+	var y_offset = randf_range(-10,10)
+	var my_splash = SPLASH.instantiate()
+	my_splash.position.x = position.x + x_offset
+	my_splash.position.y = position.y + y_offset
+	get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(my_splash)
+	my_splash.splashed()

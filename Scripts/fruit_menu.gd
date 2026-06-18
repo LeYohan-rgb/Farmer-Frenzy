@@ -26,6 +26,7 @@ var fruit_var : String = "Mango"
 @onready var slot_3_2 = $slot_3_2
 
 
+
 func display_fruit(fruit : String):
 	player_1_name.text = Global.player_name_1.to_upper() + "'S FRUITS"
 	player_2_name.text = Global.player_name_2.to_upper() + "'S FRUITS"
@@ -36,6 +37,7 @@ func display_fruit(fruit : String):
 	money_price_lbl.text = str(Global.fruit_prices[fruit])
 	clock_price_lbl.text = str(Global.cooldown[fruit])
 	fruit_desc.text = Global.fruit_descriptions[fruit]
+	
 	
 func change_slot_color(slot, plr):
 	if plr == 1:

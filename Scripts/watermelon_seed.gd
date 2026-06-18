@@ -37,6 +37,10 @@ func _physics_process(delta: float) -> void:
 			queue_free()
 			
 func _on_body_entered(body: Node2D) -> void:
+	
+	if body is CharacterBody2D and body.plr != plr:
+		hit.emit(body.plr, damage)
+		queue_free()
 		
 	if body.name == "border4" or body.name == "border5":
 		direction.x *= -1

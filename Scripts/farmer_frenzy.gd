@@ -6,6 +6,7 @@ signal go_to_main_menu
 @onready var fruit_menu = $beginning_UI/fruit_menu
 @onready var beginning_UI = $beginning_UI
 @onready var visual_effects = $visual_effects
+@onready var animation_effects = $animation_effects
 
 #SLOTS
 @onready var plr_1_slot_1_texture = $beginning_UI/first_player/fruit_slots/fruit_1
@@ -135,6 +136,8 @@ func quit_menu():
 	paused_UI.hide()
 	for child in visual_effects.get_children():
 		child.queue_free()
+	for child in animation_effects.get_children():
+		child.queue_free()
 	pausing_midfight.hide()
 	fruit_UI.hide()
 	fruit_menu.display_fruit("Mango")
@@ -146,6 +149,7 @@ func quit_menu():
 	Global.shield = [10, 10]
 	Global.papaya_seeds_count = [40,40]
 	Global.papaya_charging_state = [0,0]
+	Global.can_shield = [true, true]
 	Global.bean_amount = [0, 0]
 	Global.kernel_amount = [10, 10]
 	cooldown_1_1.value = 0
@@ -231,6 +235,8 @@ func game_won(plr_won : int):
 	winning_UI.hide()
 	for child in visual_effects.get_children():
 		child.queue_free()
+	for child in animation_effects.get_children():
+		child.queue_free()
 	quit_menu()
 	
 func paused_midgame(on_or_off : int):
@@ -238,6 +244,9 @@ func paused_midgame(on_or_off : int):
 	
 func ability_pressed(ability_num : int, player : int):
 	var fruit_selected
+	
+	if Global.is_shielding[player - 1]:
+		return
 
 	if player == 1:
 		fruit_selected = Global.player_1_fruits[ability_num - 1]

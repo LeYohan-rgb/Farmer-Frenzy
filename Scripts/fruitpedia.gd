@@ -26,14 +26,14 @@ var selected_fruit : String = ""
 
 func _process(delta: float) -> void:
 	
-	mango_spr.modulate.a = 255 if Global.bought_fruits["Mango"] else 100
-	papaya_spr.modulate.a = 255 if Global.bought_fruits["Papaya"] else 100
-	pineapple_spr.modulate.a = 255 if Global.bought_fruits["Pineapple"] else 100
-	watermelon_spr.modulate.a = 255 if Global.bought_fruits["Watermelon"] else 100
-	guava_spr.modulate.a = 255 if Global.bought_fruits["Guava"] else 100
-	avocado_spr.modulate.a = 255 if Global.bought_fruits["Avocado"] else 100
-	cocoa_spr.modulate.a = 255 if Global.bought_fruits["Cocoa"] else 100
-	coconut_spr.modulate.a = 255 if Global.bought_fruits["Coconut"] else 100
+	mango_spr.modulate.a = 1.0 if Global.bought_fruits["Mango"] else 0.4
+	papaya_spr.modulate.a = 1.0 if Global.bought_fruits["Papaya"] else 0.4
+	pineapple_spr.modulate.a = 1.0 if Global.bought_fruits["Pineapple"] else 0.4
+	watermelon_spr.modulate.a = 1.0 if Global.bought_fruits["Watermelon"] else 0.4
+	guava_spr.modulate.a = 1.0 if Global.bought_fruits["Guava"] else 0.4
+	avocado_spr.modulate.a = 1.0 if Global.bought_fruits["Avocado"] else 0.4
+	cocoa_spr.modulate.a = 1.0 if Global.bought_fruits["Cocoa"] else 0.4
+	coconut_spr.modulate.a = 1.0 if Global.bought_fruits["Coconut"] else 0.4
 	
 	
 func _on_mango_btn_pressed() -> void:

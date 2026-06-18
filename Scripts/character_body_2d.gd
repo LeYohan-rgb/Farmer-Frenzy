@@ -57,6 +57,9 @@ func set_up_before_battle():
 		anim.play("jeronimo")
 		
 func shoot_active(plr_input : int):
+	if Global.is_shielding[plr_input - 1]:
+		return
+		
 	if plr_input == plr:
 		shoot_kernel.shoot(plr, position.x, position.y)
 	else:

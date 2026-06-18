@@ -1,6 +1,6 @@
 extends Node
 
-var debug_mode : bool = true
+var debug_mode : bool = false
 #GAME VARIABLES
 var player_1_wins : int = 0
 var player_2_wins : int = 0
@@ -43,6 +43,8 @@ var player_2_dmg_boost : float = 1
 var shield : Array = [10, 10] #first player, second player
 var kernel_amount : Array = [10, 10]
 var is_shielding : Array = [false, false] #1st, #2nd
+var can_shield : Array = [true, true] 
+
 var bean_amount : Array = [0, 0]
 var damage : Dictionary = {
 	"kernel" : 1.0,
@@ -82,46 +84,59 @@ var fruit_prices : Dictionary = {
 
 var cooldown : Dictionary = {
 	"Mango" : 5,
-	"Avocado" : 1,
-	"Cocoa" : 1,
-	"Coconut" : 1,
-	"Guava" : 1,
+	"Avocado" : 0,
+	"Cocoa" : 0,
+	"Coconut" : 0,
+	"Guava" : 0,
 	"Papaya" : 15,
 	"Watermelon" : 5,
-	"Pineapple" : 1
+	"Pineapple" : 0
 }
 
 var fruit_bean_costs : Dictionary = {
-	"Mango": 1,
-	"Avocado": 2,
-	"Cocoa": 3,
-	"Coconut": 4,
-	"Guava": 5,
-	"Papaya": 0,
-	"Watermelon": 0,
-	"Pineapple": 8
+	"Mango": 5,
+	"Avocado": 0,
+	"Cocoa": 0,
+	"Coconut": 0,
+	"Guava": 0,
+	"Papaya": 5,
+	"Watermelon": 5,
+	"Pineapple": 0
 }
 
 var fruit_descriptions : Dictionary = {
 	"Mango": "Throws five big mangos succesively; they get stronger when thrown closer to the river.",
-	"Avocado": "Avocados are a fruit that grow on trees; they are native to Central America.",
-	"Cocoa": "Cocoa is a fruit that is native to Latin America, and are cultivated in Africa.",
-	"Coconut": "Coconut is a popular palm fruit of the genus Cocos. It is native to South-East Asia and Oceania.",
-	"Guava": "They are native to South, Central America and the Carribean, and now cultivated around the world.",
-	"Papaya": "Papayas are a fruit in the genus Carica. They originate from Latin America and are cultivated around the world.",
-	"Watermelon": "Watermelons are a melon fruit that is cultivated around the world; they are native to Africa.",
-	"Pineapple": "Pineapples are a tropical fruit of the genus Ananas."
+	"Avocado": "N/A",
+	"Cocoa": "N/A",
+	"Coconut": "N/A",
+	"Guava": "N/A",
+	"Papaya": "Charge papaya seeds to launch them at a high rate; the closer to the river, the larger they become.",
+	"Watermelon": "Launch small fast seeds that ricochet off the map's boundaries; their spread is larger closer to the river.",
+	"Pineapple": "N/A"
 }
 
 var long_description : Dictionary = {
-	"Mango": "Throws five big mangos succesively; they get stronger when thrown closer to the river.",
-	"Avocado": "Avocados are a fruit that grow on trees; they are native to Central America.",
-	"Cocoa": "Cocoa is a fruit that is native to Latin America, and are cultivated in Africa.",
-	"Coconut": "Coconut is a popular palm fruit of the genus Cocos. It is native to South-East Asia and Oceania.",
-	"Guava": "They are native to South, Central America and the Carribean, and now cultivated around the world.",
-	"Papaya": "Papayas are a fruit in the genus Carica. They originate from Latin America and are cultivated around the world.",
-	"Watermelon": "Watermelons are a melon fruit that is cultivated around the world; they are native to Africa.",
-	"Pineapple": "Pineapples are a tropical fruit of the genus Ananas."
+	"Mango": 
+		"Mango is an offensive fruit. When harvested, it automatically launches five grown mangos succesively in a straight line at the opponent.
+
+The closer the farmer is to the river, the more powerful the thrown mangos become. They can be as weak as a kernel or up to three times as powerful.
+
+Mangos are slightly slower than kernels, but they are bigger. This allows them to cover a wider area while inflicting a lot of damage.",
+
+	"Avocado": "N/A",
+	"Cocoa": "N/A",
+	"Coconut": "N/A",
+	"Guava": "N/A",
+	
+	"Papaya": "Papaya is an offensive fruit. When harvested, the farmer can collect up to 40 papaya seeds, which they can keep for the rest of the fight; this allows the farmer to charge seeds. The farmer can charge for up to 3 seconds before launching papaya seeds. 
+
+The longer they charge, the more seeds they launch; they are released at an extremely high rate. The closer the farmer is to the river, the larger the seeds become. They grow up to twice the size of a farmer's head!",
+
+	"Watermelon": "Watermelon is an offensive fruit. When harvested, the farmer launches a watermelon slice containing 7 small seeds. At any moment, the farmer can detonate the slice, causing the seeds to quickly fan out from its path.
+
+The farther the farmer is to the river, the wider the spread becomes; at maximum range, the seeds can cover the opponent's entire side of the map. These fast seeds can ricochet off the map's boundaries up to 3 times, losing speed with each bounce.",
+
+	"Pineapple": "N/A"
 }
 
 func wait(sec : float):

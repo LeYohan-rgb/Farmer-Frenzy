@@ -135,7 +135,7 @@ func chance_of_spawn_bean():
 		if Global.game_time % 4 == 1:
 			bean_spawn_1 = randi_range(Global.game_time, Global.game_time + 3)
 			bean_spawn_2 = randi_range(Global.game_time, Global.game_time + 3)
-	if Global.game_time > 120 and Global.game_time <= 180:
+	if Global.game_time > 120:
 		if Global.game_time % 3 == 1:
 			bean_spawn_1 = randi_range(Global.game_time, Global.game_time + 2)
 			bean_spawn_2 = randi_range(Global.game_time, Global.game_time + 2)

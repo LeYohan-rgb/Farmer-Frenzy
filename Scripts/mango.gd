@@ -6,9 +6,11 @@ var coord_x
 var coord_y
 
 func perform_mango(player : int):
+	Global.can_shield[player - 1] = false
 	for i in range(5):
 		shoot_with_coords.emit("mango")
 		await Global.wait(0.333)
+	Global.can_shield[player - 1] = true
 		
 func shoot_mango(player : int, position_x, position_y):
 	var damage_calculated : float

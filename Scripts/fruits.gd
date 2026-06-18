@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 			papaya_timer_started.emit(0)
 			await get_tree().physics_frame
 			Global.papaya_charging_state[plr -1 ] = 2
+			Global.can_shield[plr - 1] = false
 			
 			
 		

@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://s72lhwjseikn" path="res://Scripts/papaya.gd" id="14_o8di4"]
 [ext_resource type="PackedScene" uid="uid://bxd50b7lrh1qx" path="res://Scenes/papaya_seed.tscn" id="15_l447x"]
 [ext_resource type="Texture2D" uid="uid://cu2e40ufhwumo" path="res://Graphics/papaya_depleted_bar.png" id="15_q07ms"]
-[ext_resource type="Script" uid="uid://1b4uyi1flsb7" path="res://Scenes/farmer_ui.gd" id="15_x0qg5"]
+[ext_resource type="Script" uid="uid://1b4uyi1flsb7" path="res://Scripts/farmer_ui.gd" id="15_x0qg5"]
 [ext_resource type="Texture2D" uid="uid://brqp5lq7a4frc" path="res://Graphics/papaya_full_bar.png" id="16_x0qg5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44cfe"]

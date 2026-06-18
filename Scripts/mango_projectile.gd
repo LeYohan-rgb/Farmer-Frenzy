@@ -6,6 +6,7 @@ signal hit(player_hit : int, damage_dealt : float)
 @onready var spr = $Sprite2D
 @export var plr : int 
 @export var damage : float
+@export var SPLASH : PackedScene
 
 func _ready() -> void:
 	if plr == 2:
@@ -31,3 +32,12 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: CharacterBody2D) -> void:
 	hit.emit(body.plr, damage)
 	queue_free()
+
+	#SPLASH
+	var x_offset = randf_range(-10,10)
+	var y_offset = randf_range(-10,10)
+	var my_splash = SPLASH.instantiate()
+	my_splash.position.x = position.x + x_offset
+	my_splash.position.y = position.y + y_offset
+	get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(my_splash)
+	my_splash.splashed()

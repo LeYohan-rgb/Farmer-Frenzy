@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbfsauohq03rs"]
+
+[ext_resource type="Texture2D" uid="uid://de3uj1v1w6rhy" path="res://Graphics/mango_splash.png" id="1_kwjnj"]
+[ext_resource type="Script" uid="uid://difexyrndmkr6" path="res://Scripts/mango_splash.gd" id="2_wff06"]
+
+[node name="mango_splash" type="Sprite2D"]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_kwjnj")
+script = ExtResource("2_wff06")

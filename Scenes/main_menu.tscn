@@ -1,4 +1,4 @@
-[gd_scene load_steps=207 format=4 uid="uid://b13l3w04de0xj"]
+[gd_scene load_steps=209 format=4 uid="uid://b13l3w04de0xj"]
 
 [ext_resource type="Script" uid="uid://dccfn22jy3lhk" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://bt6222qb5t2hf" path="res://Fonts/Qilka-Bold copy.otf" id="2_ce3w2"]
@@ -38,7 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://qkrg6mwx2ewg" path="res://Scenes/border.tscn" id="30_hkdq0"]
 [ext_resource type="Script" uid="uid://stdaoieebk62" path="res://Scripts/cooldown.gd" id="32_aylim"]
 [ext_resource type="PackedScene" uid="uid://c3nnb5e1d1v2t" path="res://Scenes/border_river.tscn" id="37_y82t1"]
-[ext_resource type="Script" uid="uid://dncfxykwl1fdl" path="res://Scenes/fruitpedia.gd" id="39_pddej"]
+[ext_resource type="Script" uid="uid://dncfxykwl1fdl" path="res://Scripts/fruitpedia.gd" id="39_pddej"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cp0ys"]
 shader = ExtResource("2_opfnp")
@@ -2994,6 +2994,8 @@ corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pddej"]
 bg_color = Color(0.756863, 0.584314, 0.384314, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fh77k"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jw7lb"]
 
@@ -6180,6 +6182,8 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hcedr"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3eqs5"]
 bg_color = Color(0.929056, 0.824543, 0.708808, 1)
 corner_radius_top_left = 20
@@ -6806,48 +6810,56 @@ offset_left = 323.0
 offset_top = 167.0
 offset_right = 404.0
 offset_bottom = 248.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fh77k")
 
 [node name="pineapple_btn" type="Button" parent="farmer_frenzy/beginning_UI/fruit_collection"]
 offset_left = 323.0
 offset_top = 259.0
 offset_right = 404.0
 offset_bottom = 340.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fh77k")
 
 [node name="guava_btn" type="Button" parent="farmer_frenzy/beginning_UI/fruit_collection"]
 offset_left = 323.0
 offset_top = 351.0
 offset_right = 404.0
 offset_bottom = 432.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fh77k")
 
 [node name="cocoa_btn" type="Button" parent="farmer_frenzy/beginning_UI/fruit_collection"]
 offset_left = 323.0
 offset_top = 443.0
 offset_right = 404.0
 offset_bottom = 524.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fh77k")
 
 [node name="papaya_btn" type="Button" parent="farmer_frenzy/beginning_UI/fruit_collection"]
 offset_left = 417.0
 offset_top = 167.0
 offset_right = 498.0
 offset_bottom = 248.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fh77k")
 
 [node name="watermelon_btn" type="Button" parent="farmer_frenzy/beginning_UI/fruit_collection"]
 offset_left = 417.0
 offset_top = 259.0
 offset_right = 498.0
 offset_bottom = 340.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fh77k")
 
 [node name="avocado_btn" type="Button" parent="farmer_frenzy/beginning_UI/fruit_collection"]
 offset_left = 417.0
 offset_top = 351.0
 offset_right = 498.0
 offset_bottom = 432.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fh77k")
 
 [node name="coconut_btn" type="Button" parent="farmer_frenzy/beginning_UI/fruit_collection"]
 offset_left = 417.0
 offset_top = 443.0
 offset_right = 498.0
 offset_bottom = 524.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fh77k")
 
 [node name="mango" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_collection"]
 position = Vector2(364, 208)
@@ -6923,7 +6935,7 @@ offset_bottom = 347.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
 theme_override_fonts/font = ExtResource("13_5egv6")
 theme_override_font_sizes/font_size = 15
-text = "Replaces corn with mango! Slower shooting speed, but bigger projectile size."
+text = "Charge papaya seeds to quickly launch them; the closer to the river, the larger they become."
 autowrap_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_menu"]
@@ -7547,6 +7559,8 @@ theme_override_font_sizes/font_size = 22
 text = "20"
 horizontal_alignment = 1
 
+[node name="animation_effects" type="Node2D" parent="farmer_frenzy"]
+
 [node name="visual_effects" type="Node2D" parent="farmer_frenzy"]
 
 [node name="farmers" type="Node2D" parent="farmer_frenzy"]
@@ -7591,6 +7605,7 @@ scale = Vector2(1, 4.56)
 position = Vector2(576, 330)
 
 [node name="fruitpedia" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, 21)
 script = ExtResource("39_pddej")
 
@@ -7607,7 +7622,9 @@ offset_top = 159.0
 offset_right = 990.0
 offset_bottom = 528.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
-text = "Throw five consecutive mangos at the opponent"
+text = "Watermelon is an offensive fruit. When harvested, the farmer launches a watermelon slice containing 7 small seeds. At any moment, the farmer can detonate the slice, causing the seeds to quickly fan out from its path.
+
+The farther the farmer is to the river, the wider the spread becomes; at maximum range, the seeds can cover the opponent's entire side of the map. They can ricochet off the map's boundaries up to 3 times, losing speed with each bounce."
 autowrap_mode = 2
 
 [node name="fruit_profile_photo" type="Sprite2D" parent="fruitpedia"]
@@ -7696,48 +7713,56 @@ offset_left = 172.0
 offset_top = 141.0
 offset_right = 253.0
 offset_bottom = 222.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hcedr")
 
 [node name="pineapple_btn" type="Button" parent="fruitpedia/fruit_btns"]
 offset_left = 172.0
 offset_top = 233.0
 offset_right = 253.0
 offset_bottom = 314.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hcedr")
 
 [node name="guava_btn" type="Button" parent="fruitpedia/fruit_btns"]
 offset_left = 172.0
 offset_top = 325.0
 offset_right = 253.0
 offset_bottom = 406.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hcedr")
 
 [node name="cocoa_btn" type="Button" parent="fruitpedia/fruit_btns"]
 offset_left = 172.0
 offset_top = 417.0
 offset_right = 253.0
 offset_bottom = 498.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hcedr")
 
 [node name="papaya_btn" type="Button" parent="fruitpedia/fruit_btns"]
 offset_left = 266.0
 offset_top = 141.0
 offset_right = 347.0
 offset_bottom = 222.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hcedr")
 
 [node name="watermelon_btn" type="Button" parent="fruitpedia/fruit_btns"]
 offset_left = 266.0
 offset_top = 233.0
 offset_right = 347.0
 offset_bottom = 314.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hcedr")
 
 [node name="avocado_btn" type="Button" parent="fruitpedia/fruit_btns"]
 offset_left = 266.0
 offset_top = 325.0
 offset_right = 347.0
 offset_bottom = 406.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hcedr")
 
 [node name="coconut_btn" type="Button" parent="fruitpedia/fruit_btns"]
 offset_left = 266.0
 offset_top = 417.0
 offset_right = 347.0
 offset_bottom = 498.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hcedr")
 
 [node name="mango" type="Sprite2D" parent="fruitpedia/fruit_btns"]
 position = Vector2(210.5, 183.5)

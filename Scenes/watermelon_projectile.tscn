@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dytk5payfhy3q"]
+[gd_scene load_steps=6 format=3 uid="uid://dytk5payfhy3q"]
 
 [ext_resource type="Script" uid="uid://1m3026kvpxje" path="res://Scripts/watermelon.gd" id="1_muf8u"]
+[ext_resource type="PackedScene" uid="uid://d3uioelgnnpyo" path="res://Scenes/Animation/watermelon_splash.tscn" id="2_7ihjs"]
 [ext_resource type="Texture2D" uid="uid://bhc45g7edvgvi" path="res://Graphics/watermelon_projectile.png" id="2_6231b"]
 [ext_resource type="Texture2D" uid="uid://hvk47vpe8or0" path="res://Graphics/watermelon_sans_grains.png" id="3_7ihjs"]
 
@@ -26,6 +27,7 @@ animations = [{
 [node name="watermelon_projectile" type="Area2D"]
 collision_layer = 2
 script = ExtResource("1_muf8u")
+SPLASH = ExtResource("2_7ihjs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.125, 0.125)

@@ -42,3 +42,4 @@ func _on_papaya_shooting_mango_terminated() -> void:
 	if Global.papaya_seeds_count[plr - 1] <= 0:
 		Global.papaya_charging_state[plr - 1] = 0
 	self.hide()
+	Global.can_shield[plr - 1] =true
