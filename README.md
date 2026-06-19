@@ -67,7 +67,7 @@ Each fruit has two main stats: bean cost and cooldown. Each fruit costs a certai
     <li>FRUIT ABILITIES: 'Comma (,)', 'Period (.)', and 'Slash (/)'</li>
 </ul>
 
-#TODO LIST
+# TODO List
 
 <ul>
     <li>Add Mobile Support</li>
