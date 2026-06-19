@@ -4,6 +4,7 @@ extends Area2D
 signal hit(dmg : int)
 
 @onready var spr = $Sprite2D
+@onready var block_sound = $block_audio
 
 func _ready() -> void:
 	if plr == 2:
@@ -11,12 +12,8 @@ func _ready() -> void:
 
 
 
-func _on_body_entered(body: CharacterBody2D) -> void:
-		
-	hit.emit(body.plr)
-	queue_free()
-
 
 func _on_area_entered(area: Area2D) -> void:
 	hit.emit(area.damage)
+	block_sound.play()
 	area.queue_free()

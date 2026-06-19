@@ -47,9 +47,12 @@ signal go_to_main_menu
 @onready var farmer_2 = $farmers/farmer2
 
 @onready var fruit_UI = $beginning_UI/fruit_UI
+@onready var pre_fight_audio = $music/pre_fight
+@onready var fight_audio = $music/farmer_fight
 
 func begin_game():
 	
+	pre_fight_audio.play()
 	fruit_menu.display_fruit("Mango")
 	map.modulate = Color("a2a2a2")
 	fruit_menu.show()
@@ -130,6 +133,8 @@ func paused_mode_menu():
 	get_tree().paused = true
 
 func quit_menu():
+	fight_audio.stop()
+	pre_fight_audio.stop()
 	for i in range(2):
 		for j in range(3):
 			clear_player_slot(j+1, i+1)
@@ -178,6 +183,8 @@ func not_go_to_quit_menu():
 	get_tree().paused = false
 
 func begin_farmer_fight():
+	pre_fight_audio.stop()
+	fight_audio.play()
 	map.modulate = Color("ffffff")
 	fruit_menu.hide()
 	fruit_collection_menu.hide()

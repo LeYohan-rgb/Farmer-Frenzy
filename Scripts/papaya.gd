@@ -4,6 +4,8 @@ signal shoot_papaya_with_coords(fruit : String)
 signal shooting_mango_terminated
 @export var PAPAYA : PackedScene
 @onready var timer = $Timer
+@onready var small_throw = $small_throw
+@onready var impact_sound = $impact_sound
 
 
 func timer_started():
@@ -44,9 +46,11 @@ func shoot_papaya(player : int, position_x, position_y):
 	var offset = 60 if player == 1 else -60
 	papaya_item.position.x = position_x + offset
 	get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(papaya_item)
+	small_throw.play()
 	papaya_item.hit.connect(damage)
 	
 func damage(player_hitted : int, damage_dealt : float):
+	impact_sound.play()
 	if player_hitted == 1:
 		Global.player_1_health -= damage_dealt * Global.player_1_dmg_boost
 	else:

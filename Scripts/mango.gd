@@ -2,6 +2,8 @@ extends Node2D
 
 signal shoot_with_coords(str : String)
 @export var MANGO : PackedScene
+@onready var throw_sound = $throw_sound
+@onready var impact_sound = $impact_sound
 var coord_x
 var coord_y
 
@@ -27,9 +29,11 @@ func shoot_mango(player : int, position_x, position_y):
 	var offset = 60 if player == 1 else -60
 	mango_item.position.x = position_x + offset
 	get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(mango_item)
+	throw_sound.play()
 	mango_item.hit.connect(damage)
 	
 func damage(player_hitted : int, damage_dealt : float):
+	impact_sound.play()
 	if player_hitted == 1:
 		Global.player_1_health -= damage_dealt * Global.player_1_dmg_boost
 	else:

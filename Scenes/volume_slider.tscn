@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckbpanikq6ypg"]
+
+[ext_resource type="Script" uid="uid://bkegp3plya7w5" path="res://h_slider.gd" id="1_0rqdt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rqdt"]
+bg_color = Color(0.898039, 0.760784, 0.603922, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqtbv"]
+bg_color = Color(0.933333, 0.835294, 0.721569, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[node name="volume_slider" type="HSlider"]
+offset_right = 116.0
+offset_bottom = 16.0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0rqdt")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_xqtbv")
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_0rqdt")

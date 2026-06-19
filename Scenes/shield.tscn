@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dh5cqb4jer4dm"]
+[gd_scene load_steps=5 format=3 uid="uid://dh5cqb4jer4dm"]
 
 [ext_resource type="Script" uid="uid://b1ilujgvs61yj" path="res://Scripts/shield.gd" id="1_oux8c"]
 [ext_resource type="Texture2D" uid="uid://c763yf5xs67m8" path="res://Graphics/shield_in_game.png" id="1_vuocu"]
+[ext_resource type="AudioStream" uid="uid://brjarlhd1uuri" path="res://Music/block_shield.mp3" id="3_afmmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nsxlm"]
 size = Vector2(20, 62)
@@ -18,5 +19,9 @@ texture = ExtResource("1_vuocu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_nsxlm")
+
+[node name="block_audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_afmmn")
+bus = &"sfx"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

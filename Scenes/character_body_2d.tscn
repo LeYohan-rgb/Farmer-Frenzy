@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b60soyr5c6qld"]
+[gd_scene load_steps=26 format=3 uid="uid://b60soyr5c6qld"]
 
 [ext_resource type="Script" uid="uid://cgavkxd1lhs46" path="res://Scripts/character_body_2d.gd" id="1_ghijl"]
 [ext_resource type="Texture2D" uid="uid://bs1nv4gudolyg" path="res://Graphics/emiliano.png" id="1_ij6vw"]
@@ -6,18 +6,23 @@
 [ext_resource type="Script" uid="uid://cag8dg2gj5u40" path="res://Scripts/shoot_kernel.gd" id="5_pbq55"]
 [ext_resource type="PackedScene" uid="uid://drk7iqud0nftr" path="res://Scenes/kernel.tscn" id="5_t38ji"]
 [ext_resource type="Script" uid="uid://ds00eavas7qsj" path="res://Scripts/summon_shield.gd" id="6_fxof2"]
+[ext_resource type="AudioStream" uid="uid://d00ximqsfcvtm" path="res://Music/kernel_shoot_sound.mp3" id="6_u736u"]
 [ext_resource type="PackedScene" uid="uid://dh5cqb4jer4dm" path="res://Scenes/shield.tscn" id="7_pbj7x"]
 [ext_resource type="Script" uid="uid://dv1jbpgh77yfq" path="res://Scripts/fruits.gd" id="8_fxof2"]
 [ext_resource type="Script" uid="uid://d23yxmdst1f6s" path="res://Scripts/mango.gd" id="9_601d1"]
 [ext_resource type="PackedScene" uid="uid://gkv5dloi5mxy" path="res://Scenes/mango_projectile.tscn" id="10_6d06k"]
 [ext_resource type="Script" uid="uid://u6p4ja0tsi1q" path="res://Scripts/watermelon_ability.gd" id="11_p20bj"]
+[ext_resource type="AudioStream" uid="uid://cu2lmgqo5afyd" path="res://Music/large throw.mp3" id="12_8f6q8"]
 [ext_resource type="PackedScene" uid="uid://dytk5payfhy3q" path="res://Scenes/watermelon_projectile.tscn" id="12_ancw4"]
+[ext_resource type="AudioStream" uid="uid://qwcs0pviw1rq" path="res://Music/juicy_splash.mp3" id="13_2sln1"]
 [ext_resource type="PackedScene" uid="uid://bf3gul4y7e6r6" path="res://Scenes/watermelon_seed.tscn" id="13_8ldn0"]
 [ext_resource type="Script" uid="uid://s72lhwjseikn" path="res://Scripts/papaya.gd" id="14_o8di4"]
 [ext_resource type="PackedScene" uid="uid://bxd50b7lrh1qx" path="res://Scenes/papaya_seed.tscn" id="15_l447x"]
 [ext_resource type="Texture2D" uid="uid://cu2e40ufhwumo" path="res://Graphics/papaya_depleted_bar.png" id="15_q07ms"]
 [ext_resource type="Script" uid="uid://1b4uyi1flsb7" path="res://Scripts/farmer_ui.gd" id="15_x0qg5"]
 [ext_resource type="Texture2D" uid="uid://brqp5lq7a4frc" path="res://Graphics/papaya_full_bar.png" id="16_x0qg5"]
+[ext_resource type="AudioStream" uid="uid://m1w42tqvabff" path="res://Music/small_throw.mp3" id="17_2sln1"]
+[ext_resource type="AudioStream" uid="uid://vyyl8nwoc1p5" path="res://Music/small_impact.mp3" id="20_hay6s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44cfe"]
 radius = 15.0
@@ -58,6 +63,14 @@ animation = &"jeronimo"
 script = ExtResource("5_pbq55")
 KERNEL = ExtResource("5_t38ji")
 
+[node name="shoot_kernel_sound" type="AudioStreamPlayer" parent="shoot_kernel"]
+stream = ExtResource("6_u736u")
+bus = &"sfx"
+
+[node name="impact_sound" type="AudioStreamPlayer" parent="shoot_kernel"]
+stream = ExtResource("20_hay6s")
+bus = &"sfx"
+
 [node name="summon_shield" type="Node2D" parent="."]
 script = ExtResource("6_fxof2")
 SHIELD = ExtResource("7_pbj7x")
@@ -69,10 +82,34 @@ script = ExtResource("8_fxof2")
 script = ExtResource("9_601d1")
 MANGO = ExtResource("10_6d06k")
 
+[node name="throw_sound" type="AudioStreamPlayer" parent="fruits/mango"]
+stream = ExtResource("12_8f6q8")
+bus = &"sfx"
+
+[node name="impact_sound" type="AudioStreamPlayer" parent="fruits/mango"]
+stream = ExtResource("13_2sln1")
+bus = &"sfx"
+
 [node name="watermelon" type="Node2D" parent="fruits"]
 script = ExtResource("11_p20bj")
 WATERMELON = ExtResource("12_ancw4")
 SEED = ExtResource("13_8ldn0")
+
+[node name="large_throw" type="AudioStreamPlayer" parent="fruits/watermelon"]
+stream = ExtResource("12_8f6q8")
+bus = &"sfx"
+
+[node name="small_throw" type="AudioStreamPlayer" parent="fruits/watermelon"]
+stream = ExtResource("17_2sln1")
+bus = &"sfx"
+
+[node name="small_impact" type="AudioStreamPlayer" parent="fruits/watermelon"]
+stream = ExtResource("20_hay6s")
+bus = &"sfx"
+
+[node name="juicy_splash" type="AudioStreamPlayer" parent="fruits/watermelon"]
+stream = ExtResource("13_2sln1")
+bus = &"sfx"
 
 [node name="papaya" type="Node2D" parent="fruits"]
 script = ExtResource("14_o8di4")
@@ -81,6 +118,14 @@ PAPAYA = ExtResource("15_l447x")
 [node name="Timer" type="Timer" parent="fruits/papaya"]
 wait_time = 3.0
 one_shot = true
+
+[node name="small_throw" type="AudioStreamPlayer" parent="fruits/papaya"]
+stream = ExtResource("17_2sln1")
+bus = &"sfx"
+
+[node name="impact_sound" type="AudioStreamPlayer" parent="fruits/papaya"]
+stream = ExtResource("20_hay6s")
+bus = &"sfx"
 
 [node name="farmer_UI" type="Node2D" parent="."]
 visible = false

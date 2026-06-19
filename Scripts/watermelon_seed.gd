@@ -8,6 +8,7 @@ signal hit(player_hit : int, damage_dealt : float)
 @export var damage : float
 var direction : Vector2
 var num_of_ricochets : int = 3
+@onready var impact_sound = $impact_sound
 
 func _ready() -> void:
 	damage = Global.damage["watermelon_seed"]
@@ -43,6 +44,7 @@ func _on_body_entered(body: Node2D) -> void:
 		queue_free()
 		
 	if body.name == "border4" or body.name == "border5":
+		impact_sound.play()
 		direction.x *= -1
 		if num_of_ricochets == 3:
 			num_of_ricochets -= 1 
@@ -54,6 +56,7 @@ func _on_body_entered(body: Node2D) -> void:
 			num_of_ricochets -= 1 
 		
 	if body.name == "border" or body.name == "border3":
+		impact_sound.play()
 		direction.y *= -1
 		if num_of_ricochets == 3:
 			num_of_ricochets -= 1 

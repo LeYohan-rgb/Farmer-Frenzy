@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=4 uid="uid://b13l3w04de0xj"]
+[gd_scene load_steps=217 format=4 uid="uid://b13l3w04de0xj"]
 
 [ext_resource type="Script" uid="uid://dccfn22jy3lhk" path="res://Scripts/main_menu.gd" id="1_28flt"]
 [ext_resource type="FontFile" uid="uid://bt6222qb5t2hf" path="res://Fonts/Qilka-Bold copy.otf" id="2_ce3w2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cqtjpfxo8rp8k" path="res://Scenes/beans.tscn" id="9_6vfk8"]
 [ext_resource type="Texture2D" uid="uid://dxrj3xa2vkpi3" path="res://Graphics/corn_icon.png" id="9_trj04"]
 [ext_resource type="Texture2D" uid="uid://cl78os1t2wyb8" path="res://Graphics/magical_bean.png" id="10_16hvj"]
+[ext_resource type="AudioStream" uid="uid://braji2bler1xb" path="res://Music/farmer-frenzy-bg.mp3" id="11_ko05x"]
 [ext_resource type="Texture2D" uid="uid://cfpoloh26e8f6" path="res://Graphics/shield icon.png" id="11_vr1f0"]
 [ext_resource type="Texture2D" uid="uid://vwjmevot3xb2" path="res://Graphics/Papaya.png" id="12_t1dhk"]
 [ext_resource type="FontFile" uid="uid://berlj0437cjwq" path="res://Fonts/Montserrat-Bold.ttf" id="13_5egv6"]
@@ -37,8 +38,11 @@
 [ext_resource type="Script" uid="uid://b001ti5v65gis" path="res://Scripts/pausing_fight_ui.gd" id="29_jw7lb"]
 [ext_resource type="PackedScene" uid="uid://qkrg6mwx2ewg" path="res://Scenes/border.tscn" id="30_hkdq0"]
 [ext_resource type="Script" uid="uid://stdaoieebk62" path="res://Scripts/cooldown.gd" id="32_aylim"]
+[ext_resource type="PackedScene" uid="uid://ckbpanikq6ypg" path="res://Scenes/volume_slider.tscn" id="36_dp8uv"]
 [ext_resource type="PackedScene" uid="uid://c3nnb5e1d1v2t" path="res://Scenes/border_river.tscn" id="37_y82t1"]
 [ext_resource type="Script" uid="uid://dncfxykwl1fdl" path="res://Scripts/fruitpedia.gd" id="39_pddej"]
+[ext_resource type="AudioStream" uid="uid://bbrxpuoggs5pt" path="res://Music/farmer-pre-fight.mp3" id="40_3533h"]
+[ext_resource type="AudioStream" uid="uid://dh17imh04ymll" path="res://Music/Farmer Fight.mp3" id="41_dp8uv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cp0ys"]
 shader = ExtResource("2_opfnp")
@@ -2941,6 +2945,18 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6qc4h"]
+bg_color = Color(0.66014, 0.498784, 0.309666, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2h8fa"]
+bg_color = Color(0.756863, 0.584314, 0.384314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqu1d"]
+bg_color = Color(0.658824, 0.498039, 0.309804, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vh2r"]
+bg_color = Color(0.756863, 0.584314, 0.384314, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vfk8"]
 bg_color = Color(0.59592, 0.445777, 0.268962, 1)
@@ -6508,13 +6524,14 @@ texture = ExtResource("6_opfnp")
 
 [node name="settings_menu" type="Node2D" parent="main"]
 visible = false
+position = Vector2(0, -32)
 script = ExtResource("7_1xund")
 
 [node name="Panel" type="Panel" parent="main/settings_menu"]
 offset_left = 310.0
 offset_top = 285.0
 offset_right = 871.0
-offset_bottom = 581.0
+offset_bottom = 641.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_gvnub")
 
 [node name="go_back_btn" type="Button" parent="main/settings_menu"]
@@ -6638,6 +6655,61 @@ theme_override_font_sizes/font_size = 20
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="volume_slider" parent="main/settings_menu" instance=ExtResource("36_dp8uv")]
+process_mode = 3
+offset_left = 370.0
+offset_top = 522.0
+offset_right = 670.0
+offset_bottom = 538.0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_6qc4h")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_2h8fa")
+bus_name = "music"
+
+[node name="volume_slider2" parent="main/settings_menu" instance=ExtResource("36_dp8uv")]
+process_mode = 3
+offset_left = 370.0
+offset_top = 580.0
+offset_right = 670.0
+offset_bottom = 596.0
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_bqu1d")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_5vh2r")
+bus_name = "sfx"
+
+[node name="sfx_lbl" type="Label" parent="main/settings_menu"]
+offset_left = 421.0
+offset_top = 550.0
+offset_right = 538.0
+offset_bottom = 573.0
+theme_override_colors/font_color = Color(0.898039, 0.760784, 0.603922, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+text = "Sound Effects"
+
+[node name="music_lbl" type="Label" parent="main/settings_menu"]
+offset_left = 381.0
+offset_top = 489.0
+offset_right = 539.0
+offset_bottom = 513.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 20
+text = "MUSIC AUDIO"
+
+[node name="music_lbl2" type="Label" parent="main/settings_menu"]
+offset_left = 381.0
+offset_top = 550.0
+offset_right = 539.0
+offset_bottom = 574.0
+theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
+theme_override_fonts/font = ExtResource("2_ce3w2")
+theme_override_font_sizes/font_size = 20
+text = "SOUND EFFECTS"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="main"]
+process_mode = 3
+stream = ExtResource("11_ko05x")
+autoplay = true
+bus = &"music"
 
 [node name="farmer_frenzy" type="Node2D" parent="."]
 visible = false
@@ -7359,7 +7431,7 @@ script = ExtResource("26_ne6ao")
 offset_left = 433.0
 offset_top = 291.0
 offset_right = 713.0
-offset_bottom = 371.0
+offset_bottom = 478.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_pavwk")
 
 [node name="Label" type="Label" parent="farmer_frenzy/beginning_UI/paused_UI"]
@@ -7373,9 +7445,9 @@ theme_override_font_sizes/font_size = 18
 text = "RETURN TO MAIN MENU?"
 
 [node name="x_iconss" type="Button" parent="farmer_frenzy/beginning_UI/paused_UI"]
-offset_left = 512.0
+offset_left = 518.0
 offset_top = 331.0
-offset_right = 548.0
+offset_right = 554.0
 offset_bottom = 367.0
 theme_override_fonts/font = SubResource("FontFile_84iac")
 theme_override_font_sizes/font_size = 15
@@ -7387,9 +7459,9 @@ icon = ExtResource("26_5n0dv")
 flat = true
 
 [node name="check_icons" type="Button" parent="farmer_frenzy/beginning_UI/paused_UI"]
-offset_left = 582.0
+offset_left = 588.0
 offset_top = 331.0
-offset_right = 618.0
+offset_right = 624.0
 offset_bottom = 367.0
 theme_override_fonts/font = SubResource("FontFile_ne6ao")
 theme_override_font_sizes/font_size = 15
@@ -7399,6 +7471,40 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_43km2")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3533h")
 icon = SubResource("CompressedTexture2D_tt8ml")
 flat = true
+
+[node name="volume_slider" parent="farmer_frenzy/beginning_UI/paused_UI" instance=ExtResource("36_dp8uv")]
+process_mode = 3
+offset_left = 467.0
+offset_top = 400.0
+offset_right = 673.0
+offset_bottom = 416.0
+bus_name = "music"
+
+[node name="music_lbl" type="Label" parent="farmer_frenzy/beginning_UI/paused_UI"]
+offset_left = 526.0
+offset_top = 380.0
+offset_right = 630.0
+offset_bottom = 403.0
+theme_override_colors/font_color = Color(0.898039, 0.760784, 0.603922, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+text = "Music Audio"
+
+[node name="volume_slider2" parent="farmer_frenzy/beginning_UI/paused_UI" instance=ExtResource("36_dp8uv")]
+process_mode = 3
+offset_left = 467.0
+offset_top = 441.0
+offset_right = 673.0
+offset_bottom = 457.0
+bus_name = "sfx"
+
+[node name="sfx_lbl" type="Label" parent="farmer_frenzy/beginning_UI/paused_UI"]
+offset_left = 518.0
+offset_top = 421.0
+offset_right = 635.0
+offset_bottom = 444.0
+theme_override_colors/font_color = Color(0.898039, 0.760784, 0.603922, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+text = "Sound Effects"
 
 [node name="winning_UI" type="Node2D" parent="farmer_frenzy/beginning_UI"]
 visible = false
@@ -7477,7 +7583,7 @@ visible = false
 offset_left = 433.0
 offset_top = 291.0
 offset_right = 713.0
-offset_bottom = 371.0
+offset_bottom = 452.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_m8avj")
 
 [node name="return_to_main" type="Button" parent="farmer_frenzy/beginning_UI/pausing_fight_UI/main_panel"]
@@ -7502,6 +7608,44 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_vj5y7")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3l6me")
 text = "RETURN TO MAIN MENU"
 flat = true
+
+[node name="volume_slider" parent="farmer_frenzy/beginning_UI/pausing_fight_UI/main_panel" instance=ExtResource("36_dp8uv")]
+process_mode = 3
+layout_mode = 0
+offset_left = 35.0
+offset_top = 84.0
+offset_right = 241.0
+offset_bottom = 100.0
+bus_name = "music"
+
+[node name="music_lbl" type="Label" parent="farmer_frenzy/beginning_UI/pausing_fight_UI/main_panel"]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 64.0
+offset_right = 180.0
+offset_bottom = 87.0
+theme_override_colors/font_color = Color(0.898039, 0.760784, 0.603922, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+text = "Music Audio"
+
+[node name="volume_slider2" parent="farmer_frenzy/beginning_UI/pausing_fight_UI/main_panel" instance=ExtResource("36_dp8uv")]
+process_mode = 3
+layout_mode = 0
+offset_left = 35.0
+offset_top = 125.0
+offset_right = 241.0
+offset_bottom = 141.0
+bus_name = "sfx"
+
+[node name="sfx_lbl" type="Label" parent="farmer_frenzy/beginning_UI/pausing_fight_UI/main_panel"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 105.0
+offset_right = 203.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.898039, 0.760784, 0.603922, 1)
+theme_override_fonts/font = ExtResource("13_5egv6")
+text = "Sound Effects"
 
 [node name="Timer" type="Timer" parent="farmer_frenzy/beginning_UI/pausing_fight_UI"]
 
@@ -7603,6 +7747,19 @@ scale = Vector2(1, 4.56)
 
 [node name="border_river" parent="farmer_frenzy/collisions" instance=ExtResource("37_y82t1")]
 position = Vector2(576, 330)
+
+[node name="music" type="Node2D" parent="farmer_frenzy"]
+
+[node name="pre_fight" type="AudioStreamPlayer" parent="farmer_frenzy/music"]
+process_mode = 3
+stream = ExtResource("40_3533h")
+bus = &"music"
+
+[node name="farmer_fight" type="AudioStreamPlayer" parent="farmer_frenzy/music"]
+process_mode = 3
+stream = ExtResource("41_dp8uv")
+volume_db = -5.0
+bus = &"music"
 
 [node name="fruitpedia" type="Node2D" parent="."]
 visible = false
