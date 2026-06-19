@@ -70,9 +70,11 @@ Each fruit has two main stats: bean cost and cooldown. Each fruit costs a certai
 # Credits
 
 <strong>GRAPHICS</strong>
+
 Flaticon, (https://comigo.itch.io/farm-puzzle-animals) Comigo
 
 <strong>SOUND</strong>
+
 Freesound, Matthew Pablo (https://opengameart.org/content/riverside-ride)
 
 
