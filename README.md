@@ -3,7 +3,8 @@
 <img width="350" height="204" alt="farmer_frenzy_game_logo" src="https://github.com/user-attachments/assets/9a1533d7-5973-44a1-9f92-5a971cf5fab7" />
 
 Welcome to Farmer Frenzy: a battle game where two farmers fight by collecting beans from the ground to harvest special fruits to aid them in battle, each one with a different power! The last farmer standing wins.
-You can play it here: https://yohan-xx.itch.io/farmer-frenzy
+You can play it here: https://yohan-xx.itch.io/farmer-frenzy <br>
+(<i>NOTE</i>: I submitted this project to Macondo, a Hackclub event, where it got starfruited! See it here: https://macondo.hackclub.com/projects/5862)
 
 <strong>INSPIRATION</strong> <br>
 One of my first games was a spaceship battle game on Godot where each player had unique abilities (blackholes, redirection bullets, etc). I quickly moved on to other projects, but the idea to make an ability-based game stayed on my mind. Now, that was my inspiration for the gameplay mechanic. Farmer Frenzy was originally going to be a typical farming game, clearly inspired by the fruits from Macondo. I didn't find the gameplay entertaining, so I settled on two contrasting themes: a fighting and a 'farming' game.
