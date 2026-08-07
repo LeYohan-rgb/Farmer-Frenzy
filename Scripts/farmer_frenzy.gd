@@ -155,6 +155,7 @@ func quit_menu():
 	Global.papaya_seeds_count = [40,40]
 	Global.papaya_charging_state = [0,0]
 	Global.can_shield = [true, true]
+	Global.pineapple_is_on = [false, false]
 	Global.bean_amount = [0, 0]
 	Global.kernel_amount = [10, 10]
 	cooldown_1_1.value = 0

@@ -6727,7 +6727,7 @@ texture = ExtResource("8_trj04")
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1154.0
-offset_bottom = 653.0
+offset_bottom = 641.0
 
 [node name="first_player" type="Node2D" parent="farmer_frenzy/beginning_UI"]
 
@@ -7762,6 +7762,7 @@ volume_db = -5.0
 bus = &"music"
 
 [node name="fruitpedia" type="Node2D" parent="."]
+visible = false
 position = Vector2(0, 21)
 script = ExtResource("39_pddej")
 

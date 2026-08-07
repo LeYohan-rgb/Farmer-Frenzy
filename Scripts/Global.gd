@@ -149,6 +149,7 @@ var watermelon_is_alive : Array = [false, false]
 #O : DORMANT, 1: CAN_START_CHARGE, 2: ISCHARGING, 3: DEPLETING
 var papaya_charging_state : Array = [0,0]
 var papaya_seeds_count : Array = [40,40]
+var pineapple_is_on : Array = [false, false]
 
 func num_to_ordinal(num : int) -> String:
 	if num == 1:
