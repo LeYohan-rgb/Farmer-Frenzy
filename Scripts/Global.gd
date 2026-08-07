@@ -20,7 +20,7 @@ var speed = {
 }
 
 #BUYING MECHANIC
-var plr_currency : int = 0
+var plr_currency : int = 1000
 var bought_fruits : Dictionary = {
 	"Mango": true,
 	"Avocado": false,
@@ -90,7 +90,7 @@ var cooldown : Dictionary = {
 	"Guava" : 0,
 	"Papaya" : 15,
 	"Watermelon" : 5,
-	"Pineapple" : 0
+	"Pineapple" : 5
 }
 
 var fruit_bean_costs : Dictionary = {

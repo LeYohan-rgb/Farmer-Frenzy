@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b60soyr5c6qld"]
+[gd_scene load_steps=27 format=3 uid="uid://b60soyr5c6qld"]
 
 [ext_resource type="Script" uid="uid://cgavkxd1lhs46" path="res://Scripts/character_body_2d.gd" id="1_ghijl"]
 [ext_resource type="Texture2D" uid="uid://bs1nv4gudolyg" path="res://Graphics/emiliano.png" id="1_ij6vw"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://brqp5lq7a4frc" path="res://Graphics/papaya_full_bar.png" id="16_x0qg5"]
 [ext_resource type="AudioStream" uid="uid://m1w42tqvabff" path="res://Music/small_throw.mp3" id="17_2sln1"]
 [ext_resource type="AudioStream" uid="uid://vyyl8nwoc1p5" path="res://Music/small_impact.mp3" id="20_hay6s"]
+[ext_resource type="Script" uid="uid://cuw2wvbr1qr8b" path="res://Scenes/pineapple.gd" id="21_2g5yi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44cfe"]
 radius = 15.0
@@ -126,6 +127,9 @@ bus = &"sfx"
 [node name="impact_sound" type="AudioStreamPlayer" parent="fruits/papaya"]
 stream = ExtResource("20_hay6s")
 bus = &"sfx"
+
+[node name="pineapple" type="Node2D" parent="fruits"]
+script = ExtResource("21_2g5yi")
 
 [node name="farmer_UI" type="Node2D" parent="."]
 visible = false

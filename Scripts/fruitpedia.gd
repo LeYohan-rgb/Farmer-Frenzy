@@ -25,7 +25,7 @@ extends Node2D
 var selected_fruit : String = ""
 
 func _process(delta: float) -> void:
-	
+	plr_currency.text = str(Global.plr_currency)
 	mango_spr.modulate.a = 1.0 if Global.bought_fruits["Mango"] else 0.4
 	papaya_spr.modulate.a = 1.0 if Global.bought_fruits["Papaya"] else 0.4
 	pineapple_spr.modulate.a = 1.0 if Global.bought_fruits["Pineapple"] else 0.4
@@ -96,7 +96,15 @@ func _on_go_back_btn_pressed() -> void:
 func _on_buy_btn_pressed() -> void:
 	if Global.plr_currency < Global.fruit_prices[selected_fruit]:
 		denied_purchase()
+	else:
+		accept_purchase()
 
+func accept_purchase():
+	buy_btn.hide()
+	bought_btn.show()
+	Global.plr_currency -= Global.fruit_prices[selected_fruit]
+	Global.bought_fruits[selected_fruit] = true
+	
 func denied_purchase():
 	var tween = create_tween()
 	# Fade in

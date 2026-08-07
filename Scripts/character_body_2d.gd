@@ -78,6 +78,8 @@ func perform_ability(fruit_name : String):
 		fruits.perform(fruit_name, position.x, position.y)
 	if fruit_name == "Papaya":
 		fruits.perform(fruit_name, position.x, position.y)
+	if fruit_name == "Pineapple":
+		fruits.perform(fruit_name, position.x, position.y)
 		
 func give_out_coords(fruit : String):
 	if fruit == "mango":
@@ -86,6 +88,7 @@ func give_out_coords(fruit : String):
 		watermelon.perform_watermelon(plr, position.x, position.y)
 	if fruit == "papaya":
 		papaya.shoot_papayas_with_coords(position.x, position.y, plr)
+	
 		
 func papaya_timer_start(on_or_off : int):
 	if on_or_off == 0:
