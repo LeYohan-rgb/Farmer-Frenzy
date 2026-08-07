@@ -1,6 +1,6 @@
 extends Node
 
-var debug_mode : bool = false
+var debug_mode : bool = true
 #GAME VARIABLES
 var player_1_wins : int = 0
 var player_2_wins : int = 0
@@ -29,7 +29,7 @@ var bought_fruits : Dictionary = {
 	"Guava": false,
 	"Papaya": true,
 	"Watermelon": true,
-	"Pineapple": false
+	"Pineapple": true
 }
 #GAME VARIABLES
 var is_in_cooldown = {
@@ -51,7 +51,8 @@ var damage : Dictionary = {
 	"mango" : 2.0,
 	"watermelon" : 3.0,
 	"watermelon_seed" : 2.0,
-	"papaya" : 0.25
+	"papaya" : 0.25,
+	"pineapple" : [2, 3, 4]
 }
 
 
@@ -150,6 +151,7 @@ var watermelon_is_alive : Array = [false, false]
 var papaya_charging_state : Array = [0,0]
 var papaya_seeds_count : Array = [40,40]
 var pineapple_is_on : Array = [false, false]
+var pineapple_effect : Array = [false, false]
 
 func num_to_ordinal(num : int) -> String:
 	if num == 1:

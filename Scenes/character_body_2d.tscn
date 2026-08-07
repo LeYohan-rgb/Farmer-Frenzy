@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b60soyr5c6qld"]
+[gd_scene load_steps=29 format=3 uid="uid://b60soyr5c6qld"]
 
 [ext_resource type="Script" uid="uid://cgavkxd1lhs46" path="res://Scripts/character_body_2d.gd" id="1_ghijl"]
 [ext_resource type="Texture2D" uid="uid://bs1nv4gudolyg" path="res://Graphics/emiliano.png" id="1_ij6vw"]
@@ -23,11 +23,15 @@
 [ext_resource type="Texture2D" uid="uid://brqp5lq7a4frc" path="res://Graphics/papaya_full_bar.png" id="16_x0qg5"]
 [ext_resource type="AudioStream" uid="uid://m1w42tqvabff" path="res://Music/small_throw.mp3" id="17_2sln1"]
 [ext_resource type="AudioStream" uid="uid://vyyl8nwoc1p5" path="res://Music/small_impact.mp3" id="20_hay6s"]
-[ext_resource type="Script" uid="uid://cuw2wvbr1qr8b" path="res://Scenes/pineapple.gd" id="21_2g5yi"]
+[ext_resource type="Script" uid="uid://cuw2wvbr1qr8b" path="res://Scripts/pineapple.gd" id="21_2g5yi"]
+[ext_resource type="PackedScene" uid="uid://dutkcdssia2pg" path="res://Scenes/pineapple.tscn" id="22_ctlvl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44cfe"]
 radius = 15.0
 height = 56.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ctlvl"]
+size = Vector2(41, 15)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dd465"]
 animations = [{
@@ -54,6 +58,12 @@ script = ExtResource("1_ghijl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_44cfe")
+
+[node name="feet" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="feet"]
+position = Vector2(-0.5, 24.5)
+shape = SubResource("RectangleShape2D_ctlvl")
 
 [node name="animation" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.125, 0.125)
@@ -130,6 +140,7 @@ bus = &"sfx"
 
 [node name="pineapple" type="Node2D" parent="fruits"]
 script = ExtResource("21_2g5yi")
+PINEAPPLE = ExtResource("22_ctlvl")
 
 [node name="farmer_UI" type="Node2D" parent="."]
 visible = false
@@ -155,4 +166,6 @@ one_shot = true
 [node name="deplete_timer" type="Timer" parent="farmer_UI"]
 one_shot = true
 
+[connection signal="area_entered" from="feet" to="." method="_on_feet_area_entered"]
+[connection signal="area_exited" from="feet" to="." method="_on_feet_area_exited"]
 [connection signal="shooting_mango_terminated" from="fruits/papaya" to="farmer_UI" method="_on_papaya_shooting_mango_terminated"]

@@ -31,6 +31,8 @@ func _ready() -> void:
 	shield.connect("wants_to_shield", shield_active)
 
 func _physics_process(delta: float) -> void:
+	#print(position.y)
+	
 	if !Global.is_in_farmer_fight:
 		return
 		
@@ -102,3 +104,24 @@ func quit_game():
 
 func shoot_papayas(num_of_papayas : int):
 	papaya.perform_shooting_papaya(num_of_papayas, plr)
+
+
+func _on_feet_area_entered(area: Area2D) -> void:
+	if area.name == "pineapple":
+		var damage_dealt = Global.damage["pineapple"][area.row_type - 1]
+		Global.pineapple_effect[plr - 1] = true
+		speed = 100
+		#WHILE LOOP
+		while Global.pineapple_effect[plr - 1]:
+			if plr == 1:
+				Global.player_1_health -= damage_dealt * Global.player_1_dmg_boost
+			else:
+				Global.player_2_health -= damage_dealt * Global.player_2_dmg_boost
+			await Global.wait(1)
+
+
+func _on_feet_area_exited(area: Area2D) -> void:
+	if area.name == "pineapple":
+		Global.pineapple_effect[plr - 1] = false
+		print("FALSE")
+		speed = 275

@@ -6,7 +6,7 @@ signal papaya_timer_started(on_or_off : int)
 @onready var mango = $mango
 @onready var watermelon = $watermelon
 @onready var papaya = $papaya
-@onready var pineapple = $pi
+@onready var pineapple = $pineapple
 @onready var papaya_timer = $papaya/Timer
 signal shoot_melon_with_coords(fruit : String)
 

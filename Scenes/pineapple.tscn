@@ -16,3 +16,10 @@ texture = ExtResource("2_m5bde")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(255, 30)
 shape = SubResource("RectangleShape2D_1gxtd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
