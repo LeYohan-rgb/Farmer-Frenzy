@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b60soyr5c6qld"]
+[gd_scene load_steps=32 format=3 uid="uid://b60soyr5c6qld"]
 
 [ext_resource type="Script" uid="uid://cgavkxd1lhs46" path="res://Scripts/character_body_2d.gd" id="1_ghijl"]
 [ext_resource type="Texture2D" uid="uid://bs1nv4gudolyg" path="res://Graphics/emiliano.png" id="1_ij6vw"]
@@ -26,6 +26,8 @@
 [ext_resource type="Script" uid="uid://cuw2wvbr1qr8b" path="res://Scripts/pineapple.gd" id="21_2g5yi"]
 [ext_resource type="PackedScene" uid="uid://dutkcdssia2pg" path="res://Scenes/pineapple.tscn" id="22_ctlvl"]
 [ext_resource type="AudioStream" uid="uid://di4yyf7cyv13v" path="res://Music/pineapple_steps.mp3" id="23_6m45q"]
+[ext_resource type="Script" uid="uid://b406y6qn3nbnq" path="res://Scripts/guava.gd" id="24_pv0ic"]
+[ext_resource type="PackedScene" uid="uid://cngirhiauc0uu" path="res://Scenes/guava_seed.tscn" id="25_rjpeh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44cfe"]
 radius = 15.0
@@ -146,6 +148,10 @@ PINEAPPLE = ExtResource("22_ctlvl")
 [node name="pineapple_sfx" type="AudioStreamPlayer" parent="fruits/pineapple"]
 stream = ExtResource("23_6m45q")
 bus = &"sfx"
+
+[node name="guava" type="Node2D" parent="fruits"]
+script = ExtResource("24_pv0ic")
+GUAVA_SEED = ExtResource("25_rjpeh")
 
 [node name="farmer_UI" type="Node2D" parent="."]
 visible = false

@@ -86,6 +86,8 @@ func perform_ability(fruit_name : String):
 		fruits.perform(fruit_name, position.x, position.y)
 	if fruit_name == "Pineapple":
 		fruits.perform(fruit_name, position.x, position.y)
+	if fruit_name == "Guava":
+		fruits.perform(fruit_name, position.x, position.y)
 		
 func give_out_coords(fruit : String):
 	if fruit == "mango":
@@ -115,14 +117,14 @@ func _on_feet_area_entered(area: Area2D) -> void:
 	if area is Pineapple:
 		var damage_dealt = Global.damage["pineapple"][area.row_type - 1]
 		Global.pineapple_effect[plr - 1] = true
-		speed = 100
+		speed -= 175
 		#WHILE LOOP
 		while Global.pineapple_effect[plr - 1]:
 			hurt_dmg_animation()
 			if plr == 1:
-				Global.player_1_health -= damage_dealt * Global.player_1_dmg_boost
+				Global.player_1_health -= damage_dealt
 			else:
-				Global.player_2_health -= damage_dealt * Global.player_2_dmg_boost
+				Global.player_2_health -= damage_dealt
 				
 			if Global.is_player_moving(plr):
 				if !pineapple_sfx.playing:
@@ -136,7 +138,7 @@ func _on_feet_area_exited(area: Area2D) -> void:
 	if area is Pineapple:
 		pineapple_sfx.stop()
 		Global.pineapple_effect[plr - 1] = false
-		speed = 275
+		speed += 175
 		
 func hurt_dmg_animation():
 	anim.modulate = Color("fee4e3")

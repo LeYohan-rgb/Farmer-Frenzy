@@ -26,7 +26,7 @@ var bought_fruits : Dictionary = {
 	"Avocado": false,
 	"Cocoa": false,
 	"Coconut": false,
-	"Guava": false,
+	"Guava": true,
 	"Papaya": true,
 	"Watermelon": true,
 	"Pineapple": true
@@ -88,7 +88,7 @@ var cooldown : Dictionary = {
 	"Avocado" : 0,
 	"Cocoa" : 0,
 	"Coconut" : 0,
-	"Guava" : 0,
+	"Guava" : 5,
 	"Papaya" : 15,
 	"Watermelon" : 5,
 	"Pineapple" : 20
