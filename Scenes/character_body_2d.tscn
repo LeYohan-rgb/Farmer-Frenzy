@@ -153,6 +153,14 @@ bus = &"sfx"
 script = ExtResource("24_pv0ic")
 GUAVA_SEED = ExtResource("25_rjpeh")
 
+[node name="guava_sfx" type="AudioStreamPlayer" parent="fruits/guava"]
+stream = ExtResource("23_6m45q")
+bus = &"sfx"
+
+[node name="Timer" type="Timer" parent="fruits/guava"]
+wait_time = 2.0
+one_shot = true
+
 [node name="farmer_UI" type="Node2D" parent="."]
 visible = false
 script = ExtResource("15_x0qg5")

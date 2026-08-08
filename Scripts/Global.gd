@@ -7,9 +7,10 @@ var player_2_wins : int = 0
 var game_time : int = 0
 
 #GAME PARAMETERS
-var farmer_fight_velocity : int = 275
+var farmer_fight_velocity : float = 275.0
 var player_1_health : float = 50.0
 var player_2_health :float = 50.0
+var maximum_health : float = 50.0
 var recharge_time : float = 3.0
 var speed = {
 	"kernel" : 1500,
@@ -40,6 +41,8 @@ var is_in_cooldown = {
 }
 var player_1_dmg_boost : float = 1
 var player_2_dmg_boost : float = 1
+var player_1_healing_boost : float = 1
+var player_2_healing_boost : float = 1
 var shield : Array = [10, 10] #first player, second player
 var kernel_amount : Array = [10, 10]
 var is_shielding : Array = [false, false] #1st, #2nd
@@ -52,7 +55,8 @@ var damage : Dictionary = {
 	"watermelon" : 3.0,
 	"watermelon_seed" : 2.0,
 	"papaya" : 0.25,
-	"pineapple" : [3, 2.5, 2]
+	"pineapple" : [3, 2.5, 2],
+	"guava" : 0.5
 }
 
 
@@ -88,7 +92,7 @@ var cooldown : Dictionary = {
 	"Avocado" : 0,
 	"Cocoa" : 0,
 	"Coconut" : 0,
-	"Guava" : 5,
+	"Guava" : 30,
 	"Papaya" : 15,
 	"Watermelon" : 5,
 	"Pineapple" : 20
@@ -154,6 +158,7 @@ var papaya_charging_state : Array = [0,0]
 var papaya_seeds_count : Array = [40,40]
 var pineapple_is_on : Array = [false, false]
 var pineapple_effect : Array = [false, false]
+var guava_effect : Array = [false, false]
 
 func num_to_ordinal(num : int) -> String:
 	if num == 1:

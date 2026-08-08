@@ -1,6 +1,9 @@
 extends Node2D
 
 @export var GUAVA_SEED : PackedScene
+@onready var healing_sfx = $guava_sfx
+@onready var timer = $Timer
+signal speed_boost(on_or_off : bool)
 
 func perform_guava(plr, x_coord, y_coord):
 	for i in range(20):
@@ -9,8 +12,31 @@ func perform_guava(plr, x_coord, y_coord):
 func generate_guava_seed(plr, x_coord, y_coord):
 	var guava_item = GUAVA_SEED.instantiate()
 	guava_item.plr = plr
-	guava_item.position = random_point_in_circle(Vector2(x_coord, y_coord), 192, plr)
+	guava_item.position = random_point_in_circle(Vector2(x_coord, y_coord), 256, plr)
 	get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(guava_item)
+	guava_item.heal.connect(guava_effect)
+	
+func guava_effect(player_healed : int, heal_amount : float):
+	#healing_sfx.play()
+	if player_healed == 1:
+		Global.player_1_health += heal_amount * Global.player_1_healing_boost
+	else:
+		Global.player_2_health += heal_amount * Global.player_2_healing_boost
+	speed_effect(player_healed)
+	
+func speed_effect(plr : int) -> void:
+	if Global.guava_effect[plr - 1]:
+		timer.start()
+		return
+	
+	Global.guava_effect[plr - 1] = true
+	speed_boost.emit(true)
+	print("on")
+	timer.start()
+	await timer.timeout
+	print("off")
+	speed_boost.emit(false)
+	Global.guava_effect[plr - 1] = false
 	
 
 func random_point_in_circle(center: Vector2, radius: float, player : int) -> Vector2:

@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var shield = $summon_shield
 @onready var fruits = $fruits
 @onready var mango = $fruits/mango
+@onready var guava = $fruits/guava
 @onready var watermelon = $fruits/watermelon
 @onready var papaya = $fruits/papaya
 @onready var farmer_UI = $farmer_UI
@@ -25,7 +26,7 @@ func _ready() -> void:
 	fruits.plr = plr
 	farmer_UI.plr = plr
 	
-	
+	guava.connect("speed_boost", speed_player_boost)
 	papaya.connect("shoot_papaya_with_coords", give_out_coords)
 	farmer_UI.connect("shoot_papayas", shoot_papayas)
 	fruits.connect("papaya_timer_started", papaya_timer_start)
@@ -144,3 +145,12 @@ func hurt_dmg_animation():
 	anim.modulate = Color("fee4e3")
 	await Global.wait(0.05)
 	anim.modulate = Color("ffffff")
+
+func speed_player_boost(on_or_off : bool):
+	var speed_scalar = 1.333
+	if on_or_off:
+		speed *= speed_scalar
+		print(speed)
+	else:
+		speed /= speed_scalar
+		print(speed)

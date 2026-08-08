@@ -32,6 +32,8 @@ func _process(delta: float) -> void:
 		return
 	
 
+	Global.player_1_health = clamp(Global.player_1_health, 0.0, Global.maximum_health)
+	Global.player_2_health = clamp(Global.player_2_health, 0.0, Global.maximum_health)
 	
 	hp_bar_1.value = Global.player_1_health
 	hp_bar_2.value = Global.player_2_health

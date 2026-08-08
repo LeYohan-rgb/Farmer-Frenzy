@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://cngirhiauc0uu"]
+[gd_scene load_steps=4 format=3 uid="uid://cngirhiauc0uu"]
 
 [ext_resource type="Script" uid="uid://dxwirf52rvpkj" path="res://Scripts/guava_seed.gd" id="1_x68g1"]
 [ext_resource type="Texture2D" uid="uid://cttism3o1amk6" path="res://Graphics/guava_seed.png" id="2_xv3v4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x68g1"]
+radius = 7.0
+height = 16.0
 
 [node name="guava_seed" type="Area2D"]
 script = ExtResource("1_x68g1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_xv3v4")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_x68g1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

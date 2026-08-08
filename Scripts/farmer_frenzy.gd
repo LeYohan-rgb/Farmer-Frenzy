@@ -172,6 +172,9 @@ func quit_menu():
 	Global.is_shielding = [false, false]
 	Global.player_1_dmg_boost = 1
 	Global.player_2_dmg_boost = 1
+	Global.player_1_healing_boost = 1
+	Global.player_2_healing_boost = 1
+	Global.guava_effect = [false, false]
 	farmers.hide()
 	farmers.quitting_game()
 	game_timer.stop()
