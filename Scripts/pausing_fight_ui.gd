@@ -29,6 +29,12 @@ func _on_pause__btn_pressed() -> void:
 		get_tree().paused = false
 		pause_btn_lbl.text = "PAUSE"
 
+func _process(delta: float) -> void:
+	if !Global.is_in_farmer_fight:
+		return
+		
+	if Input.is_action_just_pressed("pause"):
+		_on_pause__btn_pressed()
 
 func _on_return_to_main_pressed() -> void:
 		

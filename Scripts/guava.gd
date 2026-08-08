@@ -21,10 +21,12 @@ func generate_guava_seed(plr, x_coord, y_coord):
 func guava_effect(player_healed : int, heal_amount : float):
 	if player_healed == 1:
 		if Global.player_1_health < Global.maximum_health:
+			healing_sfx.play()
 			heal.emit()
 		Global.player_1_health += heal_amount * Global.player_1_healing_boost
 	else:
 		if Global.player_2_health < Global.maximum_health:
+			healing_sfx.play()
 			heal.emit()
 		Global.player_2_health += heal_amount * Global.player_2_healing_boost
 	speed_effect(player_healed)

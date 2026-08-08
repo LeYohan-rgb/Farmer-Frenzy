@@ -19,6 +19,8 @@ signal fruit_ability(ability : int, player : int)
 @onready var papaya_lbl_1 = $fruit_UI/papaya_lbl_1
 @onready var papaya_lbl_2 = $fruit_UI/papaya_lbl_2
 
+@onready var pause_UI = $pausing_fight_UI
+
 @export var bean : PackedScene
 
 var bean_spawn_1 : int = -1
@@ -51,7 +53,7 @@ func _process(delta: float) -> void:
 	else:
 		kernel_lbl_2.text = "..."
 	
-
+	
 	#HEALTHBAR COLORS
 	if hp_bar_1.value / hp_bar_1.max_value > 0.5:
 		hp_bar_1.get_theme_stylebox("fill").bg_color = Color("72c54e")

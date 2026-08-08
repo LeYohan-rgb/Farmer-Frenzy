@@ -92,6 +92,8 @@ func perform_ability(fruit_name : String):
 		fruits.perform(fruit_name, position.x, position.y)
 	if fruit_name == "Guava":
 		fruits.perform(fruit_name, position.x, position.y)
+	if fruit_name == "Avocado":
+		fruits.perform(fruit_name, position.x, position.y)
 		
 func give_out_coords(fruit : String):
 	if fruit == "mango":

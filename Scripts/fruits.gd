@@ -8,6 +8,7 @@ signal papaya_timer_started(on_or_off : int)
 @onready var papaya = $papaya
 @onready var pineapple = $pineapple
 @onready var guava = $guava
+@onready var avocado = $avocado
 @onready var papaya_timer = $papaya/Timer
 signal shoot_melon_with_coords(fruit : String)
 
@@ -53,5 +54,7 @@ func perform(fruit : String, x_coord : float = 0.0, y_coord : float = 0.0):
 		pineapple.perform_pineapple(plr, x_coord, y_coord)
 	if fruit == "Guava":
 		guava.perform_guava(plr, x_coord, y_coord)
+	if fruit == "Avocado":
+		avocado.perform_avocado(plr, x_coord, y_coord)
 		
 		

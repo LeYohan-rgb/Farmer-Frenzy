@@ -24,7 +24,7 @@ var speed = {
 var plr_currency : int = 1000
 var bought_fruits : Dictionary = {
 	"Mango": true,
-	"Avocado": false,
+	"Avocado": true,
 	"Cocoa": false,
 	"Coconut": false,
 	"Guava": true,
@@ -89,7 +89,7 @@ var fruit_prices : Dictionary = {
 
 var cooldown : Dictionary = {
 	"Mango" : 5,
-	"Avocado" : 0,
+	"Avocado" : 2, #20
 	"Cocoa" : 0,
 	"Coconut" : 0,
 	"Guava" : 30,
@@ -100,13 +100,13 @@ var cooldown : Dictionary = {
 
 var fruit_bean_costs : Dictionary = {
 	"Mango": 5,
-	"Avocado": 0,
-	"Cocoa": 0,
+	"Avocado": 0, #10
+	"Cocoa": 10,
 	"Coconut": 0,
-	"Guava": 0,
+	"Guava": 0, #7
 	"Papaya": 5,
 	"Watermelon": 5,
-	"Pineapple": 0
+	"Pineapple": 0 #7
 }
 
 var fruit_descriptions : Dictionary = {
@@ -114,7 +114,7 @@ var fruit_descriptions : Dictionary = {
 	"Avocado": "N/A",
 	"Cocoa": "N/A",
 	"Coconut": "N/A",
-	"Guava": "N/A",
+	"Guava": "Spread guava seeds across the field that grant a small speed boost and restore a little health when eaten.",
 	"Papaya": "Charge papaya seeds to launch them at a high rate; the closer to the river, the larger they become.",
 	"Watermelon": "Launch small fast seeds that ricochet off the map's boundaries; their spread is larger closer to the river.",
 	"Pineapple": "Plant a whole row of spiky leaves on the opponent's side to deal gradual damage and slow them down."
@@ -131,7 +131,10 @@ Mangos are slightly slower than kernels, but they are bigger. This allows them t
 	"Avocado": "N/A",
 	"Cocoa": "N/A",
 	"Coconut": "N/A",
-	"Guava": "N/A",
+	"Guava": "Guava is a support fruit. When harvested, it spreads twenty tiny seeds across the farmer's field. When eaten, they increase speed by one-third and restore a little health.
+
+ Guava seeds are exceptionally rich in natural sugars and Vitamin C, providing a quick burst of energy and a brief invigorating effect. One would need to eat a lot of them to recover a significant amount of health and maintain the speed boost before it disappears.
+",
 	
 	"Papaya": "Papaya is an offensive fruit. When harvested, the farmer can collect up to 40 papaya seeds, which they can keep for the rest of the fight; this allows the farmer to charge seeds. The farmer can charge for up to 3 seconds before launching papaya seeds. 
 

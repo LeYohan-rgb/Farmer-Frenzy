@@ -7532,6 +7532,7 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="pausing_fight_UI" type="Node2D" parent="farmer_frenzy/beginning_UI"]
+process_mode = 3
 visible = false
 z_index = 1
 script = ExtResource("29_jw7lb")
@@ -7778,9 +7779,11 @@ offset_top = 159.0
 offset_right = 990.0
 offset_bottom = 528.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
-text = "Pineapple is a hindrance fruit. Depending on the row the farmer is standing, a row of spiky leaves is planted on the opponent's side. If the opposing farmer steps on them, their speed is reduced and they receive gradual damage every 0.3 seconds.
+text = "Guava is a support fruit. When harvested, it spreads twenty tiny seeds across the farmer's field. When eaten, they increase speed by one-third and restore a little health.
 
-The leaves can only be planted on the center row, one row away from the center, or two rows away from the center. The farther the leaves are from the center, the less damage they deal."
+ Guava seeds are exceptionally rich in natural sugars and Vitamin C, providing a quick burst of energy and a brief invigorating effect. One would need to eat a lot of them to recover a significant amount of health and maintain the speed boost before it disappears.
+"
+horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="fruit_profile_photo" type="Sprite2D" parent="fruitpedia"]
