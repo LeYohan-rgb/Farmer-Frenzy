@@ -14,10 +14,12 @@ extends CharacterBody2D
 @onready var farmer_UI = $farmer_UI
 
 #MISC
+@onready var healing_anim = $animations/AnimationPlayer
 @onready var pineapple_sfx = $fruits/pineapple/pineapple_sfx
 
 var speed = Global.farmer_fight_velocity
 var direction: Vector2 = Vector2.ZERO
+var pineapple_debooster : float = 0.35
 
 func _ready() -> void:
 	#SETTING UP PLR TO EACH SCRIPT
@@ -26,6 +28,7 @@ func _ready() -> void:
 	fruits.plr = plr
 	farmer_UI.plr = plr
 	
+	guava.connect("heal", healing_anim_func)
 	guava.connect("speed_boost", speed_player_boost)
 	papaya.connect("shoot_papaya_with_coords", give_out_coords)
 	farmer_UI.connect("shoot_papayas", shoot_papayas)
@@ -118,7 +121,7 @@ func _on_feet_area_entered(area: Area2D) -> void:
 	if area is Pineapple:
 		var damage_dealt = Global.damage["pineapple"][area.row_type - 1]
 		Global.pineapple_effect[plr - 1] = true
-		speed -= 175
+		speed *= pineapple_debooster
 		#WHILE LOOP
 		while Global.pineapple_effect[plr - 1]:
 			hurt_dmg_animation()
@@ -139,7 +142,7 @@ func _on_feet_area_exited(area: Area2D) -> void:
 	if area is Pineapple:
 		pineapple_sfx.stop()
 		Global.pineapple_effect[plr - 1] = false
-		speed += 175
+		speed /= pineapple_debooster
 		
 func hurt_dmg_animation():
 	anim.modulate = Color("fee4e3")
@@ -154,3 +157,6 @@ func speed_player_boost(on_or_off : bool):
 	else:
 		speed /= speed_scalar
 		print(speed)
+		
+func healing_anim_func():
+	healing_anim.play("heal")

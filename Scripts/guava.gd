@@ -3,6 +3,7 @@ extends Node2D
 @export var GUAVA_SEED : PackedScene
 @onready var healing_sfx = $guava_sfx
 @onready var timer = $Timer
+signal heal
 signal speed_boost(on_or_off : bool)
 
 func perform_guava(plr, x_coord, y_coord):
@@ -16,11 +17,15 @@ func generate_guava_seed(plr, x_coord, y_coord):
 	get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(guava_item)
 	guava_item.heal.connect(guava_effect)
 	
+	
 func guava_effect(player_healed : int, heal_amount : float):
-	#healing_sfx.play()
 	if player_healed == 1:
+		if Global.player_1_health < Global.maximum_health:
+			heal.emit()
 		Global.player_1_health += heal_amount * Global.player_1_healing_boost
 	else:
+		if Global.player_2_health < Global.maximum_health:
+			heal.emit()
 		Global.player_2_health += heal_amount * Global.player_2_healing_boost
 	speed_effect(player_healed)
 	
@@ -31,10 +36,8 @@ func speed_effect(plr : int) -> void:
 	
 	Global.guava_effect[plr - 1] = true
 	speed_boost.emit(true)
-	print("on")
 	timer.start()
 	await timer.timeout
-	print("off")
 	speed_boost.emit(false)
 	Global.guava_effect[plr - 1] = false
 	

@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 
 	#HEALTHBAR COLORS
 	if hp_bar_1.value / hp_bar_1.max_value > 0.5:
-		hp_bar_1.get_theme_stylebox("fill").bg_color = Color("72ac4e")
+		hp_bar_1.get_theme_stylebox("fill").bg_color = Color("72c54e")
 		
 	if hp_bar_1.value / hp_bar_1.max_value <= 0.5 and hp_bar_1.value / hp_bar_1.max_value > 0.25:
 		hp_bar_1.get_theme_stylebox("fill").bg_color = Color("cbac4e")
@@ -63,7 +63,7 @@ func _process(delta: float) -> void:
 		hp_bar_1.get_theme_stylebox("fill").bg_color = Color("de6e63")
 		
 	if hp_bar_2.value / hp_bar_2.max_value > 0.5:
-		hp_bar_2.get_theme_stylebox("fill").bg_color = Color("72ac4e")
+		hp_bar_2.get_theme_stylebox("fill").bg_color = Color("72c54e")
 		
 	if hp_bar_2.value / hp_bar_2.max_value <= 0.5 and hp_bar_2.value / hp_bar_2.max_value > 0.25:
 		hp_bar_2.get_theme_stylebox("fill").bg_color = Color("cbac4e")

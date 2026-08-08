@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dutkcdssia2pg"]
 
-[ext_resource type="Script" uid="uid://dv603qtehbiqk" path="res://pineapple_tiles.gd" id="1_welxq"]
+[ext_resource type="Script" uid="uid://dv603qtehbiqk" path="res://Scripts/pineapple_tiles.gd" id="1_welxq"]
 [ext_resource type="Texture2D" uid="uid://gano38ctpmid" path="res://Graphics/pineapple_tiles.png" id="2_m5bde"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1gxtd"]
