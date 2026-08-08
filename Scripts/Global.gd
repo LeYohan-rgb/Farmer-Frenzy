@@ -52,7 +52,7 @@ var damage : Dictionary = {
 	"watermelon" : 3.0,
 	"watermelon_seed" : 2.0,
 	"papaya" : 0.25,
-	"pineapple" : [2, 3, 4]
+	"pineapple" : [3, 2.5, 2]
 }
 
 
@@ -91,7 +91,7 @@ var cooldown : Dictionary = {
 	"Guava" : 0,
 	"Papaya" : 15,
 	"Watermelon" : 5,
-	"Pineapple" : 5
+	"Pineapple" : 20
 }
 
 var fruit_bean_costs : Dictionary = {
@@ -113,7 +113,7 @@ var fruit_descriptions : Dictionary = {
 	"Guava": "N/A",
 	"Papaya": "Charge papaya seeds to launch them at a high rate; the closer to the river, the larger they become.",
 	"Watermelon": "Launch small fast seeds that ricochet off the map's boundaries; their spread is larger closer to the river.",
-	"Pineapple": "N/A"
+	"Pineapple": "Plant a whole row of spiky leaves on the opponent's side to deal gradual damage and slow them down."
 }
 
 var long_description : Dictionary = {
@@ -137,7 +137,9 @@ The longer they charge, the more seeds they launch; they are released at an extr
 
 The farther the farmer is to the river, the wider the spread becomes; at maximum range, the seeds can cover the opponent's entire side of the map. These fast seeds can ricochet off the map's boundaries up to 3 times, losing speed with each bounce.",
 
-	"Pineapple": "N/A"
+	"Pineapple": "Pineapple is a hindrance fruit. Depending on the row the farmer is standing, a row of spiky leaves is planted on the opponent's side. If the opposing farmer steps on them, their speed is reduced and they receive gradual damage every 0.3 seconds.
+
+The leaves can only be planted on the center row, one row away from the center, or two rows away from the center. The farther the leaves are from the center, the less damage they deal."
 }
 
 func wait(sec : float):
@@ -180,4 +182,23 @@ func is_fruit_in_party(fruit : String) -> bool:
 			return true
 		if Global.player_2_fruits[i] == fruit:
 			return true
+	return false
+	
+func is_player_moving(plr : int) -> bool:
+	if plr == 1:
+		if Input.is_action_pressed("down_1") \
+		or Input.is_action_pressed("up_1") \
+		or Input.is_action_pressed("left_1") \
+		or Input.is_action_pressed("right_1"):
+			return true
+		else:
+			return false
+	else:
+		if Input.is_action_pressed("down_2") \
+		or Input.is_action_pressed("up_2") \
+		or Input.is_action_pressed("left_2") \
+		or Input.is_action_pressed("right_2"):
+			return true
+		else:
+			return false
 	return false

@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var plr : int
 @onready var anim = $animation
+
 #SCRIPTS
 @onready var shoot_kernel = $shoot_kernel
 @onready var shield = $summon_shield
@@ -10,6 +11,9 @@ extends CharacterBody2D
 @onready var watermelon = $fruits/watermelon
 @onready var papaya = $fruits/papaya
 @onready var farmer_UI = $farmer_UI
+
+#MISC
+@onready var pineapple_sfx = $fruits/pineapple/pineapple_sfx
 
 var speed = Global.farmer_fight_velocity
 var direction: Vector2 = Vector2.ZERO
@@ -106,22 +110,35 @@ func shoot_papayas(num_of_papayas : int):
 	papaya.perform_shooting_papaya(num_of_papayas, plr)
 
 
+#fee4e3 HIT RED-COLOR
 func _on_feet_area_entered(area: Area2D) -> void:
-	if area.name == "pineapple":
+	if area is Pineapple:
 		var damage_dealt = Global.damage["pineapple"][area.row_type - 1]
 		Global.pineapple_effect[plr - 1] = true
 		speed = 100
 		#WHILE LOOP
 		while Global.pineapple_effect[plr - 1]:
+			hurt_dmg_animation()
 			if plr == 1:
 				Global.player_1_health -= damage_dealt * Global.player_1_dmg_boost
 			else:
 				Global.player_2_health -= damage_dealt * Global.player_2_dmg_boost
-			await Global.wait(1)
+				
+			if Global.is_player_moving(plr):
+				if !pineapple_sfx.playing:
+					pineapple_sfx.play()
+			else:
+				pineapple_sfx.stop()
+			await Global.wait(0.333)
 
 
 func _on_feet_area_exited(area: Area2D) -> void:
-	if area.name == "pineapple":
+	if area is Pineapple:
+		pineapple_sfx.stop()
 		Global.pineapple_effect[plr - 1] = false
-		print("FALSE")
 		speed = 275
+		
+func hurt_dmg_animation():
+	anim.modulate = Color("fee4e3")
+	await Global.wait(0.05)
+	anim.modulate = Color("ffffff")

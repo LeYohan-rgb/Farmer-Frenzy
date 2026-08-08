@@ -6211,7 +6211,6 @@ corner_radius_bottom_left = 20
 script = ExtResource("1_28flt")
 
 [node name="main" type="Node2D" parent="."]
-visible = false
 
 [node name="bg_pattern2" type="Control" parent="main"]
 layout_mode = 3
@@ -7779,9 +7778,9 @@ offset_top = 159.0
 offset_right = 990.0
 offset_bottom = 528.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
-text = "Watermelon is an offensive fruit. When harvested, the farmer launches a watermelon slice containing 7 small seeds. At any moment, the farmer can detonate the slice, causing the seeds to quickly fan out from its path.
+text = "Pineapple is a hindrance fruit. Depending on the row the farmer is standing, a row of spiky leaves is planted on the opponent's side. If the opposing farmer steps on them, their speed is reduced and they receive gradual damage every 0.3 seconds.
 
-The farther the farmer is to the river, the wider the spread becomes; at maximum range, the seeds can cover the opponent's entire side of the map. They can ricochet off the map's boundaries up to 3 times, losing speed with each bounce."
+The leaves can only be planted on the center row, one row away from the center, or two rows away from the center. The farther the leaves are from the center, the less damage they deal."
 autowrap_mode = 2
 
 [node name="fruit_profile_photo" type="Sprite2D" parent="fruitpedia"]
