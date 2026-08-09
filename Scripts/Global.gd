@@ -1,7 +1,7 @@
 extends Node
 
 var debug_mode : bool = true
-var debug_fruits : Array = ["Avocado", "Pineapple", "Guava"]
+var debug_fruits : Array = ["Cocoa", "Pineapple", "Guava"]
 #GAME VARIABLES
 var player_1_wins : int = 0
 var player_2_wins : int = 0
@@ -26,7 +26,7 @@ var plr_currency : int = 1000
 var bought_fruits : Dictionary = {
 	"Mango": true,
 	"Avocado": true,
-	"Cocoa": false,
+	"Cocoa": true,
 	"Coconut": false,
 	"Guava": true,
 	"Papaya": true,
@@ -90,8 +90,8 @@ var fruit_prices : Dictionary = {
 
 var cooldown : Dictionary = {
 	"Mango" : 5,
-	"Avocado" : 2, #20
-	"Cocoa" : 0,
+	"Avocado" : 20, #20
+	"Cocoa" : 3,
 	"Coconut" : 0,
 	"Guava" : 30,
 	"Papaya" : 15,
@@ -101,13 +101,13 @@ var cooldown : Dictionary = {
 
 var fruit_bean_costs : Dictionary = {
 	"Mango": 5,
-	"Avocado": 0, #10
-	"Cocoa": 10,
+	"Avocado": 10, #10
+	"Cocoa": 0,
 	"Coconut": 0,
 	"Guava": 0, #7
 	"Papaya": 5,
 	"Watermelon": 5,
-	"Pineapple": 0 #7
+	"Pineapple": 7 #7
 }
 
 var fruit_descriptions : Dictionary = {
