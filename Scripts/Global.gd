@@ -112,7 +112,7 @@ var fruit_bean_costs : Dictionary = {
 
 var fruit_descriptions : Dictionary = {
 	"Mango": "Throws five big mangos succesively; they get stronger when thrown closer to the river.",
-	"Avocado": "N/A",
+	"Avocado": "Drops a giant avocado seed that explodes into a large puddle of guacamole that slows down the farmer.",
 	"Cocoa": "N/A",
 	"Coconut": "N/A",
 	"Guava": "Spread guava seeds across the field that grant a small speed boost and restore a little health when eaten.",
@@ -129,7 +129,9 @@ The closer the farmer is to the river, the more powerful the thrown mangos becom
 
 Mangos are slightly slower than kernels, but they are bigger. This allows them to cover a wider area while inflicting a lot of damage.",
 
-	"Avocado": "N/A",
+	"Avocado": "Avocado is a hindrance fruit. When harvested, it drops a giant avocado seed at the corresponding location on the opposite field relative to the farmer's position. 
+
+When the seed hits the ground, it triggers a huge guacamole explosion that leaves behind a large puddle of guamacole. The lower the farmer's health, the more damage the explosion deals. The puddle reduces movement speed by half when stepped on it. ",
 	"Cocoa": "N/A",
 	"Coconut": "N/A",
 	"Guava": "Guava is a support fruit. When harvested, it spreads twenty tiny seeds across the farmer's field. When eaten, they increase speed by one-third and restore a little health.

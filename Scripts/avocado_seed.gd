@@ -1,12 +1,13 @@
 extends Area2D
 
 var velocity : float = 0.0
-var my_gravity : float = required_acceleration(1)
+var my_gravity : float = required_acceleration(0.333)
 signal hit_ground
 @export var desired_position : Vector2
 var explode = false
 @onready var anim_spr = $AnimatedSprite2D
 @onready var my_spr = $Sprite2D
+@onready var explosion_sfx = $explosion_sfx
 
 func _ready():
 	pass
@@ -31,6 +32,7 @@ func _physics_process(delta: float) -> void:
 			guacamole_explosion()
 			
 func guacamole_explosion():
+	explosion_sfx.play()
 	my_spr.hide()
 	anim_spr.play("default")
 	await anim_spr.animation_finished

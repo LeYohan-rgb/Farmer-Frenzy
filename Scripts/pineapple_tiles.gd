@@ -24,9 +24,3 @@ func time_ended():
 	Global.pineapple_is_on[plr - 1] = false
 	queue_free()
 	
-#func _on_body_entered(body: CharacterBody2D) -> void:
-	#body.speed = 100
-#
-#
-#func _on_body_exited(body: CharacterBody2D) -> void:
-	#body.speed = 275

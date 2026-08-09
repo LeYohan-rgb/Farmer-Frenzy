@@ -2,13 +2,16 @@ extends Area2D
 
 class_name Avocado
 
+@export var opposite_player_hit : bool
+@export var post_explosion : bool = false
+
 var desired_position : Vector2
 var my_gravity : float
 var velocity : float
 @onready var my_col_shape = $CollisionShape2D
 @onready var shadow_spr = $Sprite2D
 @onready var guacamole_spr = $guacamole
-var life_span : float = 3.0 
+var life_span : float = 15.0
 @onready var my_timer = $Timer
 #SCRIPTS
 
@@ -16,7 +19,7 @@ var life_span : float = 3.0
 func _ready():
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(self, "scale", Vector2(0.5, 0.5), 1.0)
+	tween.tween_property(self, "scale", Vector2(0.5, 0.5), 0.333)
 	
 	await tween.finished
 	
@@ -29,6 +32,9 @@ func _ready():
 	var tween_2 = create_tween()
 	tween_2.set_trans(Tween.TRANS_LINEAR)
 	tween_2.tween_property(guacamole_spr, "modulate:a", 1.0, 0.5)
+	
+	await tween_2.finished
+	post_explosion = true
 	
 func disappear():
 	var tween_2 = create_tween()

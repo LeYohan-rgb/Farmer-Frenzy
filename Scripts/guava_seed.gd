@@ -6,16 +6,16 @@ extends Area2D
 signal heal
 
 func _ready():
-	my_timer.start(10 - 0.5)
+	my_timer.start(10 - 0.25)
 	var tween_2 = create_tween()
 	tween_2.set_trans(Tween.TRANS_LINEAR)
-	tween_2.tween_property(my_spr, "modulate:a", 1.0, 0.1)
+	tween_2.tween_property(my_spr, "modulate:a", 1.0, 0.25)
 	my_timer.timeout.connect(die_now)
 	
 func die_now():
 	var tween_2 = create_tween()
 	tween_2.set_trans(Tween.TRANS_LINEAR)
-	tween_2.tween_property(my_spr, "modulate:a", 0.0, 0.1)
+	tween_2.tween_property(my_spr, "modulate:a", 0.0, 0.25)
 	await tween_2.finished
 	queue_free()
 	

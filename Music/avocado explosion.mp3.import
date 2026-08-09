@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bvwcm0le1w8st"
+path="res://.godot/imported/avocado explosion.mp3-7eca8835a645ae58746d3f55448f0f72.mp3str"
+
+[deps]
+
+source_file="res://Music/avocado explosion.mp3"
+dest_files=["res://.godot/imported/avocado explosion.mp3-7eca8835a645ae58746d3f55448f0f72.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

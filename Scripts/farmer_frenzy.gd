@@ -332,8 +332,8 @@ func get_timer(plr : int, num : int) -> Timer:
 	return $beginning_UI/cooldown.get_node("timer_%d_%d" % [num, plr])
 
 func debug_start():
-	Global.player_1_fruits = Global.debug_fruits
-	Global.player_2_fruits = Global.debug_fruits
+	Global.player_1_fruits = Global.debug_fruits.duplicate()
+	Global.player_2_fruits = Global.debug_fruits.duplicate()
 	plr_1_slot_1_texture.texture = load("res://Graphics/" + Global.player_1_fruits[0] + ".png")
 	plr_1_slot_1_lbl.text = str(Global.fruit_bean_costs[Global.player_1_fruits[0]])
 	plr_1_slot_2_texture.texture = load("res://Graphics/" + Global.player_1_fruits[1] + ".png")

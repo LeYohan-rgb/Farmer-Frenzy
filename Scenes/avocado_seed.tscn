@@ -1,8 +1,9 @@
-[gd_scene load_steps=69 format=3 uid="uid://co5hx2e34u0g1"]
+[gd_scene load_steps=70 format=3 uid="uid://co5hx2e34u0g1"]
 
 [ext_resource type="Texture2D" uid="uid://ba2ty1hylx7tv" path="res://Graphics/big_avocado_seed.png" id="1_rtxhy"]
 [ext_resource type="Script" uid="uid://c6grxaxsq5txj" path="res://Scripts/avocado_seed.gd" id="1_vu3hk"]
 [ext_resource type="Texture2D" uid="uid://d11pxj5pknbcc" path="res://Graphics/animation_explosion.png" id="2_vu3hk"]
+[ext_resource type="AudioStream" uid="uid://bvwcm0le1w8st" path="res://Music/avocado explosion.mp3" id="4_gr8py"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gr8py"]
 atlas = ExtResource("2_vu3hk")
@@ -472,3 +473,7 @@ scale = Vector2(0.435303, 0.435303)
 sprite_frames = SubResource("SpriteFrames_i1f4k")
 frame = 63
 frame_progress = 1.0
+
+[node name="explosion_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gr8py")
+bus = &"sfx"

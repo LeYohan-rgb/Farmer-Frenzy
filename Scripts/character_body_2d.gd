@@ -20,6 +20,7 @@ extends CharacterBody2D
 var speed = Global.farmer_fight_velocity
 var direction: Vector2 = Vector2.ZERO
 var pineapple_debooster : float = 0.35
+var avocado_debooster : float = 0.5
 
 func _ready() -> void:
 	#SETTING UP PLR TO EACH SCRIPT
@@ -27,6 +28,9 @@ func _ready() -> void:
 	shoot_kernel.plr = plr
 	fruits.plr = plr
 	farmer_UI.plr = plr
+	
+	#SETTING UP VARIABLES
+	speed = Global.farmer_fight_velocity
 	
 	guava.connect("heal", healing_anim_func)
 	guava.connect("speed_boost", speed_player_boost)
@@ -140,6 +144,14 @@ func _on_feet_area_entered(area: Area2D) -> void:
 			await Global.wait(0.333)
 	
 	if area is Avocado:
+		speed *= avocado_debooster
+		print(speed)
+		if !area.opposite_player_hit and !area.post_explosion:
+			if plr == 1:
+				Global.player_1_health -= return_avocado_damage(Global.player_1_health)
+			else:
+				Global.player_2_health -= return_avocado_damage(Global.player_2_health)
+			area.opposite_player_hit = true
 		print("HELLO AVOCADO")
 
 func _on_feet_area_exited(area: Area2D) -> void:
@@ -147,6 +159,10 @@ func _on_feet_area_exited(area: Area2D) -> void:
 		pineapple_sfx.stop()
 		Global.pineapple_effect[plr - 1] = false
 		speed /= pineapple_debooster
+		
+	if area is Avocado:
+		speed /= avocado_debooster
+		print(speed)
 		
 func hurt_dmg_animation():
 	anim.modulate = Color("fee4e3")
@@ -162,3 +178,12 @@ func speed_player_boost(on_or_off : bool):
 
 func healing_anim_func():
 	healing_anim.play("heal")
+
+func return_avocado_damage(health : float) -> float:
+	if health <= Global.maximum_health and health > Global.maximum_health * (2.0/3.0): #TWO-THIRDS
+		return 10 * (2.0/3.0)
+	if health <= Global.maximum_health * (2.0/3.0) and health > Global.maximum_health * (1.0/3.0): #TWO-THIRDS
+		return 50.0 / 6.0
+	if health <= Global.maximum_health * (1.0/3.0):
+		return 10.0
+	return 0.0

@@ -6712,6 +6712,7 @@ autoplay = true
 bus = &"music"
 
 [node name="farmer_frenzy" type="Node2D" parent="."]
+visible = false
 script = ExtResource("7_cp0ys")
 
 [node name="beginning_UI" type="Node2D" parent="farmer_frenzy"]
@@ -7006,7 +7007,7 @@ offset_bottom = 347.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
 theme_override_fonts/font = ExtResource("13_5egv6")
 theme_override_font_sizes/font_size = 15
-text = "Charge papaya seeds to quickly launch them; the closer to the river, the larger they become."
+text = "Drops a giant avocado seed that explodes into a large puddle of guacamole that slows down the farmer."
 autowrap_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_menu"]
@@ -7762,7 +7763,6 @@ volume_db = -5.0
 bus = &"music"
 
 [node name="fruitpedia" type="Node2D" parent="."]
-visible = false
 position = Vector2(0, 21)
 script = ExtResource("39_pddej")
 
@@ -7779,10 +7779,9 @@ offset_top = 159.0
 offset_right = 990.0
 offset_bottom = 528.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
-text = "Guava is a support fruit. When harvested, it spreads twenty tiny seeds across the farmer's field. When eaten, they increase speed by one-third and restore a little health.
+text = "Avocado is a hindrance fruit. When harvested, it drops a giant avocado seed at the corresponding location on the opposite field relative to the farmer's position. 
 
- Guava seeds are exceptionally rich in natural sugars and Vitamin C, providing a quick burst of energy and a brief invigorating effect. One would need to eat a lot of them to recover a significant amount of health and maintain the speed boost before it disappears.
-"
+When the seed hits the ground, it triggers a huge guacamole explosion that leaves behind a large puddle of guamacole. The lower the farmer's health, the more damage the explosion deals. The puddle reduces movement speed by half when stepped on it. "
 horizontal_alignment = 1
 autowrap_mode = 2
 
