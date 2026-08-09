@@ -30,6 +30,14 @@ func _physics_process(delta: float) -> void:
 		if position.x < -80:
 			queue_free()
 			
-func _on_body_entered(body: CharacterBody2D) -> void:
-	hit.emit(body.plr, damage)
-	queue_free()
+func _on_body_entered(body) -> void:
+	if body is CharacterBody2D:
+		hit.emit(body.plr, damage)
+		queue_free()
+		
+	if body is StaticBody2D and body.is_in_group("hitable"):
+		if plr == 1:
+			body.receive_damage(damage * Global.player_1_dmg_boost, plr)
+		else:
+			body.receive_damage(damage * Global.player_2_dmg_boost, plr)
+		queue_free()

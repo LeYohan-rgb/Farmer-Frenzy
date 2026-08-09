@@ -7,6 +7,10 @@ func perform_cocoa(plr : int, x_coord : float, y_coord : float) -> void:
 	var farmer_2 = CHOCOLATE_FARMER.instantiate()
 	var farmer_3 = CHOCOLATE_FARMER.instantiate()
 	
+	farmer_1.plr = plr
+	farmer_2.plr = plr
+	farmer_3.plr = plr
+	
 	farmer_1.position = Vector2(return_chocolate_coord(x_coord, plr), 232)
 	farmer_2.position = Vector2(return_chocolate_coord(x_coord, plr), 360)
 	farmer_3.position = Vector2(return_chocolate_coord(x_coord, plr), 488)

@@ -45,6 +45,13 @@ func _on_body_entered(body: Node2D) -> void:
 		hit.emit(body.plr, damage)
 		queue_free()
 		
+	if body is StaticBody2D and body.is_in_group("hitable"):
+		if plr == 1:
+			body.receive_damage(damage * Global.player_1_dmg_boost, plr)
+		else:
+			body.receive_damage(damage * Global.player_2_dmg_boost, plr)
+		queue_free()
+		
 	if body.name == "border4" or body.name == "border5":
 		impact_sound.play()
 		direction.x *= -1

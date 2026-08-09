@@ -7780,9 +7780,9 @@ offset_top = 159.0
 offset_right = 990.0
 offset_bottom = 528.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
-text = "Avocado is a hindrance fruit. When harvested, it drops a giant avocado seed at the corresponding location on the opposite field relative to the farmer's position. 
+text = "Pineapple is a hindrance fruit. Depending on the row the farmer is standing, a row of spiky leaves is planted on the opponent's side. If the opposing farmer steps on them, their speed is reduced and they receive gradual damage every 0.3 seconds.
 
-When the seed hits the ground, it triggers a huge guacamole explosion that leaves behind a large puddle of guamacole. The lower the farmer's health, the more damage the explosion deals. The puddle reduces movement speed by half when stepped on it. "
+The leaves can only be planted on the center row, one row away from the center, or two rows away from the center. The farther the leaves are from the center, the less damage they deal to the farmer."
 horizontal_alignment = 1
 autowrap_mode = 2
 

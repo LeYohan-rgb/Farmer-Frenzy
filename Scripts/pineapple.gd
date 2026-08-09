@@ -15,6 +15,7 @@ func perform_pineapple(plr, x_coord, y_coord):
 	pineapple_tile.position.x = 640 if plr == 1 else 0
 	pineapple_tile.position.y = return_pineapple_pos(y_coord + 20)[0]
 	pineapple_tile.row_type = return_pineapple_pos(y_coord + 20)[1]
+	pineapple_tile.damage = Global.damage["pineapple"][pineapple_tile.row_type - 1]
 	get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(pineapple_tile)
 
 func return_pineapple_pos(y_coord : float) -> Array:

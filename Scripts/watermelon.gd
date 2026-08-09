@@ -35,11 +35,18 @@ func _physics_process(delta: float) -> void:
 			dead.emit(plr)
 			queue_free()
 			
-func _on_body_entered(body: CharacterBody2D) -> void:
-	print("hey")
-	hit.emit(body.plr, damage)
-	dead.emit(plr)
-	queue_free()
+func _on_body_entered(body) -> void:
+	if body is CharacterBody2D:
+		hit.emit(body.plr, damage)
+		dead.emit(plr)
+		queue_free()
+		
+	if body is StaticBody2D and body.is_in_group("hitable"):
+		if plr == 1:
+			body.receive_damage(damage * Global.player_1_dmg_boost, plr)
+		else:
+			body.receive_damage(damage * Global.player_2_dmg_boost, plr)
+		queue_free()
 
 	#SPLASH
 	var x_offset = randf_range(-10,10)

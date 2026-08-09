@@ -25,3 +25,4 @@ texture = ExtResource("1_a3fm4")
 shape = SubResource("CapsuleShape2D_rcv4a")
 
 [connection signal="area_entered" from="farmer_collision" to="." method="_on_farmer_collision_area_entered"]
+[connection signal="area_exited" from="farmer_collision" to="." method="_on_farmer_collision_area_exited"]

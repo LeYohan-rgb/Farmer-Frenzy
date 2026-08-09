@@ -4,6 +4,7 @@ class_name Avocado
 
 @export var opposite_player_hit : bool
 @export var post_explosion : bool = false
+@export var plr : int
 
 var desired_position : Vector2
 var my_gravity : float
@@ -44,3 +45,8 @@ func disappear():
 	queue_free()
 	
 	
+
+
+func _on_body_entered(body) -> void:
+	if body is StaticBody2D and body.is_in_group("hitable"):
+		body.receive_damage(10.0, plr)
