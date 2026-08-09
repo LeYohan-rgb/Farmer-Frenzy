@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://5a73unw4x2c4"]
+
+[ext_resource type="Script" uid="uid://87uqq160iasj" path="res://Scripts/shadow_animation.gd" id="1_o6xj3"]
+[ext_resource type="Texture2D" uid="uid://xua1tsbaqtsa" path="res://Graphics/shadow_anim.png" id="1_ob358"]
+[ext_resource type="Texture2D" uid="uid://c2r2u4suul17y" path="res://Graphics/guacamole_area.png" id="3_kghmp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o6xj3"]
+radius = 128.0
+
+[node name="shadow_animation" type="Area2D"]
+script = ExtResource("1_o6xj3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ob358")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_o6xj3")
+disabled = true
+
+[node name="guacamole" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_kghmp")
+
+[node name="Timer" type="Timer" parent="."]

@@ -138,7 +138,9 @@ func _on_feet_area_entered(area: Area2D) -> void:
 			else:
 				pineapple_sfx.stop()
 			await Global.wait(0.333)
-
+	
+	if area is Avocado:
+		print("HELLO AVOCADO")
 
 func _on_feet_area_exited(area: Area2D) -> void:
 	if area is Pineapple:
@@ -155,10 +157,8 @@ func speed_player_boost(on_or_off : bool):
 	var speed_scalar = 1.333
 	if on_or_off:
 		speed *= speed_scalar
-		print(speed)
 	else:
 		speed /= speed_scalar
-		print(speed)
-		
+
 func healing_anim_func():
 	healing_anim.play("heal")

@@ -1,6 +1,7 @@
 extends Node
 
 var debug_mode : bool = true
+var debug_fruits : Array = ["Avocado", "Pineapple", "Guava"]
 #GAME VARIABLES
 var player_1_wins : int = 0
 var player_2_wins : int = 0

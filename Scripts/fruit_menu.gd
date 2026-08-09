@@ -4,6 +4,7 @@ signal slot_selected(slot : int, plr : int, fruit_var : String)
 signal clear_slot(slot : int, plr : int)
 signal requested_go_to_main_menu
 signal start_game
+signal debug_start
 
 var fruit_var : String = "Mango"
 @onready var fruit_lbl = $fruit_lbl
@@ -152,7 +153,10 @@ func _on_play_btn_pressed() -> void:
 	if is_all_fruits_completed:
 		start_game.emit()
 	else:
-		await denied_play_game()
+		if Global.debug_mode:
+			debug_start.emit()
+		else:
+			await denied_play_game()
 		
 func denied_play_game():
 	var tween = create_tween()

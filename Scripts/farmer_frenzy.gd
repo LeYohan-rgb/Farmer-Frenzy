@@ -63,6 +63,7 @@ func begin_game():
 	plr_2_health.get_theme_stylebox("fill").bg_color = Color("72ac4e")
 	
 func _ready():
+	fruit_menu.connect("debug_start", debug_start)
 	fruit_collection_menu.connect("fruit_pressed", change_fruit_menu_display)
 	fruit_menu.connect("slot_selected", change_player_slots)
 	fruit_menu.connect("clear_slot", clear_player_slot)
@@ -329,3 +330,20 @@ func not_enough_beans(ability_num : int, player : int):
 
 func get_timer(plr : int, num : int) -> Timer:
 	return $beginning_UI/cooldown.get_node("timer_%d_%d" % [num, plr])
+
+func debug_start():
+	Global.player_1_fruits = Global.debug_fruits
+	Global.player_2_fruits = Global.debug_fruits
+	plr_1_slot_1_texture.texture = load("res://Graphics/" + Global.player_1_fruits[0] + ".png")
+	plr_1_slot_1_lbl.text = str(Global.fruit_bean_costs[Global.player_1_fruits[0]])
+	plr_1_slot_2_texture.texture = load("res://Graphics/" + Global.player_1_fruits[1] + ".png")
+	plr_1_slot_2_lbl.text = str(Global.fruit_bean_costs[Global.player_1_fruits[1]])
+	plr_1_slot_3_texture.texture = load("res://Graphics/" + Global.player_1_fruits[2] + ".png")
+	plr_1_slot_3_lbl.text = str(Global.fruit_bean_costs[Global.player_1_fruits[2]])
+	plr_2_slot_1_texture.texture = load("res://Graphics/" + Global.player_2_fruits[0] + ".png")
+	plr_2_slot_1_lbl.text = str(Global.fruit_bean_costs[Global.player_2_fruits[0]])
+	plr_2_slot_2_texture.texture = load("res://Graphics/" + Global.player_2_fruits[1] + ".png")
+	plr_2_slot_2_lbl.text = str(Global.fruit_bean_costs[Global.player_2_fruits[1]])
+	plr_2_slot_3_texture.texture = load("res://Graphics/" + Global.player_2_fruits[2] + ".png")
+	plr_2_slot_3_lbl.text = str(Global.fruit_bean_costs[Global.player_2_fruits[2]])
+	begin_farmer_fight()
