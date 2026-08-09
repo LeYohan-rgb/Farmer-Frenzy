@@ -24,7 +24,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="watermelon_projectile" type="Area2D"]
+[node name="watermelon_projectile" type="Area2D" groups=["projectile"]]
 collision_layer = 2
 script = ExtResource("1_muf8u")
 SPLASH = ExtResource("2_7ihjs")

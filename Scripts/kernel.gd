@@ -28,7 +28,10 @@ func _physics_process(delta: float) -> void:
 		if position.x < -80:
 			queue_free()
 			
-func _on_body_entered(body: CharacterBody2D) -> void:
-	hit.emit(body.plr)
-	queue_free()
+func _on_body_entered(body) -> void:
+	if body is CharacterBody2D:
+		hit.emit(body.plr)
+		queue_free()
+	if body is StaticBody2D and body.is_in_group("hitable"):
+		print("CLONE HIT")
 	

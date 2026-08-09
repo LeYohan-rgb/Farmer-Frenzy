@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b5ux81q65gkup" path="res://Graphics/watermelon_seed.png" id="1_j2ah8"]
 [ext_resource type="AudioStream" uid="uid://vyyl8nwoc1p5" path="res://Music/small_impact.mp3" id="3_rxd0k"]
 
-[node name="watermelon_seed" type="Area2D"]
+[node name="watermelon_seed" type="Area2D" groups=["projectile"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_4pvgv")

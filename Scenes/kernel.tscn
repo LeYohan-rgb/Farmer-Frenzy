@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkyvm"]
 size = Vector2(21, 20)
 
-[node name="kernel" type="Area2D"]
+[node name="kernel" type="Area2D" groups=["projectile"]]
 light_mask = 2
 collision_layer = 2
 script = ExtResource("1_nkyvm")

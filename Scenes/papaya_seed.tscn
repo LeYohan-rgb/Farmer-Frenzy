@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_5l1ek"]
 radius = 12.0416
 
-[node name="papaya_seed" type="Area2D"]
+[node name="papaya_seed" type="Area2D" groups=["projectile"]]
 collision_layer = 2
 script = ExtResource("1_oxvqv")
 

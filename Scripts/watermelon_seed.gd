@@ -1,6 +1,8 @@
 extends Area2D
 
+
 signal hit(player_hit : int, damage_dealt : float)
+
 
 @export var speed : float
 @onready var spr = $Sprite2D

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cbfsauohq03rs" path="res://Scenes/Animation/mango_splash.tscn" id="2_jk88y"]
 [ext_resource type="Texture2D" uid="uid://bjudqbfrr1wxm" path="res://Graphics/mango_projectile.png" id="2_w0oo3"]
 
-[node name="mango_projectile" type="Area2D"]
+[node name="mango_projectile" type="Area2D" groups=["projectile"]]
 collision_layer = 2
 script = ExtResource("1_8qmm6")
 SPLASH = ExtResource("2_jk88y")
