@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxihkmjlyxu4k"]
+[gd_scene load_steps=6 format=3 uid="uid://cxihkmjlyxu4k"]
 
 [ext_resource type="Texture2D" uid="uid://bs1nv4gudolyg" path="res://Graphics/emiliano.png" id="1_a3fm4"]
 [ext_resource type="Script" uid="uid://cyomq0ndoyecx" path="res://Scripts/chocolate_farmer.gd" id="1_rcv4a"]
+[ext_resource type="PackedScene" uid="uid://vtjqmh31js6w" path="res://Scenes/cocoa_seed.tscn" id="2_5hmpa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcv4a"]
 radius = 15.0
 height = 56.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcv4a"]
+size = Vector2(1152, 896)
+
 [node name="chocolate_farmer" type="StaticBody2D" groups=["hitable"]]
 collision_mask = 3
 script = ExtResource("1_rcv4a")
+CHOCO_BULLET = ExtResource("2_5hmpa")
 
 [node name="farmer_collision" type="Area2D" parent="."]
 collision_mask = 3
@@ -24,5 +29,12 @@ texture = ExtResource("1_a3fm4")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_rcv4a")
 
+[node name="detector_area" type="Area2D" parent="."]
+
+[node name="detection_area" type="CollisionShape2D" parent="detector_area"]
+position = Vector2(575, 0)
+shape = SubResource("RectangleShape2D_rcv4a")
+
 [connection signal="area_entered" from="farmer_collision" to="." method="_on_farmer_collision_area_entered"]
 [connection signal="area_exited" from="farmer_collision" to="." method="_on_farmer_collision_area_exited"]
+[connection signal="body_entered" from="detector_area" to="." method="_on_detector_area_body_entered"]

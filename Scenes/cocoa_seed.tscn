@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://vtjqmh31js6w"]
+
+[ext_resource type="Script" uid="uid://dcicmww5w71wd" path="res://Scripts/cocoa_seed.gd" id="1_uxeyb"]
+[ext_resource type="Texture2D" uid="uid://cvy0geqjshl1n" path="res://Graphics/cocoa_seed.png" id="2_uxeyb"]
+
+[node name="cocoa_seed" type="Area2D" groups=["projectile"]]
+script = ExtResource("1_uxeyb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_uxeyb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-10, -10, 6, -10, 15, -5, 20, 2, 20, 4, 5, 10, -11, 10, -20, 5, -20, -5)

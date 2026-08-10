@@ -33,7 +33,7 @@ func _on_body_entered(body) -> void:
 		hit.emit(body.plr)
 		queue_free()
 		
-	if body is StaticBody2D and body.is_in_group("hitable"):
+	if body is StaticBody2D and body.is_in_group("hitable") and body.plr != plr:
 		if plr == 1:
 			body.receive_damage(damage * Global.player_1_dmg_boost, plr)
 		else:

@@ -10,6 +10,9 @@ func perform_cocoa(plr : int, x_coord : float, y_coord : float) -> void:
 	farmer_1.plr = plr
 	farmer_2.plr = plr
 	farmer_3.plr = plr
+	farmer_1.clone_number = 1
+	farmer_2.clone_number = 2
+	farmer_3.clone_number = 3
 	
 	farmer_1.position = Vector2(return_chocolate_coord(x_coord, plr), 232)
 	farmer_2.position = Vector2(return_chocolate_coord(x_coord, plr), 360)
