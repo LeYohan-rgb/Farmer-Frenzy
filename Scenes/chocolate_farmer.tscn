@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxihkmjlyxu4k"]
+[gd_scene load_steps=7 format=3 uid="uid://cxihkmjlyxu4k"]
 
 [ext_resource type="Texture2D" uid="uid://bs1nv4gudolyg" path="res://Graphics/emiliano.png" id="1_a3fm4"]
 [ext_resource type="Script" uid="uid://cyomq0ndoyecx" path="res://Scripts/chocolate_farmer.gd" id="1_rcv4a"]
 [ext_resource type="PackedScene" uid="uid://vtjqmh31js6w" path="res://Scenes/cocoa_seed.tscn" id="2_5hmpa"]
+[ext_resource type="AudioStream" uid="uid://d00ximqsfcvtm" path="res://Music/kernel_shoot_sound.mp3" id="4_j8nyw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rcv4a"]
 radius = 15.0
@@ -23,6 +24,7 @@ collision_mask = 3
 shape = SubResource("CapsuleShape2D_rcv4a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("1_a3fm4")
 
@@ -34,6 +36,13 @@ shape = SubResource("CapsuleShape2D_rcv4a")
 [node name="detection_area" type="CollisionShape2D" parent="detector_area"]
 position = Vector2(575, 0)
 shape = SubResource("RectangleShape2D_rcv4a")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="shoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_j8nyw")
+bus = &"sfx"
 
 [connection signal="area_entered" from="farmer_collision" to="." method="_on_farmer_collision_area_entered"]
 [connection signal="area_exited" from="farmer_collision" to="." method="_on_farmer_collision_area_exited"]

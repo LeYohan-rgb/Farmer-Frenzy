@@ -189,3 +189,9 @@ func return_avocado_damage(health : float) -> float:
 	if health <= Global.maximum_health * (1.0/3.0):
 		return 10.0
 	return 0.0
+	
+func receive_damage(dmg : float, player_that_hit_you : int):
+	if plr == 1:
+		Global.player_1_health -= dmg
+	else:
+		Global.player_2_health -= dmg

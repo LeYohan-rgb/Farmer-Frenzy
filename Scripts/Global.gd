@@ -13,12 +13,13 @@ var player_1_health : float = 50.0
 var player_2_health :float = 50.0
 var maximum_health : float = 50.0
 var recharge_time : float = 3.0
-var speed = {
+var speed : Dictionary = {
 	"kernel" : 1500,
 	"mango" : 1000,
 	"watermelon" : 750,
 	"watermelon_seeds" : 1750.0,
-	"papaya" : 1500
+	"papaya" : 1500,
+	"cocoa_seed" : 1500.0
 }
 
 #BUYING MECHANIC
@@ -57,7 +58,8 @@ var damage : Dictionary = {
 	"watermelon_seed" : 2.0,
 	"papaya" : 0.25,
 	"pineapple" : [3, 2.5, 2],
-	"guava" : 0.5
+	"guava" : 0.5,
+	"cocoa_seed" : 1.0
 }
 
 
@@ -91,7 +93,7 @@ var fruit_prices : Dictionary = {
 var cooldown : Dictionary = {
 	"Mango" : 5,
 	"Avocado" : 20, #20
-	"Cocoa" : 3,
+	"Cocoa" : 3, #20
 	"Coconut" : 0,
 	"Guava" : 30,
 	"Papaya" : 15,
@@ -102,7 +104,7 @@ var cooldown : Dictionary = {
 var fruit_bean_costs : Dictionary = {
 	"Mango": 5,
 	"Avocado": 0, #10
-	"Cocoa": 0,
+	"Cocoa": 0,  #10
 	"Coconut": 0,
 	"Guava": 0, #7
 	"Papaya": 5,

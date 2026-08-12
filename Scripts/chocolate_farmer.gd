@@ -5,10 +5,28 @@ extends StaticBody2D
 @onready var my_spr = $Sprite2D
 @export var CHOCO_BULLET : PackedScene
 @export var clone_number : int
-var interval_attack_time : float = 1.0
+@export var column_number : int
+@onready var my_timer = $Timer
+var interval_attack_time : float = 3.0
+var life_span : float 
+@onready var shoot_sfx = $shoot
 
 #FRUIT VARIABLES
 var pineapple_hit : bool = false
+
+func _ready():
+	if column_number == 1:
+		health = Global.maximum_health / 8.0 #6.25
+		life_span = 15.5 # 5 bullets
+	if column_number == 2:
+		health = Global.maximum_health / 9.6 #5.2083
+		life_span = 12.5 # 4 bullets
+	if column_number == 3:
+		health = Global.maximum_health / 12.0 #4.1667
+		life_span = 9.5 # 3 bullets 
+	if column_number == 4:
+		health = Global.maximum_health / 16.0 #3.125
+		life_span = 6.5 # 2 bullets 
 
 func _on_farmer_collision_area_entered(area: Area2D) -> void:
 	if area is Pineapple:
@@ -16,11 +34,11 @@ func _on_farmer_collision_area_entered(area: Area2D) -> void:
 		while health > 0 and pineapple_hit:
 			receive_damage(area.damage, area.plr)
 			await Global.wait(0.333)
-			
-
 
 func receive_damage(dmg : float, plr : int):
-	pass
+	health -= dmg
+	if health <= 0:
+		die()
 
 func die():
 	var tween_2 = create_tween()
@@ -37,6 +55,11 @@ func _on_farmer_collision_area_exited(area: Area2D) -> void:
 
 func _on_detector_area_body_entered(body) -> void:
 	if body is CharacterBody2D and body.plr != plr:
+		my_timer.start(life_span)
+		my_timer.timeout.connect(die)
+		var tween_2 = create_tween()
+		tween_2.set_trans(Tween.TRANS_LINEAR)
+		tween_2.tween_property(my_spr, "modulate:a", 1.0, interval_attack_time * 0.333)
 		if clone_number == 1:
 			await Global.wait(interval_attack_time * 0.333)
 			attack(body)
@@ -56,4 +79,6 @@ func attack(body):
 		choco_bullet.position.x = position.x + offset
 		choco_bullet.rotate_seed(body.global_position)
 		get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(choco_bullet)
+		shoot_sfx.play()
 		await Global.wait(interval_attack_time)
+		
