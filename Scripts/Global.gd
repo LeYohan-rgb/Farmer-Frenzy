@@ -102,13 +102,13 @@ var cooldown : Dictionary = {
 }
 
 var fruit_bean_costs : Dictionary = {
-	"Mango": 5,
+	"Mango": 0, #5
 	"Avocado": 0, #10
 	"Cocoa": 0,  #10
 	"Coconut": 0, #7
 	"Guava": 0, #7
-	"Papaya": 5,
-	"Watermelon": 5,
+	"Papaya": 0, #5
+	"Watermelon": 0, #5
 	"Pineapple": 0 #7
 }
 

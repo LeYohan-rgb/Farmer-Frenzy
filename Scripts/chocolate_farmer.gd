@@ -92,8 +92,8 @@ func attack(body):
 		if !is_instance_valid(body):
 			return
 			
-		choco_bullet.rotate_seed(body.global_position)
 		get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(choco_bullet)
+		choco_bullet.rotate_seed(body.global_position)
 		shoot_sfx.play()
 		await Global.wait(interval_attack_time)
 		

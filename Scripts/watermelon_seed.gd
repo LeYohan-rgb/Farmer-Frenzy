@@ -8,14 +8,22 @@ signal hit(player_hit : int, damage_dealt : float)
 @onready var spr = $Sprite2D
 @export var plr : int 
 @export var damage : float
-var direction : Vector2
+var direction : Vector2 = Vector2.ZERO
 var num_of_ricochets : int = 3
 @onready var impact_sound = $impact_sound
+
+var is_reflected := false
 
 func _ready() -> void:
 	damage = Global.damage["watermelon_seed"]
 	if plr == 2:
 		spr.scale.x *= -1
+		
+	if direction == Vector2.ZERO:
+		if plr == 1:
+			direction = Vector2.RIGHT
+		elif plr == 2:
+			direction = Vector2.LEFT
 		
 func set_angle(my_angle):
 	var new_angle = my_angle if plr == 1 else 180.0 - my_angle
@@ -30,14 +38,18 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	position += direction * speed * delta
-	if plr == 1:
+	
+	if is_reflected:
+		rotation = direction.angle()
+		
 		#IF OFF-LIMITS, DELETE
-		if position.x > 1280:
-			queue_free()
-	else:
-		#IF OFF-LIMITS, DELETE
-		if position.x < -80:
-			queue_free()
+	if position.x > 1280 or position.x < -80:
+		queue_free()
+		
+func rotate_seed(pos : Vector2) -> void:
+	direction = (pos - position).normalized()
+	is_reflected = true
+	rotation = direction.angle()
 			
 func _on_body_entered(body: Node2D) -> void:
 	

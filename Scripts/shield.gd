@@ -17,6 +17,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if !is_instance_valid(area):
 		return
 		
-	hit.emit(area.damage)
-	block_sound.play()
-	area.queue_free()
+	if area.is_in_group("projectile") and area.plr != plr:
+		hit.emit(area.damage)
+		block_sound.play()
+		area.queue_free()

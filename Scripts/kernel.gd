@@ -7,26 +7,34 @@ signal hit(player_hit : int)
 @export var plr : int
 @export var damage : float
 
+#PROJECTILE CODE
+var position_shooting : Vector2
+
 func _ready() -> void:
 	damage = Global.damage["kernel"]
+	if plr == 1:
+		position_shooting = Vector2.RIGHT
+	elif plr == 2:
+		position_shooting = Vector2.LEFT
+
 	
 func _physics_process(delta: float) -> void:
 	if plr != 1 and plr != 2:
 		return
 		
-	if plr == 1:
-		position.x += speed * delta
-		
-		#IF OFF-LIMITS, DELETE
-		if position.x > 1280:
-			queue_free()
-	else:
-		spr.rotation_degrees = 270
-		position.x -= speed * delta
-		
-		#IF OFF-LIMITS, DELETE
-		if position.x < -80:
-			queue_free()
+	# Move in the current direction
+	position += position_shooting * speed * delta
+
+	# Rotate to face movement direction
+	rotation = position_shooting.angle()
+
+	# Delete when outside the screen
+	if position.x > 1280 or position.x < -80:
+		queue_free()
+
+func rotate_seed(pos: Vector2) -> void:
+	position_shooting = (pos - position).normalized()
+	rotation = position_shooting.angle()
 			
 func _on_body_entered(body) -> void:
 	if is_instance_valid(body) and body is CharacterBody2D:
