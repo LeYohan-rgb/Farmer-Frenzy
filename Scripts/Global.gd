@@ -14,7 +14,7 @@ var player_2_health :float = 50.0
 var maximum_health : float = 50.0
 var recharge_time : float = 3.0
 var speed : Dictionary = {
-	"kernel" : 1500,
+	"kernel" : 1500, #1500
 	"mango" : 1000,
 	"watermelon" : 750,
 	"watermelon_seeds" : 1750.0,
