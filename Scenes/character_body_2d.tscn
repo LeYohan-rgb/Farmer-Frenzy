@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b60soyr5c6qld"]
+[gd_scene load_steps=44 format=3 uid="uid://b60soyr5c6qld"]
 
 [ext_resource type="Script" uid="uid://cgavkxd1lhs46" path="res://Scripts/character_body_2d.gd" id="1_ghijl"]
 [ext_resource type="Texture2D" uid="uid://bs1nv4gudolyg" path="res://Graphics/emiliano.png" id="1_ij6vw"]
@@ -36,6 +36,7 @@
 [ext_resource type="Script" uid="uid://vbvbjxaufbp1" path="res://Scripts/cocoa.gd" id="31_jvhjq"]
 [ext_resource type="PackedScene" uid="uid://cxihkmjlyxu4k" path="res://Scenes/chocolate_farmer.tscn" id="32_8dppk"]
 [ext_resource type="Script" uid="uid://dfewnuy5dkw48" path="res://Scripts/coconut.gd" id="33_q7iat"]
+[ext_resource type="PackedScene" uid="uid://b0woj2ul13hi2" path="res://Scenes/coconut_shield.tscn" id="34_owr4h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_44cfe"]
 radius = 15.0
@@ -235,6 +236,7 @@ CHOCOLATE_FARMER = ExtResource("32_8dppk")
 
 [node name="coconut" type="Node2D" parent="fruits"]
 script = ExtResource("33_q7iat")
+COCONUT_SHIELD = ExtResource("34_owr4h")
 
 [node name="farmer_UI" type="Node2D" parent="."]
 visible = false

@@ -162,6 +162,8 @@ func wait(sec : float):
 	
 	
 #IN-GAME FRUIT VARIABLES
+var coconut_mode : Array = [false, false]
+var coconut_on : Array = [false, false]
 var watermelon_is_alive : Array = [false, false]
 #O : DORMANT, 1: CAN_START_CHARGE, 2: ISCHARGING, 3: DEPLETING
 var papaya_charging_state : Array = [0,0]
