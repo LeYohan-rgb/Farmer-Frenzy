@@ -20,5 +20,8 @@ func die_now():
 	queue_free()
 	
 func _on_body_entered(body: CharacterBody2D) -> void:
+	if !is_instance_valid(body):
+		return
+		
 	heal.emit(body.plr, Global.damage["guava"])
 	queue_free()

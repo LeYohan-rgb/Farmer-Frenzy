@@ -48,5 +48,5 @@ func disappear():
 
 
 func _on_body_entered(body) -> void:
-	if body is StaticBody2D and body.is_in_group("hitable"):
+	if is_instance_valid(body) and body is StaticBody2D and body.is_in_group("hitable"):
 		body.receive_damage(10.0, plr)

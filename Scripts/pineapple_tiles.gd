@@ -25,7 +25,3 @@ func time_ended():
 	Global.pineapple_is_on[plr - 1] = false
 	queue_free()
 	
-
-func _on_body_entered(body) -> void:
-	pass
-	#PINEAPPLE ONLY AFFECTS THE PLAYER

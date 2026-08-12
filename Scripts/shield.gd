@@ -14,6 +14,9 @@ func _ready() -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
+	if !is_instance_valid(area):
+		return
+		
 	hit.emit(area.damage)
 	block_sound.play()
 	area.queue_free()

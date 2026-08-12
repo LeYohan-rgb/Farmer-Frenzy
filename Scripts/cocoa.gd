@@ -41,16 +41,16 @@ func return_chocolate_coord(x_coord, plr) -> Array:
 			return [448.0, 4]
 	else:
 		if x_coord >= 640 and x_coord < 768:
-			return [704.0, 1]
+			return [704.0, 4]
 		if x_coord >= 768 and x_coord < 896:
-			return [832.0, 2]
+			return [832.0, 3]
 		if x_coord >= 896 and x_coord < 1024:
-			return [960.0, 3]
+			return [960.0, 2]
 		if x_coord >= 1024:
-			return [1088.0, 4]
+			return [1088.0, 1]
 	return [0.0, 1]
 	
-func remove_player_health(column : float, player : int):
+func remove_player_health(column : float, player : int) -> void:
 	if column == 1:
 		if player == 1:
 			Global.player_1_health -= Global.maximum_health / 8.0

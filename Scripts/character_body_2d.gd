@@ -100,6 +100,8 @@ func perform_ability(fruit_name : String):
 		fruits.perform(fruit_name, position.x, position.y)
 	if fruit_name == "Cocoa":
 		fruits.perform(fruit_name, position.x, position.y)
+	if fruit_name == "Coconut":
+		fruits.perform(fruit_name, position.x, position.y)
 		
 func give_out_coords(fruit : String):
 	if fruit == "mango":
@@ -126,7 +128,8 @@ func shoot_papayas(num_of_papayas : int):
 
 #fee4e3 HIT RED-COLOR
 func _on_feet_area_entered(area: Area2D) -> void:
-	if area is Pineapple:
+		
+	if is_instance_valid(area) and area is Pineapple:
 		var damage_dealt = Global.damage["pineapple"][area.row_type - 1]
 		Global.pineapple_effect[plr - 1] = true
 		speed *= pineapple_debooster
@@ -145,7 +148,7 @@ func _on_feet_area_entered(area: Area2D) -> void:
 				pineapple_sfx.stop()
 			await Global.wait(0.333)
 	
-	if area is Avocado:
+	if is_instance_valid(area) and area is Avocado:
 		speed *= avocado_debooster
 		print(speed)
 		if !area.opposite_player_hit and !area.post_explosion:
@@ -154,15 +157,14 @@ func _on_feet_area_entered(area: Area2D) -> void:
 			else:
 				Global.player_2_health -= return_avocado_damage(Global.player_2_health)
 			area.opposite_player_hit = true
-		print("HELLO AVOCADO")
 
 func _on_feet_area_exited(area: Area2D) -> void:
-	if area is Pineapple:
+	if is_instance_valid(area) and area is Pineapple:
 		pineapple_sfx.stop()
 		Global.pineapple_effect[plr - 1] = false
 		speed /= pineapple_debooster
 		
-	if area is Avocado:
+	if is_instance_valid(area) and area is Avocado:
 		speed /= avocado_debooster
 		print(speed)
 		

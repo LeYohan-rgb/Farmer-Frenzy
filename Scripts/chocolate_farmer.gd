@@ -10,11 +10,16 @@ extends StaticBody2D
 var interval_attack_time : float = 3.0
 var life_span : float 
 @onready var shoot_sfx = $shoot
+@onready var detector_area = $detector_area/detection_area
 
 #FRUIT VARIABLES
 var pineapple_hit : bool = false
 
 func _ready():
+	if plr == 2:
+		detector_area.position.x *= -1
+		my_spr.flip_h = true
+		
 	if column_number == 1:
 		health = Global.maximum_health / 8.0 #6.25
 		life_span = 15.5 # 5 bullets
@@ -29,7 +34,7 @@ func _ready():
 		life_span = 6.5 # 2 bullets 
 
 func _on_farmer_collision_area_entered(area: Area2D) -> void:
-	if area is Pineapple:
+	if is_instance_valid(area) and area is Pineapple:
 		pineapple_hit = true
 		while health > 0 and pineapple_hit:
 			receive_damage(area.damage, area.plr)
@@ -49,12 +54,12 @@ func die():
 
 
 func _on_farmer_collision_area_exited(area: Area2D) -> void:
-	if area is Pineapple:
+	if is_instance_valid(area) and area is Pineapple:
 		pineapple_hit = false
 
 
 func _on_detector_area_body_entered(body) -> void:
-	if body is CharacterBody2D and body.plr != plr:
+	if is_instance_valid(body) and body is CharacterBody2D and body.plr != plr:
 		my_timer.start(life_span)
 		my_timer.timeout.connect(die)
 		var tween_2 = create_tween()
@@ -72,11 +77,21 @@ func _on_detector_area_body_entered(body) -> void:
 		
 func attack(body):
 	while true:
+		if (plr == 1 and Global.player_1_health <= 0) or (plr == 2 and Global.player_2_health <= 0):
+			return
+			
+		if !Global.is_in_farmer_fight:
+			return
+			
 		var choco_bullet = CHOCO_BULLET.instantiate()
 		choco_bullet.position.y = position.y + 5
 		choco_bullet.plr = plr
 		var offset = 50 if plr == 1 else -50
 		choco_bullet.position.x = position.x + offset
+		
+		if !is_instance_valid(body):
+			return
+			
 		choco_bullet.rotate_seed(body.global_position)
 		get_node("/root/main_menu/farmer_frenzy/visual_effects").add_child(choco_bullet)
 		shoot_sfx.play()

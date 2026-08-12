@@ -6211,7 +6211,6 @@ corner_radius_bottom_left = 20
 script = ExtResource("1_28flt")
 
 [node name="main" type="Node2D" parent="."]
-visible = false
 
 [node name="bg_pattern2" type="Control" parent="main"]
 layout_mode = 3
@@ -6713,6 +6712,7 @@ autoplay = true
 bus = &"music"
 
 [node name="farmer_frenzy" type="Node2D" parent="."]
+visible = false
 script = ExtResource("7_cp0ys")
 
 [node name="beginning_UI" type="Node2D" parent="farmer_frenzy"]
@@ -7007,7 +7007,7 @@ offset_bottom = 347.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
 theme_override_fonts/font = ExtResource("13_5egv6")
 theme_override_font_sizes/font_size = 15
-text = "Drops a giant avocado seed that explodes into a large puddle of guacamole that slows down the farmer."
+text = "Use a portion of your health to plant three chocolate farmer clones that shoot cocoa seeds at the enemy."
 autowrap_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="farmer_frenzy/beginning_UI/fruit_menu"]
@@ -7780,9 +7780,9 @@ offset_top = 159.0
 offset_right = 990.0
 offset_bottom = 528.0
 theme_override_colors/font_color = Color(0.227451, 0.176471, 0.113725, 1)
-text = "Pineapple is a hindrance fruit. Depending on the row the farmer is standing, a row of spiky leaves is planted on the opponent's side. If the opposing farmer steps on them, their speed is reduced and they receive gradual damage every 0.3 seconds.
+text = "Cocoa is a support fruit. Consume a portion of your health to plant three chocolate farmer clones in the column you're positioned in. The clones shoot directed cocoa seeds at the opposing farmer.
 
-The leaves can only be planted on the center row, one row away from the center, or two rows away from the center. The farther the leaves are from the center, the less damage they deal to the farmer."
+The farther the clones are from the river, the longer they live. However, planting clones farther from the river requires more health. The cost ranges from one-sixteenth to one-eighth of the farmer's total health, with the highest more than doubling the total lifespan."
 horizontal_alignment = 1
 autowrap_mode = 2
 

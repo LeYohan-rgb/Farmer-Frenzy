@@ -41,18 +41,18 @@ func _physics_process(delta: float) -> void:
 			
 func _on_body_entered(body: Node2D) -> void:
 	
-	if body is CharacterBody2D and body.plr != plr:
+	if is_instance_valid(body) and body is CharacterBody2D and body.plr != plr:
 		hit.emit(body.plr, damage)
 		queue_free()
 		
-	if body is StaticBody2D and body.is_in_group("hitable") and body.plr != plr:
+	if is_instance_valid(body) and body is StaticBody2D and body.is_in_group("hitable") and body.plr != plr:
 		if plr == 1:
 			body.receive_damage(damage * Global.player_1_dmg_boost, plr)
 		else:
 			body.receive_damage(damage * Global.player_2_dmg_boost, plr)
 		queue_free()
 		
-	if body.name == "border4" or body.name == "border5":
+	if is_instance_valid(body) and  (body.name == "border4" or body.name == "border5"):
 		impact_sound.play()
 		direction.x *= -1
 		if num_of_ricochets == 3:
@@ -64,7 +64,7 @@ func _on_body_entered(body: Node2D) -> void:
 		else:
 			num_of_ricochets -= 1 
 		
-	if body.name == "border" or body.name == "border3":
+	if is_instance_valid(body) and (body.name == "border" or body.name == "border3"):
 		impact_sound.play()
 		direction.y *= -1
 		if num_of_ricochets == 3:

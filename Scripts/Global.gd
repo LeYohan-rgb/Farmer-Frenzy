@@ -1,7 +1,7 @@
 extends Node
 
 var debug_mode : bool = true
-var debug_fruits : Array = ["Cocoa", "Pineapple", "Guava"]
+var debug_fruits : Array = ["Cocoa", "Pineapple", "Coconut"]
 #GAME VARIABLES
 var player_1_wins : int = 0
 var player_2_wins : int = 0
@@ -28,7 +28,7 @@ var bought_fruits : Dictionary = {
 	"Mango": true,
 	"Avocado": true,
 	"Cocoa": true,
-	"Coconut": false,
+	"Coconut": true,
 	"Guava": true,
 	"Papaya": true,
 	"Watermelon": true,
@@ -94,7 +94,7 @@ var cooldown : Dictionary = {
 	"Mango" : 5,
 	"Avocado" : 20, #20
 	"Cocoa" : 3, #20
-	"Coconut" : 0,
+	"Coconut" : 3,
 	"Guava" : 30,
 	"Papaya" : 15,
 	"Watermelon" : 5,
@@ -105,7 +105,7 @@ var fruit_bean_costs : Dictionary = {
 	"Mango": 5,
 	"Avocado": 0, #10
 	"Cocoa": 0,  #10
-	"Coconut": 0,
+	"Coconut": 0, #7
 	"Guava": 0, #7
 	"Papaya": 5,
 	"Watermelon": 5,
@@ -115,7 +115,7 @@ var fruit_bean_costs : Dictionary = {
 var fruit_descriptions : Dictionary = {
 	"Mango": "Throws five big mangos succesively; they get stronger when thrown closer to the river.",
 	"Avocado": "Drops a giant avocado seed that explodes into a large puddle of guacamole that slows down the farmer.",
-	"Cocoa": "N/A",
+	"Cocoa": "Use a portion of your health to plant three chocolate farmer clones that shoot cocoa seeds at the enemy.",
 	"Coconut": "N/A",
 	"Guava": "Spread guava seeds across the field that grant a small speed boost and restore a little health when eaten.",
 	"Papaya": "Charge papaya seeds to launch them at a high rate; the closer to the river, the larger they become.",
@@ -134,7 +134,9 @@ Mangos are slightly slower than kernels, but they are bigger. This allows them t
 	"Avocado": "Avocado is a hindrance fruit. When harvested, it drops a giant avocado seed at the corresponding location on the opposite field relative to the farmer's position. 
 
 When the seed hits the ground, it triggers a huge guacamole explosion that leaves behind a large puddle of guamacole. The lower the farmer's health, the more damage the explosion deals. The puddle reduces movement speed by half when stepped on it. ",
-	"Cocoa": "N/A",
+	"Cocoa": "Cocoa is a support fruit. Consume a portion of your health to plant three chocolate farmer clones in the column you're positioned in. The clones shoot directed cocoa seeds at the opposing farmer.
+
+The farther the clones are from the river, the longer they live. However, planting clones farther from the river requires more health. The cost ranges from one-sixteenth to one-eighth of the farmer's total health, with the highest more than doubling the total lifespan.",
 	"Coconut": "N/A",
 	"Guava": "Guava is a support fruit. When harvested, it spreads twenty tiny seeds across the farmer's field. When eaten, they increase speed by one-third and restore a little health.
 
