@@ -13,10 +13,15 @@ signal papaya_timer_started(on_or_off : int)
 @onready var coconut = $coconut
 @onready var papaya_timer = $papaya/Timer
 signal shoot_melon_with_coords(fruit : String)
+signal summon_coconut_shield(on_or_off : bool) 
 
 func _process(delta: float) -> void:
 	if !Global.is_in_farmer_fight:
 		return
+		
+	if Global.is_fruit_in_party("Coconut") and Global.coconut_mode[plr - 1]:
+		if Input.is_action_just_pressed(Global.num_to_ordinal(Global.fruit_to_slot("Coconut", plr))+"_"+str(plr)):
+			summon_coconut_shield.emit("coconut")
 		
 	if Global.is_fruit_in_party("Watermelon") and Global.watermelon_is_alive[plr - 1]:
 		if Input.is_action_just_pressed(Global.num_to_ordinal(Global.fruit_to_slot("Watermelon", plr))+"_"+str(plr)):

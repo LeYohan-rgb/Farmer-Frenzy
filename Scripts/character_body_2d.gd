@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var fruits = $fruits
 @onready var mango = $fruits/mango
 @onready var guava = $fruits/guava
+@onready var coconut = $fruits/coconut
 @onready var watermelon = $fruits/watermelon
 @onready var papaya = $fruits/papaya
 @onready var farmer_UI = $farmer_UI
@@ -32,6 +33,8 @@ func _ready() -> void:
 	#SETTING UP VARIABLES
 	speed = Global.farmer_fight_velocity
 	
+	coconut.connect("lower_speed", coconut_lower_speed)
+	fruits.connect("summon_coconut_shield", give_out_coords)
 	guava.connect("heal", healing_anim_func)
 	guava.connect("speed_boost", speed_player_boost)
 	papaya.connect("shoot_papaya_with_coords", give_out_coords)
@@ -63,6 +66,8 @@ func _physics_process(delta: float) -> void:
 		
 	velocity = input_vector * speed
 	move_and_slide()
+	
+	
 
 func set_up_before_battle():
 	if plr == 1:
@@ -110,6 +115,8 @@ func give_out_coords(fruit : String):
 		watermelon.perform_watermelon(plr, position.x, position.y)
 	if fruit == "papaya":
 		papaya.shoot_papayas_with_coords(position.x, position.y, plr)
+	if fruit == "coconut":
+		coconut.activate_coconut_shield(plr, position.x, position.y)
 	
 		
 func papaya_timer_start(on_or_off : int):
@@ -197,3 +204,14 @@ func receive_damage(dmg : float, player_that_hit_you : int):
 		Global.player_1_health -= dmg
 	else:
 		Global.player_2_health -= dmg
+
+func coconut_lower_speed():
+	if Global.coconut_on[plr - 1]:
+		#if ON, LOWER speed
+		print("LOWER SPEED")
+		speed *= 0.7
+	else:
+		#if OFF, RETURN speed
+		print("RETURN SPEED")
+		speed /= 0.7
+	print(speed)

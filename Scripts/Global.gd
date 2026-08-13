@@ -94,7 +94,7 @@ var cooldown : Dictionary = {
 	"Mango" : 5,
 	"Avocado" : 20, #20
 	"Cocoa" : 3, #20
-	"Coconut" : 3,
+	"Coconut" : 15,
 	"Guava" : 30,
 	"Papaya" : 15,
 	"Watermelon" : 5,

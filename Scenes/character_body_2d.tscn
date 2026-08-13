@@ -238,6 +238,9 @@ CHOCOLATE_FARMER = ExtResource("32_8dppk")
 script = ExtResource("33_q7iat")
 COCONUT_SHIELD = ExtResource("34_owr4h")
 
+[node name="Timer" type="Timer" parent="fruits/coconut"]
+one_shot = true
+
 [node name="farmer_UI" type="Node2D" parent="."]
 visible = false
 script = ExtResource("15_x0qg5")
